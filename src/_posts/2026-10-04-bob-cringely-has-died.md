@@ -17,15 +17,14 @@ summary: >-
   argument that the claim may be circulating without verification.
 ---
 
-Most commenters land on gratitude for the documentaries and books, because
-[Triumph of the Nerds](https://www.youtube.com/watch?v=c1yzXkH5Pfo), Nerds 2.0.1,
-and Accidental Empires gave a generation
-outside California its picture of Apple, IBM, and the PC wars. Several name
-those works as the reason they entered tech at all, and others praise his PBS
-series on trying to build a composite airplane as a memorable failure. The
-sharpest objection is factual, not sentimental: one commenter linked to a
-write-up arguing the death report is likely untrue, others pointed at Cringely's
-own 2020 "Not dead yet!" post and earlier comebacks, and a few said that hours
-after the Tell HN post there was still no independent confirmation. That
-skepticism coexists with genuine mourning, including sympathy for a family that
-reportedly lost Cringely's son earlier in the year.
+Most commenters land on gratitude for [Triumph of the Nerds]((https://www.youtube.com/watch?v=c1yzXkH5Pfo))
+and Accidental Empires, because those two works were many people's first real account of how
+the PC industry worked, and several credit them with pushing them into
+programming or out to California. The sharpest objection is aimed at the news
+itself: one reply links a write-up arguing that Cringely's famous first-person
+stories were largely invented, and a nested comment notes that twelve hours
+after posting nobody had actually confirmed he died. That credibility question
+poisons the memorial for a few, who describe him as a Forrest Gump of technology
+who just happened to witness every important moment. A smaller side argument
+runs over Plane Crazy, where one commenter calls the build a failure and another
+points out the plane did fly.

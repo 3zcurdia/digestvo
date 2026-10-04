@@ -71,7 +71,8 @@ the same story gets labelled differently on different days:
 
 A category used once is a typo, not a category. If two or more stories in one
 digest want the same new bucket, say so when you report back and let the user
-decide — then add the row here.
+decide — then add the row here **and** to `CATEGORIES` in
+`scripts/_common.py`, which is what `validate_brief.py` checks against.
 
 The repo has no canonical category list of its own yet (no `categories.yml`,
 nothing in `config/initializers.rb`), so this file is the source of truth until

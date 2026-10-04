@@ -2,6 +2,18 @@
 layout: default
 ---
 
-<h1><%= data.title %></h1>
+<%# Plain pages (About, Stories, errors) use the same header block as an
+    article so every page opens the same way. Set `prose: false` in front
+    matter when the body brings its own components instead of running text. %>
+<article class="article">
+  <header class="article__header">
+    <h1 class="article__title"><%= data.title %></h1>
+    <% if data.summary %>
+      <p class="article__standfirst"><%= data.summary %></p>
+    <% end %>
+  </header>
 
-<%= yield %>
+  <div class="<%= 'prose' unless data.prose == false %>">
+    <%= yield %>
+  </div>
+</article>

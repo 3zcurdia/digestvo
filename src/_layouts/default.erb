@@ -7,7 +7,11 @@
     <%= render Shared::Navbar.new(metadata: site.metadata, resource: resource) %>
 
     <main>
-      <%= yield %>
+      <%# One column for every page, so the masthead, the index and every
+          article share the same edges and the same measure. %>
+      <div class="column">
+        <%= yield %>
+      </div>
     </main>
 
     <%= render "footer", metadata: site.metadata %>

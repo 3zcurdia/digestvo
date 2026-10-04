@@ -13,9 +13,10 @@ stories" (the prompt, or `$ARGUMENTS`).
 Output: one post per kept article in `src/_posts/YYYY-MM-DD-<slug>.md`. Each
 carries `categories: digest`, a `tags` list, `source_url`, a `summary`, and a
 discussion key per site it appeared on — `hn_url` and/or `lobsters_url` — with
-the discussion summary as its body. Presence of those two keys is what draws the
-HN mark and the 🦞. The index and `/posts` listings render title, date, and
-summary only.
+the discussion summary as its body, written from `references/post-template.md`.
+Presence of those two keys is what draws the Hacker News and Lobsters links on
+the post page. The index and `/posts` listings render title, date, and summary
+only.
 
 ## The shape of the work
 
@@ -185,8 +186,9 @@ date "+%Y-%m-%d %H:%M:%S %z"
 
 ### New articles
 
-Write one file per new article at `src/_posts/YYYY-MM-DD-<slug>.md`, slugging
-the headline by hand: `Kolibri: A Sovereign Open-Weight Model` becomes
+Write one file per new article at `src/_posts/YYYY-MM-DD-<slug>.md`, starting
+from `references/post-template.md` — the single-source or the both-sites shape —
+and slugging the headline by hand: `Kolibri: A Sovereign Open-Weight Model` becomes
 `kolibri-sovereign-open-weight-model`.
 
 ```markdown
@@ -264,7 +266,8 @@ that body replaced.
 
 **Add a missing source, never remove one.** If the existing post has only
 `hn_url` and today the story is on Lobsters too, append a `**On Lobsters.**`
-section with its take and add the `lobsters_url` key, so the 🦞 starts showing.
+section with its take and add the `lobsters_url` key, so the Lobsters link
+starts showing.
 Additive changes are fine; removals are not.
 
 If the existing post's body is already at least as good as the fresh take, leave
@@ -274,11 +277,15 @@ lie about what actually changed.
 
 Rules that matter:
 
-- **The presence of `hn_url` / `lobsters_url` is what draws the icons.** The
-  post layout renders the HN mark for `hn_url` and 🦞 for `lobsters_url`, so a
-  post with neither renders no icons and a post from both renders both. Do not
-  add a source field — the URL keys are the flag, and a second field can
-  disagree with them.
+- **The presence of `hn_url` / `lobsters_url` is what draws the source
+  links.** `src/_components/shared/source_links.erb` renders a Hacker News link
+  with the Y Combinator square for `hn_url` and a Lobsters link with its square
+  mark for `lobsters_url`, so a post with neither shows only "Read the original"
+  and a post from both shows both. Do not add a source field — the URL keys are
+  the flag, and a second field can disagree with them.
+- **Never put HTML, SVG, icons or emoji in a post.** Every mark is drawn by the
+  component from front matter. If a mark looks wrong, fix the component once;
+  do not patch it into posts, where it would drift from every other post.
 - **`categories: digest` on every post.** It is the only key that shapes the
   permalink (`/digest/YYYY/MM/DD/slug/`), and a stable one matters because
   these posts get linked and archived. The human-readable taxonomy belongs in

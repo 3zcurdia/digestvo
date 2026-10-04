@@ -1,27 +1,33 @@
 <% if any? %>
-  <ul class="post-list">
-    <% entries do |post| %>
-      <li class="post-list__item rounded-lg bg-surface-background p-4 hover:opacity-80">
-        <a
-          class="post-list__link block font-bold text-heading-color no-underline"
-          href="<%= post.relative_url %>"
-        >
-          <%= post.data.title %>
-        </a>
+  <div class="post-list">
+    <% editions.each do |day, posts| %>
+      <section class="edition" aria-labelledby="edition-<%= day.iso8601 %>">
+        <h2 class="edition__date" id="edition-<%= day.iso8601 %>">
+          <time datetime="<%= day.iso8601 %>"><%= day.strftime("%A, %B %-d, %Y") %></time>
+        </h2>
 
-        <time
-          class="mt-1 block text-sm text-muted-color"
-          datetime="<%= post.date.strftime('%Y-%m-%d') %>"
-        >
-          <%= post.date.strftime('%B %-d, %Y') %>
-        </time>
+        <ol class="stories" role="list">
+          <% posts.each do |post| %>
+            <li class="story<%= ' story--lead' if lead?(post) %>">
+              <h3 class="story__title">
+                <a class="story__link" href="<%= post.relative_url %>"><%= post.data.title %></a>
+              </h3>
 
-        <% if post.data.summary %>
-          <p class="mt-2 mb-0 text-sm text-muted-color"><%= post.data.summary %></p>
-        <% end %>
-      </li>
+              <% if post.data.summary %>
+                <p class="story__summary"><%= post.data.summary %></p>
+              <% end %>
+            </li>
+          <% end %>
+        </ol>
+      </section>
     <% end %>
-  </ul>
+
+    <% if more_url %>
+      <p class="post-list__more">
+        <a href="<%= more_url %>">All stories<span aria-hidden="true">&nbsp;&rarr;</span></a>
+      </p>
+    <% end %>
+  </div>
 <% else %>
-  <p class="text-muted-color">No stories published yet.</p>
+  <p class="post-list__empty">No stories published yet.</p>
 <% end %>

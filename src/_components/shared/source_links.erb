@@ -1,0 +1,29 @@
+<ul class="source-links" role="list">
+  <% if original_url %>
+    <li>
+      <a class="source-links__link" href="<%= original_url %>">
+        Read the original<span aria-hidden="true">&nbsp;&rarr;</span>
+      </a>
+    </li>
+  <% end %>
+
+  <% discussions.each do |source| %>
+    <li>
+      <a class="source-links__link" href="<%= source[:url] %>">
+        <% if source[:mark] == :hn %>
+          <%# Y Combinator square, the mark Hacker News uses for itself. %>
+          <svg class="source-links__mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path fill-rule="evenodd" d="M0 0h24v24H0V0Zm6.95 5.9 4.11 7.7v5.06h1.59V13.7l4.15-7.8h-1.75l-2.46 4.88c-.37.74-.69 1.43-.69 1.43s-.3-.7-.65-1.43L8.83 5.9H6.95Z" />
+          </svg>
+        <% else %>
+          <%# A square "L" cut out, drawn to match the HN square so the pair
+              reads as one set instead of a logo next to an emoji. %>
+          <svg class="source-links__mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path fill-rule="evenodd" d="M0 0h24v24H0V0Zm8 5.5v13h9.25v-2h-7V5.5H8Z" />
+          </svg>
+        <% end %>
+        <%= source[:label] %><span class="sr-only"> discussion</span>
+      </a>
+    </li>
+  <% end %>
+</ul>

@@ -1,0 +1,33 @@
+@layer components {
+  /* Sans meta row under the standfirst. Text labels, not bare icons: a reader
+     should not have to recognise a logo to know where a link goes. */
+  .source-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.25rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-family: var(--font-meta);
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+
+  .source-links__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    text-decoration: none;
+  }
+
+  .source-links__link:hover {
+    text-decoration: underline;
+  }
+
+  .source-links__mark {
+    flex: none;
+    width: 1.05em;
+    height: 1.05em;
+    fill: currentColor;
+  }
+}

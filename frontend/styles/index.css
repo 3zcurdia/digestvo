@@ -8,222 +8,403 @@
 @source "../../frontend/**/*.js";
 @source "../../plugins/**/*.rb";
 
-/* Flat palette: one ground color for the page, the panels and the card
-   surfaces alike, so nothing reads as a floating box. Depth comes from type
-   and rules, not fills. The only chroma is `--color-action-color`, a neon
-   orange (the morning-coffee accent) reserved for *highlights* — links, the
-   active nav item, focus rings and the logo. Every pairing clears WCAG AA
+/* Newsprint palette. One ground for the page, the panels and the code blocks
+   alike, so nothing reads as a floating box: depth comes from type and rules,
+   not fills. The only chroma is `--color-action-color`, a neon orange (the
+   morning-coffee accent) reserved for highlights — links, the active nav item,
+   headline hover, focus rings and the logo. Every pairing clears WCAG AA
    (4.5:1 text, 3:1 borders), checked with a contrast function. */
 @theme {
-  --color-body-background: #fafafa;
-  --color-body-color: #1a1a1a;
-  --color-heading-color: #000;
-  --color-muted-color: #6b6b6b;
-  /* Burnt orange: raw neon orange is only ~2:1 on white, so the light scheme
-     darkens it until it carries text. */
+  /* Warm paper in light mode; the grounds below are all the same value. */
+  --color-body-background: #f5f1e8;
+  --color-body-color: #1f1c17;
+  --color-heading-color: #0f0d0a;
+  --color-muted-color: #655f55;
+  /* Burnt orange: raw neon orange is only ~2:1 on paper, so the light scheme
+     darkens it until it carries text (4.9:1). */
   --color-action-color: #b34700;
   --color-action-contrast: #fff;
-  --color-panel-background: #fafafa;
-  --color-surface-background: #fafafa;
-  --color-border-color: #8a8a8a;
-  /* Code sits on the page ground like everything else; the snippet is picked
-     out by a hairline rule instead of a fill. */
-  --color-code-background: #fafafa;
-  --color-code-color: #1a1a1a;
+  --color-panel-background: #f5f1e8;
+  --color-surface-background: #f5f1e8;
+  --color-border-color: #8c8578;
+  --color-code-background: #f5f1e8;
+  --color-code-color: #1f1c17;
+
+  /* Serif for everything a reader reads, sans for everything they scan:
+     dates, labels, nav. That split is most of the newspaper feel. */
+  --font-serif: "Newsreader Variable", "Iowan Old Style", "Charter",
+    "Georgia", serif;
+  --font-meta: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    "Helvetica Neue", "Arial", sans-serif;
+  --font-brand: "Alfa Slab One", "Rockwell", serif;
+
+  /* The one measure every page shares: ~70 characters of body text. */
+  --container-column: 44rem;
 }
 
 /* Unlayered, so these override the `@layer theme` tokens above. Everything
-   referencing `var(--color-*)` — including Tailwind utilities like
-   `bg-body-background` — flips automatically with no per-class `dark:`. */
+   referencing `var(--color-*)` — including Tailwind utilities — flips with no
+   per-class `dark:`. */
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-body-background: #0a0a0a;
-    --color-body-color: #e8e8e8;
-    --color-heading-color: #fff;
-    --color-muted-color: #8a8a8a;
+    --color-body-background: #0c0b0a;
+    /* Warm off-white rather than pure white: serif hairlines bloom on black,
+       and 14.8:1 is still far past AA. */
+    --color-body-color: #e4dfd5;
+    --color-heading-color: #f7f3ea;
+    --color-muted-color: #8f897e;
     /* Neon only really exists on a near-black ground, which is why the dark
-       scheme gets the un-darkened orange (8.5:1). */
+       scheme gets the un-darkened orange (8.4:1). */
     --color-action-color: #ff8c1a;
-    --color-action-contrast: #0a0a0a;
-    --color-panel-background: #0a0a0a;
-    --color-surface-background: #0a0a0a;
-    --color-border-color: #636363;
-    --color-code-background: #0a0a0a;
-    --color-code-color: #e8e8e8;
+    --color-action-contrast: #0c0b0a;
+    --color-panel-background: #0c0b0a;
+    --color-surface-background: #0c0b0a;
+    --color-border-color: #6b665e;
+    --color-code-background: #0c0b0a;
+    --color-code-color: #e4dfd5;
   }
 }
 
 /* Hand-written defaults live in `@layer base` so Tailwind utilities (later
-   layer) can override them — e.g. `no-underline` or `text-heading-color` on a
-   link would otherwise lose to the unlayered `a` rule. Within the layer, source
-   order still puts these after Tailwind's preflight. */
+   layer) can override them. Within the layer, source order still puts these
+   after Tailwind's preflight. */
 @layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
   body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
     background: var(--color-body-background);
     color: var(--color-body-color);
-    font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen",
-      "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-      "Helvetica", "Arial", sans-serif;
-    margin: 0 8px;
-    font-size: 108%;
-    line-height: 1.5;
+    font-family: var(--font-serif);
+    font-size: 1.1875rem;
+    line-height: 1.6;
+    font-optical-sizing: auto;
+    font-kerning: normal;
+    text-rendering: optimizeLegibility;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
   }
 
   a {
     color: var(--color-action-color);
     text-decoration: underline;
+    text-decoration-thickness: 1px;
     text-decoration-color: color-mix(
       in srgb,
-      var(--color-action-color) 45%,
+      var(--color-action-color) 50%,
       transparent
     );
-    text-underline-offset: 0.15em;
+    text-underline-offset: 0.18em;
   }
 
-  h1 {
-    margin: 1rem 0 3rem;
-    text-align: center;
-    font-weight: 900;
-    font-size: 2.5rem;
+  a:hover {
+    text-decoration-color: currentColor;
+  }
+
+  a:focus-visible {
+    outline: 2px solid var(--color-action-color);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
     color: var(--color-heading-color);
-    line-height: 1.2;
+    font-family: var(--font-serif);
+    text-wrap: balance;
   }
 
-  /* ---- Site header / navbar ------------------------------------- */
-  /* The bar and `main` share the page background and the same auto margins,
-     so the brand aligns with the content column at any viewport width. */
-  .site-header {
-    border-bottom: 1px solid var(--color-border-color);
+  ::selection {
+    background: color-mix(in srgb, var(--color-action-color) 30%, transparent);
   }
 
-  .site-header__inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1.5rem;
+  /* The shared column. `main` itself stays full-bleed; this wrapper sets the
+     measure, and the masthead and footer reuse it so every edge lines up. */
+  .column {
     width: 100%;
+    max-width: var(--container-column);
     margin-inline: auto;
-    padding: 0.85rem clamp(1rem, 4vw, 3rem);
+  }
 
-    /* At a 320px phone the row has ~1px of slack at full size, so step the
-       brand and link sizing down to keep the bar on one line. */
-    @media (max-width: 400px) {
-      gap: 1.1rem;
-    }
+  /* ---- Masthead ---------------------------------------------------- */
+  .masthead__inner {
+    max-width: calc(var(--container-column) + 2 * clamp(1rem, 4vw, 3rem));
+    margin-inline: auto;
+    padding: 1.75rem clamp(1rem, 4vw, 3rem) 0;
+    text-align: center;
   }
 
   .brand {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.3em;
+    font-size: clamp(1.9rem, 1.4rem + 2.5vw, 2.75rem);
     color: var(--color-heading-color);
     text-decoration: none;
   }
 
-  /* Stroked `currentColor` in the markup, so the mark inherits this token and
-     inverts with the dark-mode override for free. */
-  /* The drawing only fills ~10.5 of the 24-unit viewBox's height, so the box is
-     sized up to land the cup body near the wordmark's cap height. */
+  .brand:focus-visible {
+    outline-offset: 6px;
+  }
+
+  /* Stroked `currentColor`, so the mark rides the accent token and flips with
+     the scheme. The drawing fills ~10.5 of 24 viewBox units tall, so the box
+     is sized up to land the cup body near the wordmark's cap height. */
   .brand__mark {
     flex: none;
-    width: 2rem;
-    height: 2rem;
+    width: 1.1em;
+    height: 1.1em;
     color: var(--color-action-color);
-    /* The one deliberate glow in the theme: the mark is the coffee, and a wide
-       soft bloom is what makes it read as lit. Single stop and a warm 40% tint
-       — a tight bright core read as a hot edge, not a halo. */
-    filter: drop-shadow(
-      0 0 10px
-        color-mix(in srgb, var(--color-action-color) 40%, transparent)
-    );
+  }
 
-    @media (max-width: 400px) {
-      width: 1.75rem;
-      height: 1.75rem;
+  /* The one deliberate glow in the theme, and only in dark mode: neon needs
+     a dark ground to read as lit. On paper the same bloom is a grey smudge. */
+  @media (prefers-color-scheme: dark) {
+    .brand__mark {
+      filter: drop-shadow(
+        0 0 10px
+          color-mix(in srgb, var(--color-action-color) 40%, transparent)
+      );
     }
   }
 
-  /* Alfa Slab One is a single-weight (400) heavy slab cut. Asking for 900 here
-     would fake-bold it, so the wordmark stays at 400 and gets its weight from
-     the face. Flat ink: the neon belongs to the mark, and a glowing wordmark on
-     top of it is too much. The serifs add mass at the baseline, so the size is
-     a touch under the square cut it replaced to keep the two optically matched. */
+  /* Alfa Slab One ships only weight 400; asking for more fake-bolds it. */
   .brand__name {
-    font-family: "Alfa Slab One", BlinkMacSystemFont, -apple-system, "Segoe UI",
-      "Roboto", serif;
+    font-family: var(--font-brand);
     font-weight: 400;
-    font-size: 1.2rem;
     line-height: 1;
-    letter-spacing: 0;
+    letter-spacing: 0.01em;
+  }
 
-    @media (max-width: 400px) {
-      font-size: 1.05rem;
+  /* The paper's folio strip: thin rule over, double rule under, tagline on
+     the left and sections on the right. */
+  .masthead__strip {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.35rem 1.5rem;
+    margin-top: 1.1rem;
+    padding: 0.55rem 0;
+    border-top: 1px solid var(--color-border-color);
+    border-bottom: 3px double var(--color-border-color);
+    font-family: var(--font-meta);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+
+    @media (max-width: 480px) {
+      justify-content: center;
     }
+  }
+
+  .masthead__tagline {
+    margin: 0;
+    color: var(--color-muted-color);
   }
 
   .site-nav__list {
     display: flex;
-    align-items: center;
-    gap: 1.5rem;
+    gap: 1.25rem;
     margin: 0;
     padding: 0;
-    list-style-type: none;
-
-    @media (max-width: 400px) {
-      gap: 1.1rem;
-    }
+    list-style: none;
   }
 
   .site-nav__link {
     color: var(--color-body-color);
-    font-size: 0.95rem;
-    font-weight: 600;
+    font-weight: 700;
     text-decoration: none;
-
-    @media (max-width: 400px) {
-      font-size: 0.9rem;
-    }
   }
 
-  .site-nav__link:hover {
-    color: var(--color-action-color);
-  }
-
-  .site-nav__link:focus-visible {
-    outline: 2px solid var(--color-action-color);
-    outline-offset: 3px;
-    border-radius: 2px;
-  }
-
+  .site-nav__link:hover,
   .site-nav__link.is-active {
     color: var(--color-action-color);
   }
 
-  .brand:focus-visible {
-    outline: 2px solid var(--color-action-color);
-    outline-offset: 3px;
-    border-radius: 2px;
+  /* `main` is full-bleed and invisible as a box: no fill, shadow, border or
+     radius. The `.column` inside it sets the measure. */
+  main {
+    flex: 1;
+    width: 100%;
+    padding: 2.5rem clamp(1rem, 4vw, 3rem) 4rem;
   }
 
-  /* Full-bleed and invisible as a box: same background as the page, no shadow,
-     no border, no radius. `margin-inline: auto` + a wide cap keeps the content
-     centered on ultrawide screens while going edge to edge on normal ones.
-     Prose stays readable because the post layout caps measure with
-     `max-w-prose`. */
-  main {
-    width: 100%;
-    max-width: 100rem;
-    margin: 2rem auto 4rem;
-    min-height: calc(100vh - 200px);
-    padding: 0 clamp(1rem, 4vw, 3rem) 3rem;
-    background: var(--color-panel-background);
+  /* ---- Article (posts and plain pages) ------------------------------ */
+  .article__header {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--color-border-color);
+  }
+
+  /* Section label above the headline, the paper's "kicker". Muted, because
+     the accent belongs to things you can click. */
+  .kicker {
+    margin: 0 0 0.75rem;
+    font-family: var(--font-meta);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-muted-color);
+  }
+
+  .article__title {
+    margin: 0;
+    font-size: clamp(2rem, 1.35rem + 2.6vw, 3rem);
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+  }
+
+  /* The standfirst: the summary set larger and italic, between the headline
+     and the body, the way a paper runs its dek. */
+  .article__standfirst {
+    margin: 1rem 0 0;
+    font-size: 1.3rem;
+    font-style: italic;
+    line-height: 1.45;
+    color: var(--color-body-color);
+  }
+
+  .article__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 1.25rem;
+    margin-top: 1.25rem;
+  }
+
+  .article__date {
+    font-family: var(--font-meta);
+    font-size: 0.875rem;
+    color: var(--color-muted-color);
+  }
+
+  .section-label {
+    margin: 0 0 1rem;
+    font-family: var(--font-meta);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-muted-color);
+  }
+
+  /* ---- Prose ------------------------------------------------------- */
+  /* Preflight zeroes every margin and list style; this puts running text
+     back together for Markdown bodies. */
+  /* flow-root keeps the drop cap's float inside the body, and the clear
+     below stops a short first paragraph from indenting the next one. */
+  .prose {
+    display: flow-root;
+  }
+
+  .prose > * + * {
+    margin-top: 1.1em;
+  }
+
+  .prose :where(h2, h3, h4) {
+    margin-top: 2em;
+    line-height: 1.2;
+    font-weight: 650;
+  }
+
+  .prose h2 {
+    font-size: 1.5rem;
+  }
+
+  .prose h3 {
+    font-size: 1.25rem;
+  }
+
+  .prose :where(h2, h3, h4) + * {
+    margin-top: 0.5em;
+  }
+
+  .prose :where(ul, ol) {
+    padding-left: 1.4em;
+  }
+
+  .prose ul {
+    list-style: disc;
+  }
+
+  .prose ol {
+    list-style: decimal;
+  }
+
+  .prose li + li {
+    margin-top: 0.35em;
+  }
+
+  .prose li::marker {
+    color: var(--color-muted-color);
+  }
+
+  .prose strong {
+    font-weight: 700;
+    color: var(--color-heading-color);
+  }
+
+  .prose blockquote {
+    padding-left: 1em;
+    border-left: 3px solid var(--color-border-color);
+    font-style: italic;
+  }
+
+  .prose :not(pre) > code {
+    padding: 0.1em 0.3em;
+    border: 1px solid var(--color-border-color);
+    border-radius: 3px;
+    font-size: 0.85em;
+  }
+
+  .prose pre {
+    overflow-x: auto;
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+
+  /* Drop cap on the first paragraph of a post body. It reaches into a bold
+     "On Hacker News." lead-in too, since ::first-letter descends into inline
+     children. */
+  .prose--dropcap > p:first-child::first-letter {
+    float: left;
+    margin: 0.06em 0.08em 0 0;
+    font-size: 3.6em;
+    font-weight: 700;
+    line-height: 0.82;
+    color: var(--color-heading-color);
+  }
+
+  .prose--dropcap > p:first-child + * {
+    clear: left;
   }
 
   /* ---- Footer ------------------------------------------------------ */
-  footer {
-    margin-bottom: 4rem;
+  .site-footer {
+    padding: 0 clamp(1rem, 4vw, 3rem) 3rem;
+  }
+
+  .site-footer__inner {
+    padding-top: 1rem;
+    border-top: 3px double var(--color-border-color);
     text-align: center;
-    font-size: 0.95rem;
+    font-family: var(--font-meta);
+    font-size: 0.8125rem;
     color: var(--color-muted-color);
   }
 
@@ -231,8 +412,7 @@
     margin: 0;
   }
 
-  /* The handle and the mark are one link, so the whole "by 3zcurdia [mark]"
-     chunk is a single hit target and a single tab stop. */
+  /* Handle and mark are one link: one hit target, one tab stop. */
   .site-footer__link {
     display: inline-flex;
     align-items: center;
@@ -246,14 +426,6 @@
     color: var(--color-action-color);
   }
 
-  .site-footer__link:focus-visible {
-    outline: 2px solid var(--color-action-color);
-    outline-offset: 3px;
-    border-radius: 2px;
-  }
-
-  /* The mark is a filled path, so it rides `currentColor` and inverts with the
-     dark-mode tokens. Sized in `em` so it tracks the footer's font size. */
   .site-footer__icon {
     width: 1.15em;
     height: 1.15em;

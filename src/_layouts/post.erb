@@ -8,6 +8,10 @@ layout: default
   # A story from both sites opens each take with a bold "On Hacker News." /
   # "On Lobsters." lead-in, and a drop cap would split that label in two.
   dropcap = sources.discussions.size < 2
+  posts = collections.posts.resources
+  position = posts.index { |post| post.equal?(resource) }
+  prev_post = position && position > 0 ? posts[position - 1] : nil
+  next_post = position && posts[position + 1]
 %>
 
 <article class="article">
@@ -38,4 +42,22 @@ layout: default
       <%= yield %>
     </div>
   </section>
+
+  <%# Read-on pager, in index order: prev_post is the story above this one on
+      the front page, next_post the one below. Each row only when it exists;
+      the whole block drops out on a day with a single story. %>
+  <% if prev_post || next_post %>
+    <nav class="article__pager" aria-label="More stories">
+      <% if prev_post %>
+        <a class="article__pager-link" href="<%= prev_post.relative_url %>">
+          <span class="article__pager-chevron" aria-hidden="true">&larr;</span>Previous
+        </a>
+      <% end %>
+      <% if next_post %>
+        <a class="article__pager-link" href="<%= next_post.relative_url %>">
+          Next<span class="article__pager-chevron" aria-hidden="true">&rarr;</span>
+        </a>
+      <% end %>
+    </nav>
+  <% end %>
 </article>

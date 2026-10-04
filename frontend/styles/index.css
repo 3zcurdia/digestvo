@@ -293,6 +293,60 @@
     color: var(--color-muted-color);
   }
 
+  /* ---- Read-on pager ------------------------------------------------ */
+  /* After the discussion: Previous / Next in index order, set as the paper's
+     section-label voice rather than links dressed as headlines. */
+  .article__pager {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+    margin-top: 3rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-border-color);
+  }
+
+  .article__pager-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    font-family: var(--font-meta);
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--color-heading-color);
+  }
+
+  .article__pager-link:hover,
+  .article__pager-link:focus-visible {
+    color: var(--color-action-color);
+  }
+
+  .article__pager-link:focus-visible {
+    outline-offset: 4px;
+  }
+
+  /* The chevron rides currentColor, so it warms to the accent on hover with
+     the label. A leading chevron drifts left, a trailing one right. */
+  .article__pager-chevron {
+    display: inline-block;
+    font-size: 1.25em;
+    line-height: 1;
+    font-weight: 400;
+  }
+
+  .article__pager-link:hover .article__pager-chevron:first-child,
+  .article__pager-link:focus-visible .article__pager-chevron:first-child {
+    transform: translateX(-0.2em);
+  }
+
+  .article__pager-link:hover .article__pager-chevron:last-child,
+  .article__pager-link:focus-visible .article__pager-chevron:last-child {
+    transform: translateX(0.2em);
+  }
+
   .section-label {
     margin: 0 0 1rem;
     font-family: var(--font-meta);

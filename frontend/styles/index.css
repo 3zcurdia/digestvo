@@ -12,83 +12,113 @@
   --color-body-background: #f2f2f2;
   --color-body-color: #444;
   --color-heading-color: #000;
-  --color-action-color: #d64045;
+  --color-muted-color: #6b6b6b;
+  --color-action-color: #c62f3c;
+  --color-action-contrast: #fff;
+  --color-panel-background: #fff;
+  --color-surface-background: #f7f7f8;
+  --color-border-color: #757575;
+  --color-panel-shadow: #ddd;
 }
 
-body {
-  background: var(--color-body-background);
-  color: var(--color-body-color);
-  font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    "Helvetica", "Arial", sans-serif;
-  margin: 0 8px;
-  font-size: 108%;
-  line-height: 1.5;
-}
-
-a {
-  color: var(--color-action-color);
-  text-decoration: underline;
-  text-decoration-color: #ffb088;
-}
-
-h1 {
-  margin: 1rem 0 3rem;
-  text-align: center;
-  font-weight: 900;
-  font-size: 2.5rem;
-  color: var(--color-heading-color);
-  line-height: 1.2;
-}
-
-body > header {
-  margin: 1rem;
-  text-align: center;
-}
-
-body > header img {
-  display: inline-block;
-  width: 400px;
-  max-width: 100%;
-}
-
-body > nav ul {
-  margin: 2rem 0;
-  padding: 0;
-  list-style-type: none;
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  font-size: 1.3rem;
-  font-weight: bold;
-}
-
-body > nav a {
-  text-decoration: none;
-}
-
-main {
-  margin: 2rem auto 4rem;
-  max-width: 65rem;
-  min-height: calc(100vh - 200px);
-  padding: 25px 25px 50px;
-  background: white;
-  box-shadow: 2px 3px 3px #ddd;
-  border-radius: 3px;
-
-  @media (max-width: 500px) {
-    padding: 16px 16px 50px;
+/* Unlayered, so these override the `@layer theme` tokens above. Everything
+   referencing `var(--color-*)` — including Tailwind utilities like
+   `bg-body-background` — flips automatically with no per-class `dark:`. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-body-background: #0b0d10;
+    --color-body-color: #d6d9de;
+    --color-heading-color: #f5f7fa;
+    --color-muted-color: #9aa3af;
+    --color-action-color: #ff8a8f;
+    --color-action-contrast: #141414;
+    --color-panel-background: #14171c;
+    --color-surface-background: #1b1f26;
+    --color-border-color: #606874;
+    --color-panel-shadow: #000;
   }
 }
 
-footer {
-  text-align: center;
-  margin-bottom: 4rem;
-  font-size: 1em;
-}
+/* Hand-written defaults live in `@layer base` so Tailwind utilities (later
+   layer) can override them — e.g. `no-underline` or `text-heading-color` on a
+   link would otherwise lose to the unlayered `a` rule. Within the layer, source
+   order still puts these after Tailwind's preflight. */
+@layer base {
+  body {
+    background: var(--color-body-background);
+    color: var(--color-body-color);
+    font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen",
+      "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+      "Helvetica", "Arial", sans-serif;
+    margin: 0 8px;
+    font-size: 108%;
+    line-height: 1.5;
+  }
 
-hr {
-  border: none;
-  border-top: 2px dotted #bbb;
-  margin: 3rem 0;
+  a {
+    color: var(--color-action-color);
+    text-decoration: underline;
+    text-decoration-color: #ffb088;
+  }
+
+  h1 {
+    margin: 1rem 0 3rem;
+    text-align: center;
+    font-weight: 900;
+    font-size: 2.5rem;
+    color: var(--color-heading-color);
+    line-height: 1.2;
+  }
+
+  body > header {
+    margin: 1rem;
+    text-align: center;
+  }
+
+  body > header img {
+    display: inline-block;
+    width: 400px;
+    max-width: 100%;
+  }
+
+  body > nav ul {
+    margin: 2rem 0;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    font-size: 1.3rem;
+    font-weight: bold;
+  }
+
+  body > nav a {
+    text-decoration: none;
+  }
+
+  main {
+    margin: 2rem auto 4rem;
+    max-width: 65rem;
+    min-height: calc(100vh - 200px);
+    padding: 25px 25px 50px;
+    background: var(--color-panel-background);
+    box-shadow: 2px 3px 3px var(--color-panel-shadow);
+    border-radius: 3px;
+
+    @media (max-width: 500px) {
+      padding: 16px 16px 50px;
+    }
+  }
+
+  footer {
+    text-align: center;
+    margin-bottom: 4rem;
+    font-size: 1em;
+  }
+
+  hr {
+    border: none;
+    border-top: 2px dotted var(--color-border-color);
+    margin: 3rem 0;
+  }
 }

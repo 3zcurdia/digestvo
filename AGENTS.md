@@ -64,8 +64,12 @@ Tailwind CSS v4 is installed and wired into the PostCSS chain — there is no pa
 
 - `source(none)` disables Tailwind's automatic content detection (which would otherwise scan the whole repo, lockfiles included). **When you add a new kind of file that contains classes — a new extension, a directory outside those globs — add a matching `@source` line**, otherwise its classes will be silently missing from the build.
 - `@source` paths are relative to `frontend/styles/index.css`.
-- The former `:root` variables are now `@theme` tokens in the `--color-*` namespace, so both hand-written CSS and utility classes can use them: `--color-body-background`, `--color-body-color`, `--color-heading-color`, `--color-action-color` → `bg-action-color`, `text-body-color`, etc. Add new tokens in the same block.
-- Preflight ships with Tailwind and lands in `@layer base`, which loses to the unlayered hand-written rules at the bottom of `index.css`. So adding Tailwind does not reset the existing scaffold styling.
+- The former `:root` variables are now `@theme` tokens in the `--color-*` namespace, so both hand-written CSS and utility classes can use them: `--color-body-background`, `--color-body-color`, `--color-heading-color`, `--color-action-contrast`, `--color-panel-background`, `--color-surface-background`, `--color-panel-shadow`, `--color-border-color` → `bg-action-color`, `text-body-color`, etc. Add new tokens in the same block.
+- **Dark mode is token-driven, not `dark:`-variant-driven.** An unlayered `@media (prefers-color-scheme: dark) { :root { … } }` block re-declares every `--color-*` token; it wins over `@layer theme` because unlayered beats layered. Anything referencing `var(--color-*)` — utilities included — flips with zero markup changes. **When you add a color token, add its dark override in that media query too**, or it will stay light and glare.
+- Token pairs in use: `--color-action-contrast` is the text color *on* an action-colored surface, so the CTA button passes AA in both modes (white on light red, near-black on dark-mode red).
+- Contrast is not decorative. Every token pairing must clear WCAG AA (4.5:1 body text, 3:1 for borders/UI). Check with a contrast function before committing a value — the scaffold's original `#d64045` link on `#f2f2f2` was only 4.01:1 and had to be darkened to `#c62f3c`.
+- The hand-written defaults live in `@layer base`, **not unlayered**. Unlayered rules beat Tailwind's utilities layer, so an unlayered `a { text-decoration: underline }` would make `no-underline` silently do nothing. Keep new global element styles inside the existing `@layer base { … }` block.
+- Preflight also lands in `@layer base`; within a layer, source order decides, so the block after the `@import` still overrides preflight.
 
 ## Conventions
 

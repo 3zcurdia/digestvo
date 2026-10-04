@@ -11,7 +11,12 @@
 
 pre.highlight {
   padding: 16px;
-  background-color: #F6F8FA;
+  /* Same ground as the page — a filled block would break the flat palette, so
+     the snippet is delimited by a hairline instead. */
+  background-color: var(--color-code-background);
+  color: var(--color-code-color);
+  border: 1px solid var(--color-border-color);
+  border-radius: 4px;
 }
 
 .highlight .hll { background-color: #ffffcc }
@@ -75,3 +80,110 @@ pre.highlight {
 .highlight .vg { color: #008080 } /* Name.Variable.Global */
 .highlight .vi { color: #008080 } /* Name.Variable.Instance */
 .highlight .il { color: #009999 } /* Literal.Number.Integer.Long */
+
+/* ---- Dark override -----------------------------------------------------
+   The base theme above is the stock light GitHub palette: black text, which
+   disappears into the dark page ground. This maps the same class groups onto
+   neon hues — code is the one place a spectrum reads as information rather
+   than decoration. Unlayered and last in source, so it wins over the light
+   rules at equal specificity. Every hue clears 4.5:1 on
+   --color-code-background. */
+@media (prefers-color-scheme: dark) {
+  /* Current-line wash. Low-alpha cyan so it lifts the line without shifting
+     the syntax colors off their contrast ratios. */
+  .highlight .hll {
+    background-color: rgb(47 240 255 / 0.1);
+  }
+
+  .highlight .c,
+  .highlight .cm,
+  .highlight .c1,
+  .highlight .cs,
+  .highlight .cp,
+  .highlight .gh,
+  .highlight .gu {
+    color: #8b93c9;
+  }
+
+  .highlight .k,
+  .highlight .kc,
+  .highlight .kd,
+  .highlight .kn,
+  .highlight .kp,
+  .highlight .kr,
+  .highlight .kt,
+  .highlight .o,
+  .highlight .ow {
+    color: #ff6ad5;
+    font-weight: bold;
+  }
+
+  .highlight .s,
+  .highlight .sb,
+  .highlight .sc,
+  .highlight .sd,
+  .highlight .s1,
+  .highlight .s2,
+  .highlight .se,
+  .highlight .sh,
+  .highlight .si,
+  .highlight .sx,
+  .highlight .sr,
+  .highlight .ss {
+    color: #6bff9c;
+  }
+
+  .highlight .m,
+  .highlight .mf,
+  .highlight .mh,
+  .highlight .mi,
+  .highlight .mo,
+  .highlight .il {
+    color: #ffd23f;
+  }
+
+  .highlight .nc,
+  .highlight .no,
+  .highlight .nd,
+  .highlight .ni,
+  .highlight .ne,
+  .highlight .nf,
+  .highlight .nl,
+  .highlight .nn,
+  .highlight .nt,
+  .highlight .bp {
+    color: #b39cff;
+  }
+
+  .highlight .na,
+  .highlight .nb,
+  .highlight .nv,
+  .highlight .vc,
+  .highlight .vg,
+  .highlight .vi {
+    color: #6bead0;
+  }
+
+  .highlight .go,
+  .highlight .gp,
+  .highlight .w,
+  .highlight .nx {
+    color: #b3addb;
+  }
+
+  .highlight .err,
+  .highlight .gr,
+  .highlight .gt {
+    color: #ff6b8a;
+  }
+
+  .highlight .gd {
+    color: var(--color-code-color);
+    background-color: rgb(255 107 138 / 0.16);
+  }
+
+  .highlight .gi {
+    color: var(--color-code-color);
+    background-color: rgb(107 255 156 / 0.14);
+  }
+}

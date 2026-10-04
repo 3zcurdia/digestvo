@@ -8,17 +8,28 @@
 @source "../../frontend/**/*.js";
 @source "../../plugins/**/*.rb";
 
+/* Flat palette: one ground color for the page, the panels and the card
+   surfaces alike, so nothing reads as a floating box. Depth comes from type
+   and rules, not fills. The only chroma is `--color-action-color`, a neon
+   orange (the morning-coffee accent) reserved for *highlights* — links, the
+   active nav item, focus rings and the logo. Every pairing clears WCAG AA
+   (4.5:1 text, 3:1 borders), checked with a contrast function. */
 @theme {
-  --color-body-background: #f2f2f2;
-  --color-body-color: #444;
+  --color-body-background: #fafafa;
+  --color-body-color: #1a1a1a;
   --color-heading-color: #000;
   --color-muted-color: #6b6b6b;
-  --color-action-color: #c62f3c;
+  /* Burnt orange: raw neon orange is only ~2:1 on white, so the light scheme
+     darkens it until it carries text. */
+  --color-action-color: #b34700;
   --color-action-contrast: #fff;
-  --color-panel-background: #fff;
-  --color-surface-background: #f7f7f8;
-  --color-border-color: #757575;
-  --color-panel-shadow: #ddd;
+  --color-panel-background: #fafafa;
+  --color-surface-background: #fafafa;
+  --color-border-color: #8a8a8a;
+  /* Code sits on the page ground like everything else; the snippet is picked
+     out by a hairline rule instead of a fill. */
+  --color-code-background: #fafafa;
+  --color-code-color: #1a1a1a;
 }
 
 /* Unlayered, so these override the `@layer theme` tokens above. Everything
@@ -26,16 +37,19 @@
    `bg-body-background` — flips automatically with no per-class `dark:`. */
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-body-background: #0b0d10;
-    --color-body-color: #d6d9de;
-    --color-heading-color: #f5f7fa;
-    --color-muted-color: #9aa3af;
-    --color-action-color: #ff8a8f;
-    --color-action-contrast: #141414;
-    --color-panel-background: #14171c;
-    --color-surface-background: #1b1f26;
-    --color-border-color: #606874;
-    --color-panel-shadow: #000;
+    --color-body-background: #0a0a0a;
+    --color-body-color: #e8e8e8;
+    --color-heading-color: #fff;
+    --color-muted-color: #8a8a8a;
+    /* Neon only really exists on a near-black ground, which is why the dark
+       scheme gets the un-darkened orange (8.5:1). */
+    --color-action-color: #ff8c1a;
+    --color-action-contrast: #0a0a0a;
+    --color-panel-background: #0a0a0a;
+    --color-surface-background: #0a0a0a;
+    --color-border-color: #636363;
+    --color-code-background: #0a0a0a;
+    --color-code-color: #e8e8e8;
   }
 }
 
@@ -58,7 +72,12 @@
   a {
     color: var(--color-action-color);
     text-decoration: underline;
-    text-decoration-color: #ffb088;
+    text-decoration-color: color-mix(
+      in srgb,
+      var(--color-action-color) 45%,
+      transparent
+    );
+    text-underline-offset: 0.15em;
   }
 
   h1 {
@@ -71,11 +90,10 @@
   }
 
   /* ---- Site header / navbar ------------------------------------- */
-  /* `.site-header__inner` mirrors `main`'s max-width and horizontal padding
-     so the brand optically aligns with the content column. */
+  /* The bar and `main` share the page background and the same auto margins,
+     so the brand aligns with the content column at any viewport width. */
   .site-header {
-    border-bottom: 1px solid
-      color-mix(in srgb, var(--color-border-color) 40%, transparent);
+    border-bottom: 1px solid var(--color-border-color);
   }
 
   .site-header__inner {
@@ -83,13 +101,9 @@
     align-items: center;
     justify-content: space-between;
     gap: 1.5rem;
-    max-width: 65rem;
-    margin: 0 auto;
-    padding: 0.85rem 25px;
-
-    @media (max-width: 500px) {
-      padding: 0.75rem 16px;
-    }
+    width: 100%;
+    margin-inline: auto;
+    padding: 0.85rem clamp(1rem, 4vw, 3rem);
 
     /* At a 320px phone the row has ~1px of slack at full size, so step the
        brand and link sizing down to keep the bar on one line. */
@@ -115,6 +129,13 @@
     width: 2rem;
     height: 2rem;
     color: var(--color-action-color);
+    /* The one deliberate glow in the theme: the mark is the coffee, and a wide
+       soft bloom is what makes it read as lit. Single stop and a warm 40% tint
+       — a tight bright core read as a hot edge, not a halo. */
+    filter: drop-shadow(
+      0 0 10px
+        color-mix(in srgb, var(--color-action-color) 40%, transparent)
+    );
 
     @media (max-width: 400px) {
       width: 1.75rem;
@@ -122,18 +143,21 @@
     }
   }
 
-  /* Archivo Black is a single-weight (400) black cut. Asking for 900 here would
-     fake-bold it, so the wordmark stays at 400 and gets its weight from the face. */
+  /* Alfa Slab One is a single-weight (400) heavy slab cut. Asking for 900 here
+     would fake-bold it, so the wordmark stays at 400 and gets its weight from
+     the face. Flat ink: the neon belongs to the mark, and a glowing wordmark on
+     top of it is too much. The serifs add mass at the baseline, so the size is
+     a touch under the square cut it replaced to keep the two optically matched. */
   .brand__name {
-    font-family: "Archivo Black", BlinkMacSystemFont, -apple-system,
-      "Segoe UI", "Roboto", sans-serif;
+    font-family: "Alfa Slab One", BlinkMacSystemFont, -apple-system, "Segoe UI",
+      "Roboto", serif;
     font-weight: 400;
-    font-size: 1.35rem;
+    font-size: 1.2rem;
     line-height: 1;
-    letter-spacing: -0.01em;
+    letter-spacing: 0;
 
     @media (max-width: 400px) {
-      font-size: 1.15rem;
+      font-size: 1.05rem;
     }
   }
 
@@ -181,18 +205,18 @@
     border-radius: 2px;
   }
 
+  /* Full-bleed and invisible as a box: same background as the page, no shadow,
+     no border, no radius. `margin-inline: auto` + a wide cap keeps the content
+     centered on ultrawide screens while going edge to edge on normal ones.
+     Prose stays readable because the post layout caps measure with
+     `max-w-prose`. */
   main {
+    width: 100%;
+    max-width: 100rem;
     margin: 2rem auto 4rem;
-    max-width: 65rem;
     min-height: calc(100vh - 200px);
-    padding: 25px 25px 50px;
+    padding: 0 clamp(1rem, 4vw, 3rem) 3rem;
     background: var(--color-panel-background);
-    box-shadow: 2px 3px 3px var(--color-panel-shadow);
-    border-radius: 3px;
-
-    @media (max-width: 500px) {
-      padding: 16px 16px 50px;
-    }
   }
 
   /* ---- Footer ------------------------------------------------------ */
@@ -238,7 +262,7 @@
 
   hr {
     border: none;
-    border-top: 2px dotted var(--color-border-color);
+    border-top: 1px solid var(--color-border-color);
     margin: 3rem 0;
   }
 }

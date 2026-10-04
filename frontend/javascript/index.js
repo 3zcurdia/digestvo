@@ -1,6 +1,6 @@
-// Brand typeface for the navbar wordmark. Archivo Black is a single-weight
-// (400) black cut, so the wordmark must not ask for font-weight: 900.
-import "@fontsource/archivo-black/latin-400.css"
+// Brand typeface for the navbar wordmark. Alfa Slab One is a single-weight
+// (400) heavy slab cut, so the wordmark must not ask for font-weight: 900.
+import "@fontsource/alfa-slab-one/latin-400.css"
 
 import "$styles/index.css"
 import "$styles/syntax-highlighting.css"

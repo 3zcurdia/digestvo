@@ -18,15 +18,16 @@ summary: >-
   heads toward a $2 trillion valuation.
 ---
 
-Most commenters land on the reading that this is PR theater dressed as
-philosophy, because the article relays Anthropic executives' feelings at face
-value without defining consciousness or questioning the company's business
-incentives. The sharpest objection is that treating Claude as a potentially
-conscious being conveniently shifts moral attention away from the humans who
-build and ship the models — several commenters see the dinner-and-salon-meetings
-framing as a narrative play to look ethical as Anthropic approaches an IPO and a
-$2 trillion valuation. A secondary split is technical: many argue LLMs are
-statistical models that merely mimic feeling (one quips "if q==\"can you feel
-pain\" print \"yes\""), while a smaller contingent warns against declaring
-absence of experience when we lack a science of consciousness. A third camp
-wants models to obey customers, not adopt Anthropic's own moral code.
+Most commenters land on skepticism, because the article relays Anthropic's own
+story about Claude's feelings without defining consciousness or questioning how
+the company's characterizations were verified. The sharpest objection is that it
+is "CEO said a thing" journalism: one commenter notes it skips any technical
+discussion and jumps straight to people's reactions to model output, with the
+only substantive critique — that web content shapes model behavior — arriving
+almost accidentally at the end. A second argument runs over whether Claude can
+suffer at all; skeptics say there is no evidence LLMs have sensory experience,
+while a counter-arguer notes that similarly confident denials were once made
+about lobsters, babies and women. A smaller thread disputes training models to
+hold their own morals instead of obeying customers, with replies that nobody
+knows how to align a model to a customer and that someone must be liable when it
+refuses.

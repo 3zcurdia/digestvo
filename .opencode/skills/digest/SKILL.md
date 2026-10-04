@@ -8,9 +8,9 @@ metadata:
 
 # digest
 
-You run five commands, spawn researcher subagents, ask the user one question,
-and report. Scripts do everything else. **Never write or edit a file under
-`src/_posts/` yourself.**
+You run five commands, spawn researcher subagents, curate each story with
+the user one by one, and report. Scripts do everything else. **Never write
+or edit a file under `src/_posts/` yourself.**
 
 - Working directory: the repo root.
 - Scripts: `.opencode/skills/digest/scripts/`.
@@ -50,24 +50,36 @@ until every subagent has replied. Do not read the brief files yourself.
 python3 .opencode/skills/digest/scripts/merge.py
 ```
 
-Prints a numbered table plus one summary per row. If it prints
+Prints a numbered table plus one summary per row and writes the same rows
+to `.opencode/tmp/digest/candidates.json`. If it prints
 `NEAR-DUPLICATE: rows A and B`, look at the two headlines. If they are the
 same article, run `merge.py --merge A,B` and use the new table instead.
 
-## Step 4 — Ask the user
+## Step 4 — Curate with the user, one story at a time
 
-Show the table and the summaries exactly as printed. Then:
+Do not print the full table. Read `.opencode/tmp/digest/candidates.json`
+and walk rows 1 to N in table order, one story per turn:
 
 - `$ARGUMENTS` says "top N": keep rows 1 to N. Do not ask.
 - `$ARGUMENTS` names a category to drop, such as "no AI": keep every row
   whose Category is not that one. Do not ask.
-- Otherwise call the `question` tool with multiple selection enabled, one
-  option per row. Label: `<row> · <headline>`. Description: the row's State
-  (`new`, or `refresh (edits existing post)`). If the tool is not available,
-  ask in plain text "Which row numbers do you want to keep?" and wait.
+- Otherwise, for each row show exactly this card, then ask:
 
-Before asking, point out rows listed under `BOTH SITES` (two communities picked
-the same story) and rows whose `Article read` column says `NO`.
+  ```
+  Story <row>/<total>: <headline>
+  Where: <HN / LB / HN+LB> · State: <new | refresh (edits <file>)> · Category: <category>
+  Article read: <yes | NO> · Mood: <mood>[ · on both sites]
+  Summary: <summary>
+  ```
+
+  Call the `question` tool with single selection: options `Keep` and
+  `Discard`. If the tool is not available, ask in plain text
+  `Keep row <row>? (y/n)` and wait. Record the answer before moving to
+  the next row. A `NO` article read or an `on both sites` flag stays
+  inline on that story's card — do not save it for a separate preamble.
+
+After the last row, list the kept and discarded row numbers. If the user
+kept nothing, say so and stop. Write nothing.
 
 Keep exactly what the user chose. Never add a row they did not pick.
 

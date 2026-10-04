@@ -7,7 +7,7 @@ design is not undone by accident.
 already exist, slugging, timestamps, YAML quoting and in-place edits are all
 places where a model working from prose makes small, silent mistakes. The
 skill is written so that the model only runs commands, spawns researchers,
-asks one question and reports. A smaller or faster model can run it safely.
+curates each story with the user, and reports. A smaller or faster model can run it safely.
 
 **Briefs are files, not replies.** A subagent's text reply gets wrapped in
 prose, fenced, truncated or paraphrased. A file written to a known path and
@@ -34,6 +34,13 @@ source researched today, adds a missing source, and keeps the post's identity
 **One category per story, from a closed list.** Readers learn the buckets. A
 bucket used once is a typo. The list lives in `categories.md` for humans and
 in `_common.py` for the validator; change both together.
+
+**Curation is one story at a time, not one bulk pick.** A multi-select over
+ten headlines encourages skimming and keeps the weakest stories in by
+default. A sequential Keep / Discard forces a read of each summary and
+makes dropping easy. The loop reads `candidates.json` row by row instead
+of pasting the whole table, and the `BOTH SITES` / unread-article signals
+stay inline on the story they belong to.
 
 **The build is the test.** There is no test suite in this repo. `rake deploy`
 takes about two seconds and parses every post, so it runs last.

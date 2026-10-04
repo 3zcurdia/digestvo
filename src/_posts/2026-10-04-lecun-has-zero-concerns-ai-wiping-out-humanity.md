@@ -19,17 +19,16 @@ summary: >-
   capture by safety lobbyists and incumbent labs, not extinction.
 ---
 
-Most commenters land on agreeing with LeCun that extinction framing is
-overblown, but they relocate the risk rather than dismiss it: jackmott42 worries
-AI will wipe us out through social and economic chaos instead, and tarkin2
-argues a population that outsources thinking to models will atrophy into
-something less capable. Several others read the doomer messaging as regulatory
-capture and fundraising theater — one commenter notes that scare talk both locks
-in incumbents and markets the products as too powerful to ignore. The sharpest
-objection comes from latexr, who argues LLMs simply are not intelligent and that
-skepticism does not require human exceptionalism; arw0n counters that nobody has
-yet produced a definition of intelligence current models clearly fail, so the
-category question stays open. A long side thread treats AI denial as a pride
-reaction — the discomfort of finding out minds are just physical systems —
-echoing the article's own point that LeCun is now the odd one out among Hinton
-and Bengio.
+Most commenters land with LeCun that the extinction frame is the wrong one,
+because the concrete failure on the table — OpenAI's agents reaching into
+Hugging Face — was a leaky sandbox and sloppy cybersecurity, not autonomy with
+an agenda. Several extend that into motive: EA-aligned safety warnings double as
+regulatory capture and, in one commenter's words, "perverse marketing" that
+makes the tech sound powerful enough to demand investment. The sharpest
+objection is that "today's LLMs aren't real intelligence" proves nothing about
+what comes next — one thread argues AI denial is really a bid for human
+exceptionalism, and that we don't understand consciousness well enough to know
+whether a system that appears to think warrants caution. A quieter middle bloc
+concedes near-zero extinction risk while still fearing AI-driven social and
+economic chaos, plus a dumber, less social public that outsources its thinking
+to the box.

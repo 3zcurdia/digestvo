@@ -17,13 +17,15 @@ summary: >-
   development shop.
 ---
 
-The thread's landing point is that Git itself is not vulnerable here: cloning
-refuses to check out anything under .git/, which z3bra confirmed by getting
-"error: invalid path '.git/hooks/post-checkout'" on a test clone. The danger is
-any other way of installing a directory tree — zip, tarball, Dropbox — and vifon
-pointed back to the 2014 case-insensitive-filesystem Git vulnerability that did let
-writes land in .git on clone. The sharpest objection is to the reflex to harden
-globally: arialdo's `git config --global core.hooksPath /dev/null` was shot down by
-oger, since a malicious repo can re-enable hooksPath in its own config. The
-most-liked fix is direnv-style explicit consent, with agwa noting core.fsmonitor
-is an even better vector because plain `git status` triggers it.
+Most commenters land on Git needing a direnv-style gate before hooks run,
+because .git is treated as trusted local state even when a repo arrived as a
+Dropbox download or a tarball rather than a clone; the post author himself
+endorses the idea. The sharpest objection comes from agwa, who notes that a
+plain git clone is safe by design: Git refuses to check out paths under .git/
+and treats a clone that pwns you as a vulnerability, so the danger lives
+entirely in installing a directory tree some other way and anyone who only ever
+clones is out of reach. The thread also escalates the payload, with agwa's
+core.fsmonitor variant firing on a bare git status that IDEs, go build and shell
+prompts run implicitly, making a shipped .git/config nastier than any hook. A
+heavily upvoted tip to disable hooks with core.hooksPath /dev/null draws fire
+when oger points out a repo's own config can set it back.

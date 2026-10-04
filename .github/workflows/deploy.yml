@@ -1,0 +1,70 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+# Serialize deploys so two pushes can't race to publish.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    name: Build site
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # `.ruby-version` uses the mise/ruby-build prefix ("ruby-4.0.7") while
+      # ruby/setup-ruby wants the bare version number.
+      - name: Read Ruby version
+        id: ruby
+        run: echo "version=$(sed -e 's/^ruby-//' .ruby-version)" >> "$GITHUB_OUTPUT"
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ steps.ruby.outputs.version }}
+          bundler-cache: true
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      # `rake deploy` == clean + frontend:build (esbuild → PostCSS → Tailwind,
+      # so asset hashes are baked in) + bridgetown build. Assets are compiled on
+      # every deploy, never committed.
+      - name: Build site
+        env:
+          BRIDGETOWN_ENV: production
+        run: bundle exec rake deploy
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./output
+
+  deploy:
+    name: Publish to GitHub Pages
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4

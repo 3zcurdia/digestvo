@@ -1,13 +1,23 @@
-:root {
-  --body-background: #f2f2f2;
-  --body-color: #444;
-  --heading-color: black;
-  --action-color: #d64045;
+/* `source(none)` disables Tailwind's automatic content detection so the class
+   list stays explicit and deterministic. Paths are relative to this file. */
+@import "tailwindcss" source(none);
+
+@source "../../src/**/*.erb";
+@source "../../src/**/*.md";
+@source "../../src/_components/**/*.rb";
+@source "../../frontend/**/*.js";
+@source "../../plugins/**/*.rb";
+
+@theme {
+  --color-body-background: #f2f2f2;
+  --color-body-color: #444;
+  --color-heading-color: #000;
+  --color-action-color: #d64045;
 }
 
 body {
-  background: var(--body-background);
-  color: var(--body-color);
+  background: var(--color-body-background);
+  color: var(--color-body-color);
   font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     "Helvetica", "Arial", sans-serif;
@@ -17,7 +27,7 @@ body {
 }
 
 a {
-  color: var(--action-color);
+  color: var(--color-action-color);
   text-decoration: underline;
   text-decoration-color: #ffb088;
 }
@@ -27,7 +37,7 @@ h1 {
   text-align: center;
   font-weight: 900;
   font-size: 2.5rem;
-  color: var(--heading-color);
+  color: var(--color-heading-color);
   line-height: 1.2;
 }
 

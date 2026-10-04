@@ -16,7 +16,15 @@
 
 Bridgetown.configure do |config|
   # The base hostname & protocol for your site, e.g. https://example.com
-  url ""
+  # Override with BRIDGETOWN_URL to build against a different host (e.g. a
+  # preview deploy or a staging domain).
+  config.url = ENV.fetch("BRIDGETOWN_URL", "https://digestvo.ezcurdia.dev")
+
+  # digestvo.ezcurdia.dev is a custom domain, so the site is served from the
+  # root and `base_path` stays "/". If you ever fall back to the default
+  # 3zcurdia.github.io/digestvo project URL, set BRIDGETOWN_BASE_PATH=/digestvo
+  # instead — every link and asset then needs the `relative_url` helper.
+  config.base_path = ENV.fetch("BRIDGETOWN_BASE_PATH", "/")
 
   # Available options are `erb` (default), `serbea`, or `liquid`
   template_engine "erb"
@@ -46,7 +54,7 @@ Bridgetown.configure do |config|
   # If you're using esbuild for frontend assets, edit `esbuild.config.js` to
   # update `publicPath`.
   #
-  # base_path "/"
+  # See `config.base_path` above.
 
   # You can also modify options on this configuration object directly, like so:
   #

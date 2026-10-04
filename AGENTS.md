@@ -15,9 +15,18 @@ bin/bridgetown console          # IRB with site loaded
 ```
 
 - **Build order matters.** `bin/bridgetown build` on its own does *not* run esbuild, so it prints `esbuild: The esbuild manifest could not be found` and every `asset_path` in `_head.erb` breaks. Always `rake deploy` (or `frontend:build` first).
-- **Verification is the build.** There is no test suite, linter, or formatter, and no CI. `rake deploy` succeeding is the check. Do not invent `npm test` / `rake spec` / rubocop invocations.
+- **Verification is the build.** There is no test suite, linter, or formatter. `rake deploy` succeeding is the check. Do not invent `npm test` / `rake spec` / rubocop invocations.
 - `rake test` is *not* a test suite — it only rebuilds the site with `BRIDGETOWN_ENV=test`.
 - Production serving: `bundle exec falcon host config/falcon.rb`. `Rakefile`'s default task is `deploy`.
+
+## Deployment
+
+GitHub Pages at **https://digestvo.ezcurdia.dev** (custom domain), deployed by `.github/workflows/deploy.yml` on every push to `main` (and manual `workflow_dispatch`).
+
+- CI runs `bundle exec rake deploy` with `BRIDGETOWN_ENV=production`, so **all assets are precompiled on deploy** — esbuild/PostCSS/Tailwind run and hashed filenames are baked in. Nothing under `output/` is ever committed.
+- `upload-pages-artifact` ships `./output`, then `deploy-pages@v4` publishes it (Pages source must be **GitHub Actions**).
+- `url` and `base_path` are set in `config/initializers.rb` and overridable via `BRIDGETOWN_URL` / `BRIDGETOWN_BASE_PATH`. Because the site is on a custom domain, `base_path` is `/` and links are plain root-relative.
+- `src/CNAME` is copied verbatim to `output/CNAME`. The custom domain must also be registered under **Settings → Pages** in the repo, and DNS pointed at GitHub Pages.
 
 ## Architecture
 
@@ -33,15 +42,30 @@ bin/bridgetown console          # IRB with site loaded
 - Single esbuild entrypoint: `frontend/javascript/index.js`, which imports the two CSS files and `$components/**/*.{js,jsx,js.rb,css}`.
 - esbuild emits hashed assets to `output/_bridgetown/static/` and writes the lookup manifest to `.bridgetown-cache/frontend-bundling/manifest.json`. Templates resolve assets through `asset_path :css` / `asset_path :js` (see `src/_partials/_head.erb`) — never hardcode a hashed filename.
 - Path aliases `$styles/`, `$javascript/`, `$components/` are declared in `jsconfig.json` and handled by esbuild's glob plugin.
-- CSS is processed by **PostCSS**, configured in `postcss.config.js` (postcss-import, postcss-preset-env with autoprefixer, postcss-flexbugs-fixes). Any new CSS tool must be registered there or it will not run.
+- CSS is processed by **PostCSS**, configured in `postcss.config.js` (@tailwindcss/postcss, postcss-preset-env with autoprefixer, postcss-flexbugs-fixes). Any new CSS tool must be registered there or it will not run. `@tailwindcss/postcss` must stay **first** in that list so Tailwind expands its directives before the compat passes rewrite its output.
+- Bridgetown force-prepends its own `postcss-import` ahead of everything in `postcss.config.js` (see `importPostCssPlugin` in `config/esbuild.defaults.js`). The plugin order actually used is `[postcss-import, ...postcss.config.js plugins]` and cannot be reordered from this repo.
 - **`config/esbuild.defaults.js` is Bridgetown-managed — do not edit it.** Put overrides in `esbuild.config.js`; `bin/bridgetown esbuild update` overwrites the defaults file.
 - Sass is optional: `npm i -D sass` enables `.scss`/`.sass` handling in the bundler.
+- npm 11 gates dependency install scripts, so esbuild's `postinstall` is skipped. That is fine — the platform binary ships in `@esbuild/<platform>`. Don't add an `allowScripts` entry unless something actually breaks.
 
 ### Tailwind
 
-Tailwind is the project's CSS framework, but it is **not installed yet** (absent from `package.json` and `package-lock.json`). Today the styling is hand-written CSS in `frontend/styles/index.css` using `:root` custom properties (`--body-background`, `--body-color`, `--heading-color`, `--action-color`).
+Tailwind CSS v4 is installed and wired into the PostCSS chain — there is no parallel build step. `frontend/styles/index.css` starts with:
 
-When adding Tailwind, wire it into the existing PostCSS/esbuild pipeline via `postcss.config.js` rather than a parallel build step — see https://tailwindcss.com/docs/installation/framework-guides/bridgetown if a guide exists for this version, otherwise use the PostCSS plugin path. Migrate the `:root` variables to Tailwind theme tokens (`@theme` on v4) so components and templates can stop depending on them.
+```css
+@import "tailwindcss" source(none);
+
+@source "../../src/**/*.erb";
+@source "../../src/**/*.md";
+@source "../../src/_components/**/*.rb";
+@source "../../frontend/**/*.js";
+@source "../../plugins/**/*.rb";
+```
+
+- `source(none)` disables Tailwind's automatic content detection (which would otherwise scan the whole repo, lockfiles included). **When you add a new kind of file that contains classes — a new extension, a directory outside those globs — add a matching `@source` line**, otherwise its classes will be silently missing from the build.
+- `@source` paths are relative to `frontend/styles/index.css`.
+- The former `:root` variables are now `@theme` tokens in the `--color-*` namespace, so both hand-written CSS and utility classes can use them: `--color-body-background`, `--color-body-color`, `--color-heading-color`, `--color-action-color` → `bg-action-color`, `text-body-color`, etc. Add new tokens in the same block.
+- Preflight ships with Tailwind and lands in `@layer base`, which loses to the unlayered hand-written rules at the bottom of `index.css`. So adding Tailwind does not reset the existing scaffold styling.
 
 ## Conventions
 

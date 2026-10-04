@@ -14,4 +14,42 @@ import "$styles/syntax-highlighting.css"
 // Import all JavaScript & CSS files from src/_components
 import components from "$components/**/*.{js,jsx,js.rb,css}"
 
+// The footer's edition switch: plain text, no widget. The device picks the
+// scheme until a reader chooses one; the choice sticks in localStorage and is
+// applied before first paint by the inline script in _head.erb, which is what
+// sets `data-theme` in the first place.
+const editionKey = "edition"
+const root = document.documentElement
+const toggle = document.querySelector("[data-edition-toggle]")
+const deviceScheme = matchMedia("(prefers-color-scheme: dark)")
+
+// What the page is actually showing: the reader's pick, else the device's.
+const currentEdition = () =>
+  root.dataset.theme || (deviceScheme.matches ? "dark" : "light")
+
+const renderToggle = () => {
+  if (!toggle) return
+  // The label offers the *other* edition — in the day's paper you are offered
+  // the night edition, and the other way around.
+  toggle.textContent =
+    currentEdition() === "dark" ? "Day edition" : "Night edition"
+  toggle.hidden = false
+}
+
+toggle?.addEventListener("click", () => {
+  root.dataset.theme = currentEdition() === "dark" ? "light" : "dark"
+  try {
+    localStorage.setItem(editionKey, root.dataset.theme)
+  } catch (error) {}
+  renderToggle()
+})
+
+// With no explicit pick, the device can flip mid-visit — keep the offer in
+// step with what a click would actually do.
+deviceScheme.addEventListener("change", () => {
+  if (!root.dataset.theme) renderToggle()
+})
+
+renderToggle()
+
 console.info("Bridgetown is loaded!")

@@ -5,6 +5,19 @@
 
 <meta name="description" content="<%= data.description || metadata.description %>" />
 
+<%# Runs before the stylesheet so an edition chosen on an earlier visit is
+    painted with the page — no flash of the device's theme first. Without a
+    stored choice (or without JavaScript) the `color-scheme` default in the
+    CSS leaves the device in charge. %>
+<script>
+  try {
+    var edition = localStorage.getItem("edition");
+    if (edition === "light" || edition === "dark") {
+      document.documentElement.dataset.theme = edition;
+    }
+  } catch (error) {}
+</script>
+
 <link rel="stylesheet" href="<%= asset_path :css %>" />
 <script src="<%= asset_path :js %>" defer></script>
 <%= live_reload_dev_js %>

@@ -13,7 +13,7 @@ Every morning the two biggest nerd front pages publish more than anyone can
 read, and none of it will still matter by lunch. So somebody has to read it.
 That is the whole business model.
 
-This is my personal the edit: the handful of stories that survived I consider
+This is my personal edit: the handful of stories that survived I consider
 a close read, each one boiled down to what the article says and what the people say,
 with a link to the original post so you can read it properly or go argue with
 strangers. A story that ran on both sites gets one entry, not two — overlap is a

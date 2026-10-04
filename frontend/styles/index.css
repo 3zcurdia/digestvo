@@ -13,22 +13,36 @@
    not fills. The only chroma is `--color-action-color`, a neon orange (the
    morning-coffee accent) reserved for highlights — links, the active nav item,
    headline hover, focus rings and the logo. Every pairing clears WCAG AA
-   (4.5:1 text, 3:1 borders), checked with a contrast function. */
-@theme {
+   (4.5:1 text, 3:1 borders), checked with a contrast function.
+
+   Both schemes live in each token as a `light-dark()` pair, so the scheme is
+   chosen by the `color-scheme` property on `html` — the device decides by
+   default, and the footer's edition link can force either side. When you add
+   a color token, give it both values right there; there is no second block.
+
+   `static` matters: plain `@theme` tree-shakes variables no generated utility
+   mentions, which would silently drop tokens that only hand-written CSS uses
+   (a `var()` for a missing token fails at computed-value time and the
+   declaration just inherits — no error, wrong color). */
+@theme static {
   /* Warm paper in light mode; the grounds below are all the same value. */
-  --color-body-background: #f5f1e8;
-  --color-body-color: #1f1c17;
-  --color-heading-color: #0f0d0a;
-  --color-muted-color: #655f55;
+  --color-body-background: light-dark(#f5f1e8, #0c0b0a);
+  /* Warm off-white rather than pure white: serif hairlines bloom on black,
+     and 14.8:1 is still far past AA. */
+  --color-body-color: light-dark(#1f1c17, #e4dfd5);
+  --color-heading-color: light-dark(#0f0d0a, #f7f3ea);
+  --color-muted-color: light-dark(#655f55, #8f897e);
   /* Burnt orange: raw neon orange is only ~2:1 on paper, so the light scheme
-     darkens it until it carries text (4.9:1). */
-  --color-action-color: #b34700;
-  --color-action-contrast: #fff;
-  --color-panel-background: #f5f1e8;
-  --color-surface-background: #f5f1e8;
-  --color-border-color: #8c8578;
-  --color-code-background: #f5f1e8;
-  --color-code-color: #1f1c17;
+     darkens it until it carries text (4.9:1). Neon only really exists on a
+     near-black ground, which is why the dark side gets the un-darkened orange
+     (8.4:1). */
+  --color-action-color: light-dark(#b34700, #ff8c1a);
+  --color-action-contrast: light-dark(#fff, #0c0b0a);
+  --color-panel-background: light-dark(#f5f1e8, #0c0b0a);
+  --color-surface-background: light-dark(#f5f1e8, #0c0b0a);
+  --color-border-color: light-dark(#8c8578, #6b665e);
+  --color-code-background: light-dark(#f5f1e8, #0c0b0a);
+  --color-code-color: light-dark(#1f1c17, #e4dfd5);
 
   /* Serif for everything a reader reads, sans for everything they scan:
      dates, labels, nav. That split is most of the newspaper feel. */
@@ -42,35 +56,27 @@
   --container-column: 44rem;
 }
 
-/* Unlayered, so these override the `@layer theme` tokens above. Everything
-   referencing `var(--color-*)` — including Tailwind utilities — flips with no
-   per-class `dark:`. */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-body-background: #0c0b0a;
-    /* Warm off-white rather than pure white: serif hairlines bloom on black,
-       and 14.8:1 is still far past AA. */
-    --color-body-color: #e4dfd5;
-    --color-heading-color: #f7f3ea;
-    --color-muted-color: #8f897e;
-    /* Neon only really exists on a near-black ground, which is why the dark
-       scheme gets the un-darkened orange (8.4:1). */
-    --color-action-color: #ff8c1a;
-    --color-action-contrast: #0c0b0a;
-    --color-panel-background: #0c0b0a;
-    --color-surface-background: #0c0b0a;
-    --color-border-color: #6b665e;
-    --color-code-background: #0c0b0a;
-    --color-code-color: #e4dfd5;
-  }
-}
-
 /* Hand-written defaults live in `@layer base` so Tailwind utilities (later
    layer) can override them. Within the layer, source order still puts these
    after Tailwind's preflight. */
 @layer base {
+  /* The scheme itself. `light dark` lets the device decide — what a reader sees
+     before touching the footer's edition link. The `[data-theme]` overrides are
+     what that link sets, persisted in localStorage by the head script, so an
+     explicit choice beats the OS. `color-scheme` drives every `light-dark()`
+     pair in `@theme`; it inherits from `html`, so one declaration flips the
+     whole page. */
   html {
     -webkit-text-size-adjust: 100%;
+    color-scheme: light dark;
+  }
+
+  :root[data-theme="light"] {
+    color-scheme: light;
+  }
+
+  :root[data-theme="dark"] {
+    color-scheme: dark;
   }
 
   body {
@@ -161,23 +167,23 @@
 
   /* Stroked `currentColor`, so the mark rides the accent token and flips with
      the scheme. The drawing fills ~10.5 of 24 viewBox units tall, so the box
-     is sized up to land the cup body near the wordmark's cap height. */
+     is sized up to land the cup body near the wordmark's cap height.
+
+     The one deliberate glow in the theme, and only in dark mode: neon needs a
+     dark ground to read as lit, and on paper the same bloom is a grey smudge —
+     hence the transparent light branch of the pair. */
   .brand__mark {
     flex: none;
     width: 1.1em;
     height: 1.1em;
     color: var(--color-action-color);
-  }
-
-  /* The one deliberate glow in the theme, and only in dark mode: neon needs
-     a dark ground to read as lit. On paper the same bloom is a grey smudge. */
-  @media (prefers-color-scheme: dark) {
-    .brand__mark {
-      filter: drop-shadow(
-        0 0 10px
+    filter: drop-shadow(
+      0 0 10px
+        light-dark(
+          transparent,
           color-mix(in srgb, var(--color-action-color) 40%, transparent)
-      );
-    }
+        )
+    );
   }
 
   /* Alfa Slab One ships only weight 400; asking for more fake-bolds it. */
@@ -509,6 +515,30 @@
     width: 1.15em;
     height: 1.15em;
     fill: currentColor;
+  }
+
+  /* The edition switch is set as a line of footer copy, not a widget: it
+     borrows `.site-footer__link` for its look and only strips the UA's button
+     chrome back off. */
+  .site-footer__edition {
+    margin: 0.35rem 0 0;
+  }
+
+  .site-footer__theme {
+    padding: 0;
+    border: 0;
+    background: none;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    cursor: pointer;
+  }
+
+  /* Stated explicitly because `.site-footer__link`'s `display: inline-flex`
+     outranks the UA sheet's `[hidden] { display: none }` — without this a
+     reader with JavaScript disabled would see a control that does nothing. */
+  .site-footer__theme[hidden] {
+    display: none;
   }
 
   hr {

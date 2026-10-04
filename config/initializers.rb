@@ -18,7 +18,7 @@ Bridgetown.configure do |config|
   # The base hostname & protocol for your site, e.g. https://example.com
   # Override with BRIDGETOWN_URL to build against a different host (e.g. a
   # preview deploy or a staging domain).
-  config.url = ENV.fetch("BRIDGETOWN_URL", "https://digestvo.ezcurdia.dev")
+  config.url = ENV.fetch("BRIDGETOWN_URL", "https://digest.ezcurdia.dev")
 
   # digestvo.ezcurdia.dev is a custom domain, so the site is served from the
   # root and `base_path` stays "/". If you ever fall back to the default

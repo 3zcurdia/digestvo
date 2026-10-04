@@ -1,6 +1,6 @@
 # AGENTS.md
 
-digestvo is a Bridgetown (Ruby) static site — a digested newsletter. Pinned versions: Bridgetown `~> 2.2.2`, Ruby per `.ruby-version` (4.0.7), Node >= 22.
+digesTvo is a Bridgetown (Ruby) static site — a digested newsletter. Pinned versions: Bridgetown `~> 2.2.2`, Ruby per `.ruby-version` (4.0.7), Node >= 22.
 
 ## Commands
 
@@ -21,7 +21,7 @@ bin/bridgetown console          # IRB with site loaded
 
 ## Deployment
 
-GitHub Pages at **https://digestvo.ezcurdia.dev** (custom domain), deployed by `.github/workflows/deploy.yml` on every push to `main` (and manual `workflow_dispatch`).
+GitHub Pages at **https://digest.ezcurdia.dev** (custom domain), deployed by `.github/workflows/deploy.yml` on every push to `main` (and manual `workflow_dispatch`).
 
 - CI runs `bundle exec rake deploy` with `BRIDGETOWN_ENV=production`, so **all assets are precompiled on deploy** — esbuild/PostCSS/Tailwind run and hashed filenames are baked in. Nothing under `output/` is ever committed.
 - `upload-pages-artifact` ships `./output`, then `deploy-pages@v4` publishes it (Pages source must be **GitHub Actions**).

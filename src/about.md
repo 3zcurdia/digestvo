@@ -1,8 +1,8 @@
 ---
 layout: page
-title: About digestvo
+title: About digesTvo
 description: >-
-  What Digestvo is, where the stories come from, and why the whole thing is set
+  What digesTvo is, where the stories come from, and why the whole thing is set
   like a newspaper.
 summary: >-
   The tech and nerd news worth your morning, read off Hacker News and Lobsters,

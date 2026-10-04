@@ -2,7 +2,7 @@
 layout: page
 title: Privacy policy
 description: >-
-  What Digestvo collects, which is nothing, and who else is in the loop when
+  What digesTvo collects, which is nothing, and who else is in the loop when
   you read an edition.
 summary: >-
   No trackers, no cookies, no accounts. The short version of everything a
@@ -11,7 +11,7 @@ summary: >-
 
 ## What this site collects
 
-Nothing. Digestvo is a pile of static files: no cookies, no analytics, no
+Nothing. digesTvo is a pile of static files: no cookies, no analytics, no
 ad tech, no accounts, no forms, nothing in `localStorage` except your edition
 choice — Day or Night — which never leaves your browser. There is no database
 to leak because there is no database.

@@ -3,7 +3,7 @@ layout: post
 title: "Kolibri: A Sovereign Open-Weight Model"
 date:   2026-10-04 00:44:46 -0600
 categories: digest
-tags: ["AI/ML"]
+tags: ["AI Release"]
 source_url: https://aleph-alpha.com/en/blog/kolibri-has-landed-a-sovereign-open-weight-model/
 hn_url: https://news.ycombinator.com/item?id=49942706
 summary: >-

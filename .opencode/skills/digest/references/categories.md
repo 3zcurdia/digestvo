@@ -8,6 +8,7 @@ than perfect fit.
 | Category | Use it for |
 |---|---|
 | `AI/ML` | Models, training, inference, agents, AI tooling, AI policy incidents |
+| `AI Release` | LLM release, new ML model, AI model updates |
 | `Dev Tools` | Languages, frameworks, editors, testing, developer experience |
 | `Security & Privacy` | Vulnerabilities, breaches, tracking, encryption, surveillance |
 | `Startups & Business` | Funding, founders, layoffs, pricing, company strategy |

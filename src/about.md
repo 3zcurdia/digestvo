@@ -13,9 +13,9 @@ Every morning the two biggest nerd front pages publish more than anyone can
 read, and none of it will still matter by lunch. So somebody has to read it.
 That is the whole business model.
 
-Digestvo is the edit: the handful of stories that survived a close read, each
-one boiled down to what the article says and what the comments did to it, with
-a link back to the original so you can read it properly or go argue with
+This is my personal the edit: the handful of stories that survived I consider
+a close read, each one boiled down to what the article says and what the people say,
+with a link to the original post so you can read it properly or go argue with
 strangers. A story that ran on both sites gets one entry, not two — overlap is a
 signal, and two communities with different tastes pushing the same thing to the
 top means it probably matters.
@@ -46,7 +46,7 @@ into so the rest of you can use it. You are handed the raw feed, a thousand
 submissions and a few thousand comments, and you get back the part that was
 worth the chewing.
 
-> We brew the coffee. You get to shit in social media with the energy to spare.
+> We brew the coffee. You get to 💩 in social media with the energy to spare.
 
 Set in Newsreader and Alfa Slab One, deployed by GitHub Pages, tracked by
 nobody, and open at

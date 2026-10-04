@@ -70,30 +70,115 @@
     line-height: 1.2;
   }
 
-  body > header {
-    margin: 1rem;
-    text-align: center;
+  /* ---- Site header / navbar ------------------------------------- */
+  /* `.site-header__inner` mirrors `main`'s max-width and horizontal padding
+     so the brand optically aligns with the content column. */
+  .site-header {
+    border-bottom: 1px solid
+      color-mix(in srgb, var(--color-border-color) 40%, transparent);
   }
 
-  body > header img {
-    display: inline-block;
-    width: 400px;
-    max-width: 100%;
+  .site-header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    max-width: 65rem;
+    margin: 0 auto;
+    padding: 0.85rem 25px;
+
+    @media (max-width: 500px) {
+      padding: 0.75rem 16px;
+    }
+
+    /* At a 320px phone the row has ~1px of slack at full size, so step the
+       brand and link sizing down to keep the bar on one line. */
+    @media (max-width: 400px) {
+      gap: 1.1rem;
+    }
   }
 
-  body > nav ul {
-    margin: 2rem 0;
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-heading-color);
+    text-decoration: none;
+  }
+
+  /* Stroked `currentColor` in the markup, so the mark inherits this token and
+     inverts with the dark-mode override for free. */
+  /* The drawing only fills ~10.5 of the 24-unit viewBox's height, so the box is
+     sized up to land the cup body near the wordmark's cap height. */
+  .brand__mark {
+    flex: none;
+    width: 2rem;
+    height: 2rem;
+    color: var(--color-action-color);
+
+    @media (max-width: 400px) {
+      width: 1.75rem;
+      height: 1.75rem;
+    }
+  }
+
+  /* Archivo Black is a single-weight (400) black cut. Asking for 900 here would
+     fake-bold it, so the wordmark stays at 400 and gets its weight from the face. */
+  .brand__name {
+    font-family: "Archivo Black", BlinkMacSystemFont, -apple-system,
+      "Segoe UI", "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 1.35rem;
+    line-height: 1;
+    letter-spacing: -0.01em;
+
+    @media (max-width: 400px) {
+      font-size: 1.15rem;
+    }
+  }
+
+  .site-nav__list {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin: 0;
     padding: 0;
     list-style-type: none;
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    font-size: 1.3rem;
-    font-weight: bold;
+
+    @media (max-width: 400px) {
+      gap: 1.1rem;
+    }
   }
 
-  body > nav a {
+  .site-nav__link {
+    color: var(--color-body-color);
+    font-size: 0.95rem;
+    font-weight: 600;
     text-decoration: none;
+
+    @media (max-width: 400px) {
+      font-size: 0.9rem;
+    }
+  }
+
+  .site-nav__link:hover {
+    color: var(--color-action-color);
+  }
+
+  .site-nav__link:focus-visible {
+    outline: 2px solid var(--color-action-color);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  .site-nav__link.is-active {
+    color: var(--color-action-color);
+  }
+
+  .brand:focus-visible {
+    outline: 2px solid var(--color-action-color);
+    outline-offset: 3px;
+    border-radius: 2px;
   }
 
   main {
@@ -110,10 +195,45 @@
     }
   }
 
+  /* ---- Footer ------------------------------------------------------ */
   footer {
-    text-align: center;
     margin-bottom: 4rem;
-    font-size: 1em;
+    text-align: center;
+    font-size: 0.95rem;
+    color: var(--color-muted-color);
+  }
+
+  .site-footer__credit {
+    margin: 0;
+  }
+
+  /* The handle and the mark are one link, so the whole "by 3zcurdia [mark]"
+     chunk is a single hit target and a single tab stop. */
+  .site-footer__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: var(--color-body-color);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .site-footer__link:hover {
+    color: var(--color-action-color);
+  }
+
+  .site-footer__link:focus-visible {
+    outline: 2px solid var(--color-action-color);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* The mark is a filled path, so it rides `currentColor` and inverts with the
+     dark-mode tokens. Sized in `em` so it tracks the footer's font size. */
+  .site-footer__icon {
+    width: 1.15em;
+    height: 1.15em;
+    fill: currentColor;
   }
 
   hr {

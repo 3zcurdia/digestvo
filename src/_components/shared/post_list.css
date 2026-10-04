@@ -1,0 +1,27 @@
+/* The whole card is the click target, but only the title is the link text. A
+   45-word summary wrapped in the anchor would become the link's accessible
+   name, so the title carries the link and a stretched pseudo-element covers the
+   card instead. The focus ring goes on the :has() wrapper so it traces the card
+   rather than just the title text. */
+
+.post-list {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.post-list__item {
+  position: relative;
+}
+
+.post-list__item:has(.post-list__link:focus-visible) {
+  outline: 2px solid var(--color-action-color);
+  outline-offset: 2px;
+}
+
+.post-list__link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}

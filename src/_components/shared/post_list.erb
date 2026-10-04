@@ -1,0 +1,27 @@
+<% if any? %>
+  <ul class="post-list">
+    <% entries do |post| %>
+      <li class="post-list__item rounded-lg bg-surface-background p-4 hover:opacity-80">
+        <a
+          class="post-list__link block font-bold text-heading-color no-underline"
+          href="<%= post.relative_url %>"
+        >
+          <%= post.data.title %>
+        </a>
+
+        <time
+          class="mt-1 block text-sm text-muted-color"
+          datetime="<%= post.date.strftime('%Y-%m-%d') %>"
+        >
+          <%= post.date.strftime('%B %-d, %Y') %>
+        </time>
+
+        <% if post.data.summary %>
+          <p class="mt-2 mb-0 text-sm text-muted-color"><%= post.data.summary %></p>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p class="text-muted-color">No stories published yet.</p>
+<% end %>

@@ -485,16 +485,43 @@
   }
 
   .site-footer__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.35rem 1rem;
     padding-top: 1rem;
     border-top: 3px double var(--color-border-color);
-    text-align: center;
     font-family: var(--font-meta);
     font-size: 0.8125rem;
     color: var(--color-muted-color);
   }
 
+  /* Three share of the row: switch left, policy center, credit right. Equal
+     flex so a narrow column wraps to whole lines instead of crowding, with
+     each wrapped line keeping its own alignment. */
+  .site-footer__edition,
+  .site-footer__nav,
   .site-footer__credit {
+    flex: 1 1 0;
     margin: 0;
+  }
+
+  .site-footer__edition {
+    text-align: start;
+  }
+
+  .site-footer__credit {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    column-gap: 0.35rem;
+    text-align: end;
+  }
+
+  .site-footer__nav {
+    text-align: center;
   }
 
   /* Handle and mark are one link: one hit target, one tab stop. */
@@ -520,10 +547,6 @@
   /* The edition switch is set as a line of footer copy, not a widget: it
      borrows `.site-footer__link` for its look and only strips the UA's button
      chrome back off. */
-  .site-footer__edition {
-    margin: 0.35rem 0 0;
-  }
-
   .site-footer__theme {
     padding: 0;
     border: 0;

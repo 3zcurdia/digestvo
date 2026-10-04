@@ -17,7 +17,7 @@ summary: >-
   argument that the claim may be circulating without verification.
 ---
 
-Most commenters land on gratitude for [Triumph of the Nerds]((https://www.youtube.com/watch?v=c1yzXkH5Pfo))
+Most commenters land on gratitude for [Triumph of the Nerds](https://www.youtube.com/watch?v=c1yzXkH5Pfo)
 and Accidental Empires, because those two works were many people's first real account of how
 the PC industry worked, and several credit them with pushing them into
 programming or out to California. The sharpest objection is aimed at the news

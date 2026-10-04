@@ -1,12 +1,12 @@
 ---
 layout: post
-title: "Tell HN: Bob Cringely has died"
+title: "Bob Cringely has died"
 date: 2026-10-04 08:11:16 -0600
 categories: digest
 tags: ["Culture"]
 hn_url: "https://news.ycombinator.com/item?id=49949438"
 summary: >-
-  A Tell HN post reports that Bob Cringely, the tech journalist and PBS
+  It has been reported that Bob Cringely, the tech journalist and PBS
   documentarian whose real name was Mark Stevens, died in his sleep early
   Saturday, according to a friend of the family. Stevens was an early Apple
   employee and is best known for the documentary "Triumph of the Nerds" and
@@ -18,7 +18,8 @@ summary: >-
 ---
 
 Most commenters land on gratitude for the documentaries and books, because
-Triumph of the Nerds, Nerds 2.0.1, and Accidental Empires gave a generation
+[Triumph of the Nerds](https://www.youtube.com/watch?v=c1yzXkH5Pfo), Nerds 2.0.1,
+and Accidental Empires gave a generation
 outside California its picture of Apple, IBM, and the PC wars. Several name
 those works as the reason they entered tech at all, and others praise his PBS
 series on trying to build a composite airplane as a memorable failure. The

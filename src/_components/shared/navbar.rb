@@ -1,8 +1,9 @@
 class Shared::Navbar < Bridgetown::Component
   # Collection members don't nest under their index page's URL on this site —
-  # posts live at /updates/YYYY/MM/DD/slug/ while the listing lives at /posts/
-  # — so those nav items match on the collection label instead.
-  COLLECTION_SECTIONS = { "/posts" => "posts" }.freeze
+  # posts live at /digest/YYYY/MM/DD/slug/ while the listing lives at /posts/,
+  # and videos live at /videos/slug/ while their listing is the /videos/ page
+  # itself — so those nav items match on the collection label instead.
+  COLLECTION_SECTIONS = { "/posts" => "posts", "/videos" => "videos" }.freeze
 
   def initialize(metadata:, resource:)
     @metadata, @resource = metadata, resource

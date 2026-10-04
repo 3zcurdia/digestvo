@@ -1,0 +1,113 @@
+@layer components {
+  /* Index of recommended videos. Same flat treatment as the story index: no
+     card chrome, hierarchy from the serif headline, hairline between rows. */
+  .video-month + .video-month {
+    margin-top: 3rem;
+  }
+
+  /* The month label wears the section-label treatment — sans caps on a heavy
+     rule — because it separates groups the same way an edition date does. */
+  .video-month__label {
+    margin: 0 0 0.25rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid var(--color-heading-color);
+    font-family: var(--font-meta);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-heading-color);
+  }
+
+  .videos {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  /* Whole row is clickable, only the headline is the link text, and the focus
+     ring traces the row rather than the words. Same trick as .story. */
+  .video {
+    position: relative;
+    padding: 1.25rem 0;
+  }
+
+  .video + .video {
+    border-top: 1px solid var(--color-border-color);
+  }
+
+  .video:has(.video__link:focus-visible) {
+    outline: 2px solid var(--color-action-color);
+    outline-offset: 4px;
+  }
+
+  .video__title {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: 1.375rem;
+    font-weight: 650;
+    line-height: 1.2;
+    letter-spacing: -0.005em;
+    text-wrap: balance;
+  }
+
+  .video__link {
+    color: var(--color-heading-color);
+    text-decoration: none;
+  }
+
+  .video__link::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+  }
+
+  .video__link:focus-visible {
+    outline: none;
+  }
+
+  .video:hover .video__link {
+    color: var(--color-action-color);
+  }
+
+  /* Runtime and publisher, tightened up from the article meta row so it reads
+     as one quiet line under the headline rather than a second byline. */
+  .video__facts {
+    margin-top: 0.35rem;
+    font-size: 0.8125rem;
+  }
+
+  .video__summary {
+    margin: 0.5rem 0 0;
+    font-size: 1.0625rem;
+    line-height: 1.55;
+    color: var(--color-body-color);
+  }
+
+  /* The first insight, in the reader's voice. Muted and italic so it reads as
+     the reason to click rather than as another summary sentence. */
+  .video__insight {
+    margin: 0.5rem 0 0;
+    font-size: 1.0625rem;
+    line-height: 1.55;
+    font-style: italic;
+    color: var(--color-muted-color);
+  }
+
+  .video-list__more {
+    margin: 2rem 0 0;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-border-color);
+    font-family: var(--font-meta);
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+
+  .video-list__more a {
+    text-decoration: none;
+  }
+
+  .video-list__empty {
+    color: var(--color-muted-color);
+  }
+}

@@ -52,7 +52,7 @@ Your prompt gives you `source` (`hn` or `lobsters`) and `id`.
 
 ## The five fields
 
-**category** — one of: `AI/ML`, `Dev Tools`, `Security & Privacy`,
+**category** — one of: `AI/ML`, `AI Release`, `Dev Tools`, `Security & Privacy`,
 `Startups & Business`, `Systems & Infra`, `Science`, `Policy & Law`,
 `Web & Platforms`, `Hardware`, `Show HN`, `Culture`. Copy the spelling
 exactly. Tie-breaks that come up every week:

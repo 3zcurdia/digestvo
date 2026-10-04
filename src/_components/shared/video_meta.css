@@ -1,0 +1,38 @@
+@layer components {
+  /* Sans fact row under the standfirst: runtime, publisher, where to watch.
+     Deliberately the same shape as SourceLinks, so a video page and a story
+     page carry the same kind of line and neither looks invented. */
+  .video-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.25rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-family: var(--font-meta);
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+
+  .video-meta__fact {
+    color: var(--color-muted-color);
+  }
+
+  .video-meta__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    text-decoration: none;
+  }
+
+  .video-meta__link:hover {
+    text-decoration: underline;
+  }
+
+  .video-meta__mark {
+    flex: none;
+    width: 1.05em;
+    height: 1.05em;
+    fill: currentColor;
+  }
+}

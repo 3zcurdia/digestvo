@@ -26,6 +26,22 @@ Bridgetown.configure do |config|
   # instead — every link and asset then needs the `relative_url` helper.
   config.base_path = ENV.fetch("BRIDGETOWN_BASE_PATH", "/")
 
+  # Two collections, kept apart on purpose. `posts` is the news digest; its URL
+  # comes from `categories: digest` in each post's front matter, so every story
+  # lands under /digest/YYYY/MM/DD/slug/. `videos` is the watch-history section
+  # and is flat -- a video has no edition, so /videos/<slug>/ is the whole
+  # address.
+  #
+  # write_video.py always writes an explicit `permalink:` into each video's front
+  # matter, and that is what actually shapes the URL. The template below is only
+  # a fallback for a hand-written file. Note that `:slug` falls back to the
+  # filename, which for a date-prefixed video includes the date -- another
+  # reason the explicit permalink is the one that counts.
+  collections videos: {
+    output: true,
+    permalink: "/videos/:slug/",
+  }
+
   # Available options are `erb` (default), `serbea`, or `liquid`
   template_engine "erb"
 

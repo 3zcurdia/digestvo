@@ -36,6 +36,7 @@ SOURCE_ORDER = ["hn", "lobsters"]
 
 CATEGORIES = [
     "AI/ML",
+    "AI Release",
     "Dev Tools",
     "Security & Privacy",
     "Startups & Business",

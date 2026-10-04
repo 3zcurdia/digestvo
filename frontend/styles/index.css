@@ -479,6 +479,79 @@
     clear: left;
   }
 
+  /* ---- Video page ---------------------------------------------------- */
+  /* A video page has two of these — insights, then the take — and the post
+     layout only ever had one, so nothing separated them and the second label
+     collided with the list above it. */
+  .article__body + .article__body {
+    margin-top: 2.5rem;
+  }
+
+  /* The thumbnail sits inside .column rather than breaking out of it, so a
+     video page is exactly as wide as the story pages and its edges still line
+     up with the masthead and the footer. The 16:9 box is reserved up front so
+     the headline does not jump when the image lands — that matters more than
+     usual here because the file lives on a third-party CDN path in dev. */
+  .video-figure {
+    margin: 0 0 2rem;
+  }
+
+  .video-figure__image {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    background-color: var(--color-surface-background);
+    border: 1px solid var(--color-border-color);
+  }
+
+  /* Insights come out of front matter as a plain list of strings, so they are
+     styled here rather than in a component file: they are page structure, not a
+     reusable component. Serif, not the sans of the labels — these are the
+     argument, and the label above them is what says so. */
+  .insights {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: insight;
+  }
+
+  .insights__item {
+    position: relative;
+    padding-left: 2rem;
+    font-size: 1.125rem;
+    line-height: 1.5;
+  }
+
+  .insights__item + .insights__item {
+    margin-top: 0.75rem;
+  }
+
+  /* A hairline rule instead of a bullet: the paper separates, it does not
+     enumerate. The numeral rides the muted meta face so it stays a label. */
+  .insights__item::before {
+    content: counter(insight, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 0.15em;
+    font-family: var(--font-meta);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--color-muted-color);
+    counter-increment: insight;
+  }
+
+  .insights__item::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 1.15em;
+    width: 1.25rem;
+    border-bottom: 1px solid var(--color-border-color);
+  }
+
   /* ---- Footer ------------------------------------------------------ */
   .site-footer {
     padding: 0 clamp(1rem, 4vw, 3rem) 3rem;

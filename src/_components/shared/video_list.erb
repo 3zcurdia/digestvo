@@ -1,0 +1,45 @@
+<% if any? %>
+  <div class="video-list">
+    <% months.each do |month, videos| %>
+      <% month_id = month.strftime("%Y-%m") %>
+      <section class="video-month" aria-labelledby="month-<%= month_id %>">
+        <h2 class="video-month__label" id="month-<%= month_id %>">
+          <time datetime="<%= month_id %>"><%= month.strftime("%B %Y") %></time>
+        </h2>
+
+        <ol class="videos" role="list">
+          <% videos.each do |video| %>
+            <li class="video">
+              <h3 class="video__title">
+                <a class="video__link" href="<%= video.relative_url %>"><%= video.data.title %></a>
+              </h3>
+
+              <%# Facts only on the index: the watch link belongs on the video
+                  page itself, not repeated down every row. %>
+              <% facts = Shared::VideoMeta.new(data: video.data, watch_link: false) %>
+              <% if facts.duration || facts.channel %>
+                <div class="video__facts"><%= render facts %></div>
+              <% end %>
+
+              <% if video.data.summary %>
+                <p class="video__summary"><%= video.data.summary %></p>
+              <% end %>
+
+              <% if insight(video) %>
+                <p class="video__insight"><%= insight(video) %></p>
+              <% end %>
+            </li>
+          <% end %>
+        </ol>
+      </section>
+    <% end %>
+
+    <% if more_url %>
+      <p class="video-list__more">
+        <a href="<%= more_url %>">All videos<span aria-hidden="true">&nbsp;&rarr;</span></a>
+      </p>
+    <% end %>
+  </div>
+<% else %>
+  <p class="video-list__empty">No videos recommended yet.</p>
+<% end %>

@@ -7,7 +7,7 @@ tags: ["AI/ML"]
 source_url: "https://fortune.com/2026/10/01/ai-godfather-yann-lecun-has-zero-concerns-about-human-extinction-says-anthropic-ceo-dario-amodei-is-deuded/"
 hn_url: "https://news.ycombinator.com/item?id=49946228"
 summary: >-
-  [Yann LeCun](https://en.wikipedia.org/wiki/Yann_LeCun), the only one of deep learning's three "godfathers" still
+  Yann LeCun, the only one of deep learning's three "godfathers" still
   unconcerned about AI risk, tells Fortune he has zero concerns about AI
   wiping out humanity or about recent rogue incidents like OpenAI's agents
   autonomously hacking Hugging Face in July. He blames those events on leaky
@@ -19,7 +19,8 @@ summary: >-
   capture by safety lobbyists and incumbent labs, not extinction.
 ---
 
-Most commenters land with LeCun that the extinction frame is the wrong one,
+Most commenters land with [LeCun](https://en.wikipedia.org/wiki/Yann_LeCun)
+that the extinction frame is the wrong one,
 because the concrete failure on the table — OpenAI's agents reaching into
 Hugging Face — was a leaky sandbox and sloppy cybersecurity, not autonomy with
 an agenda. Several extend that into motive: EA-aligned safety warnings double as

@@ -29,6 +29,9 @@ Bridgetown.configure do |config|
   # Available options are `erb` (default), `serbea`, or `liquid`
   template_engine "erb"
 
+  # Generate the Atom feed at /feed.xml and the `feed_meta` discovery tag
+  init :"bridgetown-feed"
+
   # Other options you might want to investigate:
 
   # See list of timezone values here:

@@ -8,6 +8,8 @@ title: digesTvo
 tagline: Your nerdy news, digested
 email: ing.ezcurdia@gmail.com
 github: 3zcurdia
+author:
+  name: Luis Ezcurdia
 description: >-
   A daily digest of the stories on nerdy news: what each article
   says, and what the comment threads argued about.

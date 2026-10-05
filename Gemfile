@@ -42,3 +42,5 @@ gem "falcon"
 
 # Or for faster parsing of HTML-only resources via Inspectors, use Nokolexbor:
 # gem "nokolexbor", "~> 0.6"
+
+gem "bridgetown-feed", "~> 4.0"

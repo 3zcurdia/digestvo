@@ -21,6 +21,15 @@
           <li>
             <a class="<%= nav_link_class '/about' %>" href="<%= relative_url '/about' %>"<%= ' aria-current="page"' if active?('/about') %>>About</a>
           </li>
+          <li>
+            <a class="site-nav__icon-link" href="<%= relative_url '/feed.xml' %>" aria-label="RSS feed">
+              <svg class="site-nav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <path d="M4 11a9 9 0 0 1 9 9" />
+                <path d="M4 4a16 16 0 0 1 16 16" />
+                <circle cx="5" cy="19" r="1" fill="currentColor" stroke="none" />
+              </svg>
+            </a>
+          </li>
         </ul>
       </nav>
     </div>

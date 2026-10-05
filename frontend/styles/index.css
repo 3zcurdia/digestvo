@@ -223,6 +223,7 @@
 
   .site-nav__list {
     display: flex;
+    align-items: center;
     gap: 1.25rem;
     margin: 0;
     padding: 0;
@@ -238,6 +239,28 @@
   .site-nav__link:hover,
   .site-nav__link.is-active {
     color: var(--color-action-color);
+  }
+
+  /* Icon-only nav item: the SVG is the whole hit target, so it needs an
+     explicit size and a generous one for a 16px strip. `line-height: 0`
+     drops the inline-flex box off the text baseline so the icon centers
+     on the strip instead of riding a line box. */
+  .site-nav__icon-link {
+    display: inline-flex;
+    align-items: center;
+    line-height: 0;
+    padding: 0.35rem;
+    color: var(--color-body-color);
+  }
+
+  .site-nav__icon-link:hover,
+  .site-nav__icon-link:focus-visible {
+    color: var(--color-action-color);
+  }
+
+  .site-nav__icon {
+    width: 1.5em;
+    height: 1.5em;
   }
 
   /* `main` is full-bleed and invisible as a box: no fill, shadow, border or

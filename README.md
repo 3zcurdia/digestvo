@@ -1,17 +1,6 @@
-# Bridgetown Website README
+# DigesTvo
 
-Welcome to your new Bridgetown website! You can update this README file to provide additional context and setup information for yourself or other contributors.
-
-## Table of Contents
-
-- [Bridgetown Website README](#bridgetown-website-readme)
-  - [Table of Contents](#table-of-contents)
-  - [Prerequisites](#prerequisites)
-  - [Install](#install)
-  - [Development](#development)
-    - [Commands](#commands)
-  - [Deployment](#deployment)
-  - [Contributing](#contributing)
+A friendly, handpicked newsfeed where a helpful agents checks the content so I can easily choose what to share.
 
 ## Prerequisites
 

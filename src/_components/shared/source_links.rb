@@ -1,12 +1,15 @@
 class Shared::SourceLinks < Bridgetown::Component
-  # Where a story came from and where it was argued about. The digest skill
-  # only writes front matter: `source_url`, plus `hn_url` and/or `lobsters_url`
-  # for every site the story ran on. The presence of those keys is the whole
-  # contract — this component is the one place that turns them into links, so
-  # the marks cannot drift between templates.
+  # Where a story came from and where it was argued about. The digest and
+  # tweet-digest skills only write front matter: `source_url`, plus `hn_url`,
+  # `lobsters_url` and/or `x_url` for every site the story ran on, plus an
+  # optional `related_x_urls` list for extra tweets folded into one
+  # tweet-digest post. The presence of those keys is the whole contract —
+  # this component is the one place that turns them into links, so the marks
+  # cannot drift between templates.
   SOURCES = [
     { key: "hn_url", label: "Hacker News", mark: :hn },
     { key: "lobsters_url", label: "Lobsters", mark: :lobsters },
+    { key: "x_url", label: "X", mark: :x },
   ].freeze
 
   def initialize(data:)
@@ -24,8 +27,15 @@ class Shared::SourceLinks < Bridgetown::Component
     end
   end
 
+  def related
+    Array(@data["related_x_urls"]).filter_map do |url|
+      url = present(url)
+      { label: "Related post", mark: :x, url: url } if url
+    end
+  end
+
   def render?
-    original_url || discussions.any?
+    original_url || discussions.any? || related.any?
   end
 
   private

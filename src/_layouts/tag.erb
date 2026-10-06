@@ -1,0 +1,22 @@
+---
+layout: default
+---
+<%# Per-topic archive. The builder writes front matter (title, tag, tag_slug)
+    and leaves the body empty — this layout does the work, filtering the post
+    collection by slug so display-name spelling never has to match. %>
+<%
+  posts = collections.posts.resources.select do |post|
+    Array(post.data.tags).any? { |tag| TagTaxonomy.slug(tag) == data.tag_slug }
+  end
+%>
+
+<article>
+  <header class="mb-8 border-b border-border-color pb-6">
+    <h1 class="m-0 font-serif text-[clamp(2rem,1.35rem_+_2.6vw,3rem)] leading-[1.08] font-bold tracking-[-0.02em] text-balance text-heading-color"><%= data.title %></h1>
+    <% if data.summary %>
+      <p class="mt-4 mb-0 text-[1.3rem] leading-[1.45] italic text-body-color"><%= data.summary %></p>
+    <% end %>
+  </header>
+
+  <%= render Shared::PostList.new(posts: posts) %>
+</article>

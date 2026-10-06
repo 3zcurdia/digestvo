@@ -10,8 +10,11 @@ class Shared::Navbar < Bridgetown::Component
 
   def active?(path)
     url = @resource&.relative_url.to_s
+    # GeneratedPages (tag archives, etc.) have no collection; only resources
+    # in a collection can match a COLLECTION_SECTIONS entry.
+    resource_collection = @resource.collection if @resource.respond_to?(:collection)
 
-    url == path || url == "#{path}/" || section_collection(path) == @resource&.collection&.label
+    url == path || url == "#{path}/" || section_collection(path) == resource_collection&.label
   end
 
   # Nav links are Tailwind utilities (no site-nav CSS remains). The only

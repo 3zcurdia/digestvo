@@ -12,12 +12,17 @@ layout: default
   position = posts.index { |post| post.equal?(resource) }
   prev_post = position && position > 0 ? posts[position - 1] : nil
   next_post = position && posts[position + 1]
+  related = TagTaxonomy.related_posts(posts, resource, limit: 4)
 %>
 
 <article>
   <header class="mb-8 border-b border-border-color pb-6">
     <% if tags.any? %>
-      <p class="mb-3 font-meta text-xs leading-[1.6] font-bold uppercase tracking-[0.1em] text-muted-color"><%= tags.join(" · ") %></p>
+      <p class="mb-3 font-meta text-xs leading-[1.6] font-bold uppercase tracking-[0.1em] text-muted-color">
+        <% tags.each_with_index do |tag, index| %>
+          <%= " · " if index.positive? %><a class="text-muted-color no-underline underline-offset-[0.18em] hover:text-action-color focus-visible:rounded-[2px] focus-visible:text-action-color focus-visible:outline-2 focus-visible:outline-action-color focus-visible:outline-offset-[3px]" href="<%= TagTaxonomy.path(tag) %>"><%= tag %></a>
+        <% end %>
+      </p>
     <% end %>
 
     <h1 class="m-0 font-serif text-[clamp(2rem,1.35rem_+_2.6vw,3rem)] leading-[1.08] font-bold tracking-[-0.02em] text-balance text-heading-color"><%= data.title %></h1>
@@ -42,6 +47,24 @@ layout: default
       <%= yield %>
     </div>
   </section>
+
+  <%# Same-topic stories, newest first, excluding this one. Drops out entirely
+      when the tag is unique to this post — a lone story is not a thread. %>
+  <% if related.any? && tags.any? %>
+    <section class="mt-12" aria-labelledby="related-heading">
+      <h2 class="mb-4 font-meta text-xs leading-[1.6] font-bold uppercase tracking-[0.1em] text-muted-color" id="related-heading">More in <%= tags.first %></h2>
+      <ol class="m-0 list-none divide-y divide-border-color p-0" role="list">
+        <% related.each do |post| %>
+          <li class="group relative py-4 has-[a:focus-visible]:outline-2 has-[a:focus-visible]:outline-action-color has-[a:focus-visible]:outline-offset-4">
+            <h3 class="m-0 font-serif text-[1.25rem] leading-[1.2] font-[650] tracking-[-0.005em] text-balance text-heading-color">
+              <a class="text-heading-color no-underline after:absolute after:inset-0 after:content-[''] focus-visible:outline-none group-hover:text-action-color" href="<%= post.relative_url %>"><%= post.data.title %></a>
+            </h3>
+            <time class="mt-1 block font-meta text-sm leading-[1.6] text-muted-color" datetime="<%= post.date.strftime('%Y-%m-%d') %>"><%= post.date.strftime("%B %-d, %Y") %></time>
+          </li>
+        <% end %>
+      </ol>
+    </section>
+  <% end %>
 
   <%# Read-on pager, in index order: prev_post is the story above this one on
       the front page, next_post the one below. Each row only when it exists;

@@ -1,7 +1,7 @@
-<ul class="source-links" role="list">
+<ul class="m-0 flex list-none flex-wrap gap-x-5 gap-y-[0.4rem] p-0 font-meta text-sm leading-[1.6] font-semibold" role="list">
   <% if original_url %>
     <li>
-      <a class="source-links__link" href="<%= original_url %>">
+      <a class="inline-flex items-center gap-[0.4rem] text-action-color no-underline underline-offset-[0.18em] hover:underline focus-visible:rounded-[2px] focus-visible:outline-2 focus-visible:outline-action-color focus-visible:outline-offset-[3px]" href="<%= original_url %>">
         Read the original<span aria-hidden="true">&nbsp;&rarr;</span>
       </a>
     </li>
@@ -9,21 +9,21 @@
 
   <% discussions.each do |source| %>
     <li>
-      <a class="source-links__link" href="<%= source[:url] %>">
+      <a class="inline-flex items-center gap-[0.4rem] text-action-color no-underline underline-offset-[0.18em] hover:underline focus-visible:rounded-[2px] focus-visible:outline-2 focus-visible:outline-action-color focus-visible:outline-offset-[3px]" href="<%= source[:url] %>">
         <% if source[:mark] == :hn %>
           <%# Y Combinator square, the mark Hacker News uses for itself. %>
-          <svg class="source-links__mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <svg class="size-[1.05em] flex-none fill-current" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
             <path fill-rule="evenodd" d="M0 0h24v24H0V0Zm6.95 5.9 4.11 7.7v5.06h1.59V13.7l4.15-7.8h-1.75l-2.46 4.88c-.37.74-.69 1.43-.69 1.43s-.3-.7-.65-1.43L8.83 5.9H6.95Z" />
           </svg>
         <% elsif source[:mark] == :x %>
           <%# The X logomark, same size and fill as the site squares. %>
-          <svg class="source-links__mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <svg class="size-[1.05em] flex-none fill-current" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
             <path d="M18.9 1.15h3.68l-8.04 9.19L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.47l8.6-9.83L0 1.15h7.59l5.24 6.93 6.07-6.93Zm-1.29 19.5h2.04L6.49 3.24H4.3l13.31 17.41Z" />
           </svg>
         <% else %>
           <%# A square "L" cut out, drawn to match the HN square so the pair
               reads as one set instead of a logo next to an emoji. %>
-          <svg class="source-links__mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <svg class="size-[1.05em] flex-none fill-current" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
             <path fill-rule="evenodd" d="M0 0h24v24H0V0Zm8 5.5v13h9.25v-2h-7V5.5H8Z" />
           </svg>
         <% end %>
@@ -36,8 +36,8 @@
       discussions, so they never trigger the two-source lead-ins in post.erb. %>
   <% related.each do |source| %>
     <li>
-      <a class="source-links__link" href="<%= source[:url] %>">
-        <svg class="source-links__mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <a class="inline-flex items-center gap-[0.4rem] text-action-color no-underline underline-offset-[0.18em] hover:underline focus-visible:rounded-[2px] focus-visible:outline-2 focus-visible:outline-action-color focus-visible:outline-offset-[3px]" href="<%= source[:url] %>">
+        <svg class="size-[1.05em] flex-none fill-current" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
           <path d="M18.9 1.15h3.68l-8.04 9.19L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.47l8.6-9.83L0 1.15h7.59l5.24 6.93 6.07-6.93Zm-1.29 19.5h2.04L6.49 3.24H4.3l13.31 17.41Z" />
         </svg>
         <%= source[:label] %><span class="sr-only"> on X</span>

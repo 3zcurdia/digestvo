@@ -3,13 +3,13 @@
   <head>
     <%= render "head", metadata: site.metadata, title: data.title %>
   </head>
-  <body class="<%= data.layout %> <%= data.page_class %>">
+  <body class="m-0 flex min-h-screen flex-col bg-body-background font-serif text-[1.1875rem] leading-[1.6] text-body-color [font-kerning:normal] [font-optical-sizing:auto] [text-rendering:optimizeLegibility] selection:bg-action-color/30 dark:antialiased">
     <%= render Shared::Navbar.new(metadata: site.metadata, resource: resource) %>
 
-    <main>
+    <main class="w-full flex-1 px-[clamp(1rem,4vw,3rem)] pt-10 pb-16">
       <%# One column for every page, so the masthead, the index and every
           article share the same edges and the same measure. %>
-      <div class="column">
+      <div class="mx-auto w-full max-w-column">
         <%= yield %>
       </div>
     </main>

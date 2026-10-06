@@ -14,20 +14,20 @@ layout: default
   next_post = position && posts[position + 1]
 %>
 
-<article class="article">
-  <header class="article__header">
+<article>
+  <header class="mb-8 border-b border-border-color pb-6">
     <% if tags.any? %>
-      <p class="kicker"><%= tags.join(" · ") %></p>
+      <p class="mb-3 font-meta text-xs leading-[1.6] font-bold uppercase tracking-[0.1em] text-muted-color"><%= tags.join(" · ") %></p>
     <% end %>
 
-    <h1 class="article__title"><%= data.title %></h1>
+    <h1 class="m-0 font-serif text-[clamp(2rem,1.35rem_+_2.6vw,3rem)] leading-[1.08] font-bold tracking-[-0.02em] text-balance text-heading-color"><%= data.title %></h1>
 
     <% if data.summary %>
-      <p class="article__standfirst"><%= data.summary %></p>
+      <p class="mt-4 mb-0 text-[1.3rem] leading-[1.45] italic text-body-color"><%= data.summary %></p>
     <% end %>
 
-    <div class="article__meta">
-      <time class="article__date" datetime="<%= resource.date.strftime('%Y-%m-%d') %>">
+    <div class="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2">
+      <time class="font-meta text-sm leading-[1.6] text-muted-color" datetime="<%= resource.date.strftime('%Y-%m-%d') %>">
         <%= resource.date.strftime("%A, %B %-d, %Y") %>
       </time>
       <%= render sources %>
@@ -36,9 +36,9 @@ layout: default
 
   <%# The body is always the digest of the comment threads, never a second
       summary — label it so a reader knows which voice they are reading. %>
-  <section class="article__body" aria-labelledby="discussion-heading">
-    <h2 class="section-label" id="discussion-heading">The discussion</h2>
-    <div class="prose<%= ' prose--dropcap' if dropcap %>">
+  <section aria-labelledby="discussion-heading">
+    <h2 class="mb-4 font-meta text-xs leading-[1.6] font-bold uppercase tracking-[0.1em] text-muted-color" id="discussion-heading">The discussion</h2>
+    <div class="prose<%= ' prose-dropcap' if dropcap %>">
       <%= yield %>
     </div>
   </section>
@@ -47,15 +47,15 @@ layout: default
       the front page, next_post the one below. Each row only when it exists;
       the whole block drops out on a day with a single story. %>
   <% if prev_post || next_post %>
-    <nav class="article__pager" aria-label="More stories">
+    <nav class="mt-12 flex items-center justify-center gap-10 border-t border-border-color pt-4" aria-label="More stories">
       <% if prev_post %>
-        <a class="article__pager-link" href="<%= prev_post.relative_url %>">
-          <span class="article__pager-chevron" aria-hidden="true">&larr;</span>Previous
+        <a class="group inline-flex items-center gap-[0.5em] font-meta text-sm leading-[1.6] font-bold uppercase tracking-[0.1em] text-heading-color no-underline hover:text-action-color focus-visible:rounded-[2px] focus-visible:text-action-color focus-visible:outline-2 focus-visible:outline-action-color focus-visible:outline-offset-4" href="<%= prev_post.relative_url %>">
+          <span class="inline-block text-[1.25em] leading-none font-normal group-hover:-translate-x-[0.2em] group-focus-visible:-translate-x-[0.2em]" aria-hidden="true">&larr;</span>Previous
         </a>
       <% end %>
       <% if next_post %>
-        <a class="article__pager-link" href="<%= next_post.relative_url %>">
-          Next<span class="article__pager-chevron" aria-hidden="true">&rarr;</span>
+        <a class="group inline-flex items-center gap-[0.5em] font-meta text-sm leading-[1.6] font-bold uppercase tracking-[0.1em] text-heading-color no-underline hover:text-action-color focus-visible:rounded-[2px] focus-visible:text-action-color focus-visible:outline-2 focus-visible:outline-action-color focus-visible:outline-offset-4" href="<%= next_post.relative_url %>">
+          Next<span class="inline-block text-[1.25em] leading-none font-normal group-hover:translate-x-[0.2em] group-focus-visible:translate-x-[0.2em]" aria-hidden="true">&rarr;</span>
         </a>
       <% end %>
     </nav>

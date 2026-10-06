@@ -4,12 +4,13 @@ layout: default
 
 <%# Plain pages (About, Stories, errors) use the same header block as an
     article so every page opens the same way. Set `prose: false` in front
-    matter when the body brings its own components instead of running text. %>
-<article class="article">
-  <header class="article__header">
-    <h1 class="article__title"><%= data.title %></h1>
+    matter when the body brings its own components instead of running text.
+    Running text gets the `prose` utility (code highlighting included). %>
+<article>
+  <header class="mb-8 border-b border-border-color pb-6">
+    <h1 class="m-0 font-serif text-[clamp(2rem,1.35rem_+_2.6vw,3rem)] leading-[1.08] font-bold tracking-[-0.02em] text-balance text-heading-color"><%= data.title %></h1>
     <% if data.summary %>
-      <p class="article__standfirst"><%= data.summary %></p>
+      <p class="mt-4 mb-0 text-[1.3rem] leading-[1.45] italic text-body-color"><%= data.summary %></p>
     <% end %>
   </header>
 

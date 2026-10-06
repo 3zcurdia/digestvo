@@ -9,10 +9,10 @@ import "@fontsource-variable/newsreader/opsz.css"
 import "@fontsource-variable/newsreader/opsz-italic.css"
 
 import "$styles/index.css"
-import "$styles/syntax-highlighting.css"
 
-// Import all JavaScript & CSS files from src/_components
-import components from "$components/**/*.{js,jsx,js.rb,css}"
+// Import all JavaScript files from src/_components (no component CSS remains;
+// every component is styled with Tailwind utilities in its .erb template)
+import components from "$components/**/*.{js,jsx,js.rb}"
 
 // The footer's edition switch: plain text, no widget. The device picks the
 // scheme until a reader chooses one; the choice sticks in localStorage and is

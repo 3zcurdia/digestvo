@@ -18,12 +18,7 @@
    Both schemes live in each token as a `light-dark()` pair, so the scheme is
    chosen by the `color-scheme` property on `html` — the device decides by
    default, and the footer's edition link can force either side. When you add
-   a color token, give it both values right there; there is no second block.
-
-   `static` matters: plain `@theme` tree-shakes variables no generated utility
-   mentions, which would silently drop tokens that only hand-written CSS uses
-   (a `var()` for a missing token fails at computed-value time and the
-   declaration just inherits — no error, wrong color). */
+   a color token, give it both values right there; there is no second block. */
 @theme static {
   /* Warm paper in light mode; the grounds below are all the same value. */
   --color-body-background: light-dark(#f5f1e8, #0c0b0a);
@@ -56,52 +51,97 @@
   --container-column: 44rem;
 }
 
-/* Hand-written defaults live in `@layer base` so Tailwind utilities (later
-   layer) can override them. Within the layer, source order still puts these
-   after Tailwind's preflight. */
-@layer base {
-  /* The scheme itself. `light dark` lets the device decide — what a reader sees
-     before touching the footer's edition link. The `[data-theme]` overrides are
-     what that link sets, persisted in localStorage by the head script, so an
-     explicit choice beats the OS. `color-scheme` drives every `light-dark()`
-     pair in `@theme`; it inherits from `html`, so one declaration flips the
-     whole page. */
-  html {
-    -webkit-text-size-adjust: 100%;
-    color-scheme: light dark;
+/* Running text (Markdown bodies) as a custom utility so templates stay
+   readable: `class="prose"` instead of a hundred arbitrary variants.
+   Generated elements carry no classes, so the wrapper does the work.
+   A section head inside a body is the paper's section label, not a blog
+   heading: the same small sans caps line the front page sets each day's
+   stories under, so the About page and the index share one voice.
+   Code is the one place a full hue spectrum reads as information rather
+   than decoration, so each Rouge token carries a `light-dark()` pair. */
+@utility prose {
+  display: flow-root;
+
+  & > * + * {
+    margin-top: 1.1em;
   }
 
-  :root[data-theme="light"] {
-    color-scheme: light;
+  & :where(h2, h3, h4) {
+    margin-top: 2em;
+    line-height: 1.2;
+    font-weight: 650;
   }
 
-  :root[data-theme="dark"] {
-    color-scheme: dark;
+  & h2 {
+    margin-top: 2.75rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid var(--color-heading-color);
+    font-family: var(--font-meta);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-heading-color);
+    text-wrap: balance;
   }
 
-  body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    margin: 0;
-    background: var(--color-body-background);
-    color: var(--color-body-color);
-    font-family: var(--font-serif);
-    font-size: 1.1875rem;
-    line-height: 1.6;
-    font-optical-sizing: auto;
-    font-kerning: normal;
-    text-rendering: optimizeLegibility;
+  /* The first head sits closer to the standfirst it belongs to than to the
+     section that follows it. */
+  & > h2:first-child {
+    margin-top: 1.75rem;
   }
 
-  @media (prefers-color-scheme: dark) {
-    body {
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
+  /* …and its first paragraph sits a little further off the rule than the
+     default body spacing, since the rule already separates the two. */
+  & > h2 + * {
+    margin-top: 0.9em;
   }
 
-  a {
+  & h3 {
+    font-size: 1.25rem;
+    text-wrap: balance;
+  }
+
+  & h4 {
+    text-wrap: balance;
+  }
+
+  & :where(h2, h3, h4) + * {
+    margin-top: 0.5em;
+  }
+
+  & :where(ul, ol) {
+    padding-left: 1.4em;
+  }
+
+  & ul {
+    list-style: disc;
+  }
+
+  & ol {
+    list-style: decimal;
+  }
+
+  & li + li {
+    margin-top: 0.35em;
+  }
+
+  & li::marker {
+    color: var(--color-muted-color);
+  }
+
+  & strong {
+    font-weight: 700;
+    color: var(--color-heading-color);
+  }
+
+  & blockquote {
+    padding-left: 1em;
+    border-left: 3px solid var(--color-border-color);
+    font-style: italic;
+  }
+
+  & a {
     color: var(--color-action-color);
     text-decoration: underline;
     text-decoration-thickness: 1px;
@@ -113,383 +153,114 @@
     text-underline-offset: 0.18em;
   }
 
-  a:hover {
+  & a:hover {
     text-decoration-color: currentColor;
   }
 
-  a:focus-visible {
+  & a:focus-visible {
     outline: 2px solid var(--color-action-color);
     outline-offset: 3px;
     border-radius: 2px;
   }
 
-  h1,
-  h2,
-  h3,
-  h4 {
-    color: var(--color-heading-color);
-    font-family: var(--font-serif);
-    text-wrap: balance;
-  }
-
-  ::selection {
-    background: color-mix(in srgb, var(--color-action-color) 30%, transparent);
-  }
-
-  /* The shared column. `main` itself stays full-bleed; this wrapper sets the
-     measure, and the masthead and footer reuse it so every edge lines up. */
-  .column {
-    width: 100%;
-    max-width: var(--container-column);
-    margin-inline: auto;
-  }
-
-  /* ---- Masthead ---------------------------------------------------- */
-  .masthead__inner {
-    max-width: calc(var(--container-column) + 2 * clamp(1rem, 4vw, 3rem));
-    margin-inline: auto;
-    padding: 1.75rem clamp(1rem, 4vw, 3rem) 0;
-    text-align: center;
-  }
-
-  .brand {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.3em;
-    font-size: clamp(1.9rem, 1.4rem + 2.5vw, 2.75rem);
-    color: var(--color-heading-color);
-    text-decoration: none;
-  }
-
-  .brand:focus-visible {
-    outline-offset: 6px;
-  }
-
-  /* Stroked `currentColor`, so the mark rides the accent token and flips with
-     the scheme. The drawing fills ~10.5 of 24 viewBox units tall, so the box
-     is sized up to land the cup body near the wordmark's cap height.
-
-     The one deliberate glow in the theme, and only in dark mode: neon needs a
-     dark ground to read as lit, and on paper the same bloom is a grey smudge —
-     hence the transparent light branch of the pair. */
-  .brand__mark {
-    flex: none;
-    width: 1.1em;
-    height: 1.1em;
-    color: var(--color-action-color);
-    filter: drop-shadow(
-      0 0 10px
-        light-dark(
-          transparent,
-          color-mix(in srgb, var(--color-action-color) 40%, transparent)
-        )
-    );
-  }
-
-  /* Alfa Slab One ships only weight 400; asking for more fake-bolds it. */
-  .brand__name {
-    font-family: var(--font-brand);
-    font-weight: 400;
-    line-height: 1;
-    letter-spacing: 0.01em;
-  }
-
-  /* The paper's folio strip: thin rule over, double rule under, tagline on
-     the left and sections on the right. */
-  .masthead__strip {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.35rem 1.5rem;
-    margin-top: 1.1rem;
-    padding: 0.55rem 0;
-    border-top: 1px solid var(--color-border-color);
-    border-bottom: 3px double var(--color-border-color);
-    font-family: var(--font-meta);
-    font-size: 0.75rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-
-    @media (max-width: 480px) {
-      justify-content: center;
-    }
-  }
-
-  .masthead__tagline {
-    margin: 0;
-    color: var(--color-muted-color);
-  }
-
-  .site-nav__list {
-    display: flex;
-    align-items: center;
-    gap: 1.25rem;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  .site-nav__link {
-    color: var(--color-body-color);
-    font-weight: 700;
-    text-decoration: none;
-  }
-
-  .site-nav__link:hover,
-  .site-nav__link.is-active {
-    color: var(--color-action-color);
-  }
-
-  /* Icon-only nav item: the SVG is the whole hit target, so it needs an
-     explicit size and a generous one for a 16px strip. `line-height: 0`
-     drops the inline-flex box off the text baseline so the icon centers
-     on the strip instead of riding a line box. */
-  .site-nav__icon-link {
-    display: inline-flex;
-    align-items: center;
-    line-height: 0;
-    padding: 0.35rem;
-    color: var(--color-body-color);
-  }
-
-  .site-nav__icon-link:hover,
-  .site-nav__icon-link:focus-visible {
-    color: var(--color-action-color);
-  }
-
-  .site-nav__icon {
-    width: 1.5em;
-    height: 1.5em;
-  }
-
-  /* `main` is full-bleed and invisible as a box: no fill, shadow, border or
-     radius. The `.column` inside it sets the measure. */
-  main {
-    flex: 1;
-    width: 100%;
-    padding: 2.5rem clamp(1rem, 4vw, 3rem) 4rem;
-  }
-
-  /* ---- Article (posts and plain pages) ------------------------------ */
-  .article__header {
-    margin-bottom: 2rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid var(--color-border-color);
-  }
-
-  /* Section label above the headline, the paper's "kicker". Muted, because
-     the accent belongs to things you can click. */
-  .kicker {
-    margin: 0 0 0.75rem;
-    font-family: var(--font-meta);
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--color-muted-color);
-  }
-
-  .article__title {
-    margin: 0;
-    font-size: clamp(2rem, 1.35rem + 2.6vw, 3rem);
-    font-weight: 700;
-    line-height: 1.08;
-    letter-spacing: -0.02em;
-  }
-
-  /* The standfirst: the summary set larger and italic, between the headline
-     and the body, the way a paper runs its dek. */
-  .article__standfirst {
-    margin: 1rem 0 0;
-    font-size: 1.3rem;
-    font-style: italic;
-    line-height: 1.45;
-    color: var(--color-body-color);
-  }
-
-  .article__meta {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.5rem 1.25rem;
-    margin-top: 1.25rem;
-  }
-
-  .article__date {
-    font-family: var(--font-meta);
-    font-size: 0.875rem;
-    color: var(--color-muted-color);
-  }
-
-  /* ---- Read-on pager ------------------------------------------------ */
-  /* After the discussion: Previous / Next in index order, set as the paper's
-     section-label voice rather than links dressed as headlines. */
-  .article__pager {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 2.5rem;
-    margin-top: 3rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--color-border-color);
-  }
-
-  .article__pager-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5em;
-    font-family: var(--font-meta);
-    font-size: 0.875rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    text-decoration: none;
-    color: var(--color-heading-color);
-  }
-
-  .article__pager-link:hover,
-  .article__pager-link:focus-visible {
-    color: var(--color-action-color);
-  }
-
-  .article__pager-link:focus-visible {
-    outline-offset: 4px;
-  }
-
-  /* The chevron rides currentColor, so it warms to the accent on hover with
-     the label. A leading chevron drifts left, a trailing one right. */
-  .article__pager-chevron {
-    display: inline-block;
-    font-size: 1.25em;
-    line-height: 1;
-    font-weight: 400;
-  }
-
-  .article__pager-link:hover .article__pager-chevron:first-child,
-  .article__pager-link:focus-visible .article__pager-chevron:first-child {
-    transform: translateX(-0.2em);
-  }
-
-  .article__pager-link:hover .article__pager-chevron:last-child,
-  .article__pager-link:focus-visible .article__pager-chevron:last-child {
-    transform: translateX(0.2em);
-  }
-
-  .section-label {
-    margin: 0 0 1rem;
-    font-family: var(--font-meta);
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--color-muted-color);
-  }
-
-  /* ---- Prose ------------------------------------------------------- */
-  /* Preflight zeroes every margin and list style; this puts running text
-     back together for Markdown bodies. */
-  /* flow-root keeps the drop cap's float inside the body, and the clear
-     below stops a short first paragraph from indenting the next one. */
-  .prose {
-    display: flow-root;
-  }
-
-  .prose > * + * {
-    margin-top: 1.1em;
-  }
-
-  .prose :where(h2, h3, h4) {
-    margin-top: 2em;
-    line-height: 1.2;
-    font-weight: 650;
-  }
-
-  /* A section head inside a body is the paper's section label, not a blog
-     heading: the same small sans caps line the front page sets each day's
-     stories under, so the About page and the index share one voice. Nothing
-     else puts an h2 in a body — posts open under the layout's own "The
-     discussion" label — so this is effectively the About page's shape. */
-  .prose h2 {
-    margin-top: 2.75rem;
-    padding-bottom: 0.4rem;
-    border-bottom: 2px solid var(--color-heading-color);
-    font-family: var(--font-meta);
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--color-heading-color);
-  }
-
-  /* The first head sits closer to the standfirst it belongs to than to the
-     section that follows it. */
-  .prose > h2:first-child {
-    margin-top: 1.75rem;
-  }
-
-  /* …and its first paragraph sits a little further off the rule than the
-     default body spacing, since the rule already separates the two. */
-  .prose > h2 + * {
-    margin-top: 0.9em;
-  }
-
-  .prose h3 {
-    font-size: 1.25rem;
-  }
-
-  .prose :where(h2, h3, h4) + * {
-    margin-top: 0.5em;
-  }
-
-  .prose :where(ul, ol) {
-    padding-left: 1.4em;
-  }
-
-  .prose ul {
-    list-style: disc;
-  }
-
-  .prose ol {
-    list-style: decimal;
-  }
-
-  .prose li + li {
-    margin-top: 0.35em;
-  }
-
-  .prose li::marker {
-    color: var(--color-muted-color);
-  }
-
-  .prose strong {
-    font-weight: 700;
-    color: var(--color-heading-color);
-  }
-
-  .prose blockquote {
-    padding-left: 1em;
-    border-left: 3px solid var(--color-border-color);
-    font-style: italic;
-  }
-
-  .prose :not(pre) > code {
+  & :not(pre) > code {
     padding: 0.1em 0.3em;
     border: 1px solid var(--color-border-color);
     border-radius: 3px;
     font-size: 0.85em;
   }
 
-  .prose pre {
+  & pre {
     overflow-x: auto;
     font-size: 0.85rem;
     line-height: 1.5;
   }
 
-  /* Drop cap on the first paragraph of a post body. It reaches into a bold
-     "On Hacker News." lead-in too, since ::first-letter descends into inline
-     children. */
-  .prose--dropcap > p:first-child::first-letter {
+  /* Same ground as the page — a filled block would break the flat palette, so
+     the snippet is delimited by a hairline instead. */
+  & pre.highlight {
+    padding: 16px;
+    background-color: var(--color-code-background);
+    color: var(--color-code-color);
+    border: 1px solid var(--color-border-color);
+    border-radius: 4px;
+  }
+
+  & .highlight .hll { background-color: light-dark(#ffffcc, rgb(47 240 255 / 0.1)); }
+  & .highlight .c { color: light-dark(#999988, #8b93c9); font-style: italic; }
+  & .highlight .err { color: light-dark(#a61717, #ff6b8a); background-color: light-dark(#e3d2d2, rgb(255 107 138 / 0.16)); }
+  & .highlight .k { color: light-dark(#000000, #ff6ad5); font-weight: bold; }
+  & .highlight .o { color: light-dark(#000000, #ff6ad5); font-weight: bold; }
+  & .highlight .cm { color: light-dark(#999988, #8b93c9); font-style: italic; }
+  & .highlight .cp { color: light-dark(#999999, #8b93c9); font-weight: bold; font-style: italic; }
+  & .highlight .c1 { color: light-dark(#999988, #8b93c9); font-style: italic; }
+  & .highlight .cs { color: light-dark(#999999, #8b93c9); font-weight: bold; font-style: italic; }
+  & .highlight .gd { color: light-dark(#000000, var(--color-code-color)); background-color: light-dark(#ffdddd, rgb(255 107 138 / 0.16)); }
+  & .highlight .ge { color: light-dark(#000000, var(--color-code-color)); font-style: italic; }
+  & .highlight .gr { color: light-dark(#aa0000, #ff6b8a); }
+  & .highlight .gh { color: light-dark(#999999, #8b93c9); }
+  & .highlight .gi { color: light-dark(#000000, var(--color-code-color)); background-color: light-dark(#ddffdd, rgb(107 255 156 / 0.14)); }
+  & .highlight .go { color: light-dark(#888888, #b3addb); }
+  & .highlight .gp { color: light-dark(#555555, #b3addb); }
+  & .highlight .gs { font-weight: bold; }
+  & .highlight .gu { color: light-dark(#aaaaaa, #8b93c9); }
+  & .highlight .gt { color: light-dark(#aa0000, #ff6b8a); }
+  & .highlight .kc { color: light-dark(#000000, #ff6ad5); font-weight: bold; }
+  & .highlight .kd { color: light-dark(#000000, #ff6ad5); font-weight: bold; }
+  & .highlight .kn { color: light-dark(#000000, #ff6ad5); font-weight: bold; }
+  & .highlight .kp { color: light-dark(#000000, #ff6ad5); font-weight: bold; }
+  & .highlight .kr { color: light-dark(#000000, #ff6ad5); font-weight: bold; }
+  & .highlight .kt { color: light-dark(#445588, #ff6ad5); font-weight: bold; }
+  & .highlight .m { color: light-dark(#009999, #ffd23f); }
+  & .highlight .s { color: light-dark(#d01040, #6bff9c); }
+  & .highlight .na { color: light-dark(#008080, #6bead0); }
+  & .highlight .nb { color: light-dark(#0086B3, #6bead0); }
+  & .highlight .nc { color: light-dark(#445588, #b39cff); }
+  & .highlight .no { color: light-dark(#008080, #b39cff); }
+  & .highlight .nd { color: light-dark(#3c5d5d, #b39cff); }
+  & .highlight .ni { color: light-dark(#800080, #b39cff); }
+  & .highlight .ne { color: light-dark(#990000, #b39cff); }
+  & .highlight .nf { color: light-dark(#990000, #b39cff); }
+  & .highlight .nl { color: light-dark(#990000, #b39cff); }
+  & .highlight .nn { color: light-dark(#555555, #b39cff); }
+  & .highlight .nt { color: light-dark(#000080, #b39cff); }
+  & .highlight .nv { color: light-dark(#008080, #6bead0); }
+  & .highlight .ow { color: light-dark(#000000, #ff6ad5); font-weight: bold; }
+  & .highlight .w { color: light-dark(#bbbbbb, #b3addb); }
+  & .highlight .mf { color: light-dark(#009999, #ffd23f); }
+  & .highlight .mh { color: light-dark(#009999, #ffd23f); }
+  & .highlight .mi { color: light-dark(#009999, #ffd23f); }
+  & .highlight .mo { color: light-dark(#009999, #ffd23f); }
+  & .highlight .sb { color: light-dark(#d01040, #6bff9c); }
+  & .highlight .sc { color: light-dark(#d01040, #6bff9c); }
+  & .highlight .sd { color: light-dark(#d01040, #6bff9c); }
+  & .highlight .s2 { color: light-dark(#d01040, #6bff9c); }
+  & .highlight .se { color: light-dark(#d01040, #6bff9c); }
+  & .highlight .sh { color: light-dark(#d01040, #6bff9c); }
+  & .highlight .si { color: light-dark(#d01040, #6bff9c); }
+  & .highlight .sx { color: light-dark(#d01040, #6bff9c); }
+  & .highlight .sr { color: light-dark(#009926, #6bff9c); }
+  & .highlight .s1 { color: light-dark(#d01040, #6bff9c); }
+  & .highlight .ss { color: light-dark(#990073, #6bff9c); }
+  & .highlight .bp { color: light-dark(#999999, #b39cff); }
+  & .highlight .vc { color: light-dark(#008080, #6bead0); }
+  & .highlight .vg { color: light-dark(#008080, #6bead0); }
+  & .highlight .vi { color: light-dark(#008080, #6bead0); }
+  & .highlight .il { color: light-dark(#009999, #ffd23f); }
+  & .highlight .nx { color: light-dark(var(--color-code-color), #b3addb); }
+
+  & hr {
+    border: none;
+    border-top: 1px solid var(--color-border-color);
+    margin: 3rem 0;
+  }
+}
+
+/* Drop cap on the first paragraph of a post body. It reaches into a bold
+   "On Hacker News." lead-in too, since ::first-letter descends into inline
+   children. Joins `prose` only for single-discussion stories. */
+@utility prose-dropcap {
+  & > p:first-child::first-letter {
     float: left;
     margin: 0.06em 0.08em 0 0;
     font-size: 3.6em;
@@ -498,98 +269,28 @@
     color: var(--color-heading-color);
   }
 
-  .prose--dropcap > p:first-child + * {
+  & > p:first-child + * {
     clear: left;
   }
+}
 
-  /* ---- Footer ------------------------------------------------------ */
-  .site-footer {
-    padding: 0 clamp(1rem, 4vw, 3rem) 3rem;
+/* The scheme itself. `light dark` lets the device decide — what a reader sees
+   before touching the footer's edition link. The `[data-theme]` overrides are
+   what that link sets, persisted in localStorage by the head script, so an
+   explicit choice beats the OS. `color-scheme` drives every `light-dark()`
+   pair in `@theme`; it inherits from `html`, so one declaration flips the
+   whole page. Kept here because `color-scheme` has no utility equivalent. */
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    color-scheme: light dark;
   }
 
-  .site-footer__inner {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.35rem 1rem;
-    padding-top: 1rem;
-    border-top: 3px double var(--color-border-color);
-    font-family: var(--font-meta);
-    font-size: 0.8125rem;
-    color: var(--color-muted-color);
+  :root[data-theme="light"] {
+    color-scheme: light;
   }
 
-  /* Three share of the row: switch left, policy center, credit right. Equal
-     flex so a narrow column wraps to whole lines instead of crowding, with
-     each wrapped line keeping its own alignment. */
-  .site-footer__edition,
-  .site-footer__nav,
-  .site-footer__credit {
-    flex: 1 1 0;
-    margin: 0;
-  }
-
-  .site-footer__edition {
-    text-align: start;
-  }
-
-  .site-footer__credit {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: flex-end;
-    column-gap: 0.35rem;
-    text-align: end;
-  }
-
-  .site-footer__nav {
-    text-align: center;
-  }
-
-  /* Handle and mark are one link: one hit target, one tab stop. */
-  .site-footer__link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    color: var(--color-body-color);
-    font-weight: 600;
-    text-decoration: none;
-  }
-
-  .site-footer__link:hover {
-    color: var(--color-action-color);
-  }
-
-  .site-footer__icon {
-    width: 1.15em;
-    height: 1.15em;
-    fill: currentColor;
-  }
-
-  /* The edition switch is set as a line of footer copy, not a widget: it
-     borrows `.site-footer__link` for its look and only strips the UA's button
-     chrome back off. */
-  .site-footer__theme {
-    padding: 0;
-    border: 0;
-    background: none;
-    font-family: inherit;
-    font-size: inherit;
-    line-height: inherit;
-    cursor: pointer;
-  }
-
-  /* Stated explicitly because `.site-footer__link`'s `display: inline-flex`
-     outranks the UA sheet's `[hidden] { display: none }` — without this a
-     reader with JavaScript disabled would see a control that does nothing. */
-  .site-footer__theme[hidden] {
-    display: none;
-  }
-
-  hr {
-    border: none;
-    border-top: 1px solid var(--color-border-color);
-    margin: 3rem 0;
+  :root[data-theme="dark"] {
+    color-scheme: dark;
   }
 }

@@ -3,7 +3,7 @@ layout: post
 title: "Beam: Reflection's 501B open-weight model"
 date: 2026-10-06 09:23:08 -0600
 categories: digest
-tags: ["AI/ML"]
+tags: ["AI Release"]
 source_url: "https://reflection.ai/blog/introducing-beam"
 hn_url: "https://news.ycombinator.com/item?id=49969183"
 summary: >-

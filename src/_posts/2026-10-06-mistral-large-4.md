@@ -3,7 +3,7 @@ layout: post
 title: "Mistral Large 4"
 date: 2026-10-06 09:23:08 -0600
 categories: digest
-tags: ["AI/ML"]
+tags: ["AI Release"]
 source_url: "https://docs.mistral.ai/models/mistral-large-4-0"
 hn_url: "https://news.ycombinator.com/item?id=49977979"
 summary: >-

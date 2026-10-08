@@ -40,3 +40,6 @@ yarn-debug.log*
 /tmp/pids/*
 !/tmp/pids/
 !/tmp/pids/.keep
+
+.opencode/tmp
+.opencode/skills/digest/scripts/__pycache__/ 

@@ -18,13 +18,5 @@ summary: >-
   tricks run locally.
 ---
 
-Most commenters land on the price being genuinely transformative but the quality
-gap real: several report cancelling Claude Max or GPT subscriptions because 4.1
-Flash handles their coding and agent work at pennies per session, while others
-point to the pacman-bakeoff leaderboard, where Opus 5.5 scores 99/100 to Flash's
-72. The sharpest objection is that the article's "a month or two behind" claim
-is wrong — open models still trail February's Fable 5 by 6 to 12 months, and
-casual benchmarks hide the difference on hard orchestration work. The other live
-argument is economics: with flat $100-a-month subscriptions there is no price
-gap left for individuals, only for per-token API buyers, which is why nobody is
-freaking out.
+Most commenters land on the price being genuinely transformative but the quality gap real: several report cancelling Claude Max or GPT subscriptions because 4.1 Flash handles their coding and agent work at pennies per session, while others point to the pacman-bakeoff leaderboard, where Opus 5.5 scores 99/100 to Flash's. The sharpest objection is that the article's "a month or two behind" claim is wrong — open models still trail February's Fable 5 by 6 to 12 months, and casual benchmarks hide the difference on hard orchestration work. The other live argument is economics: with flat $100-a-month subscriptions there is no price
+gap left for individuals, only for per-token API buyers, which is why nobody is freaking out.

@@ -20,16 +20,13 @@ summary: >-
   invoking "nobody does this with Ruby anyway."
 ---
 
-Most commenters land on the article's core claim that LLMs let one person ship
-the libraries that used to need a team: zem argues the real payoff is domain
-experts producing shared libraries rather than one-shot scripts, and nertzy
-backs it with a Zed contribution he could not have written in Rust himself. The
-sharpest objection targets the quoted line that typing every line by hand is "no
-longer sustainable" — gspr and threedaymonk ask who ever hit typing speed as the
-bottleneck, noting lines-of-code was abandoned as a metric years ago, while
-atilaneves answers that typing was his bottleneck and he simply does not type
-code anymore. The PDF example also splits the thread: sjamaan says PDF
-generation is painful in every ecosystem without a corporate backer, and
-weaksauce points out hexapdf already existed. The top-scored comment, from
-kristoff, sidesteps the debate to argue the healthiest thing is to stop talking
-about DHH altogether.
+Most commenters land on skepticism toward the article's claim that typing is the
+bottleneck, because generating lines was never the scarce part of programming.
+The sharpest pushback asks who these fast-brained developers are, arguing that
+LOC worship contradicts everything learned about boilerplate, autocomplete, and
+expressive languages reducing keystrokes for years. The counterpoint that gains
+ground is narrower: LLMs earn their keep on rote chores like converting a Rust
+struct from Copy to non-Copy or chewing through repetitive scaffolding, not on
+design. Meanwhile the PDF-gap anecdote draws sympathy, with even Go developers
+surprised Rails lacked layout tooling and others noting hexapdf and ReportLab
+show the pain was never Ruby-only.

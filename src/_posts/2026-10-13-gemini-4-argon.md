@@ -3,7 +3,7 @@ layout: post
 title: "Gemini 4 Argon"
 date: 2026-10-13 13:02:05 -0600
 categories: digest
-tags: ["AI/ML"]
+tags: ["AI Release"]
 source_url: "https://deepmind.google/models/gemini/"
 hn_url: "https://news.ycombinator.com/item?id=50073879"
 share_text: "Gemini 4 Argon claims big benchmark wins, but Pro users just get 404s and Ultra-only walls"

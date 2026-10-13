@@ -5,6 +5,7 @@ layout: default
 <%
   tags = Array(data.tags)
   sources = Shared::SourceLinks.new(data: data)
+  share = Shared::ShareLinks.new(data.title, url: resource.absolute_url)
   # A story from both sites opens each take with a bold "On Hacker News." /
   # "On Lobsters." lead-in, and a drop cap would split that label in two.
   dropcap = sources.discussions.size < 2
@@ -31,11 +32,14 @@ layout: default
       <p class="mt-4 mb-0 text-[1.3rem] leading-[1.45] italic text-body-color"><%= data.summary %></p>
     <% end %>
 
-    <div class="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2">
-      <time class="font-meta text-sm leading-[1.6] text-muted-color" datetime="<%= resource.date.strftime('%Y-%m-%d') %>">
-        <%= resource.date.strftime("%A, %B %-d, %Y") %>
-      </time>
-      <%= render sources %>
+    <div class="flex mt-5 items-center justify-between">
+      <div class="flex flex-wrap gap-5">
+        <time class="font-meta text-sm leading-[1.6] text-muted-color" datetime="<%= resource.date.strftime('%Y-%m-%d') %>">
+          <%= resource.date.strftime("%A, %B %-d, %Y") %>
+        </time>
+        <%= render sources %>
+      </div>
+      <%= render share %>
     </div>
   </header>
 

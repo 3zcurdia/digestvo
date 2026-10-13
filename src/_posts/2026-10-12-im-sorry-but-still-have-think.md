@@ -6,6 +6,7 @@ categories: digest
 tags: ["AI/ML"]
 source_url: "https://itsallaboutthebit.com/i-am-sorry-but-you-still-have-to-think/"
 lobsters_url: "https://lobste.rs/s/k2natg/i_m_sorry_you_still_have_think"
+share_text: "DHH's agent rewrites prove nothing — the Rust port drops messages under load. You still have to think. #Rust"
 summary: >-
   Piotr Sarnacki dissects DHH's AI-agent rewrites of Campfire from Rails into
   Rust, Elixir and Go, done without reading the resulting code. Non-functional

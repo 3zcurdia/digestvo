@@ -6,6 +6,7 @@ categories: digest
 tags: ["AI Release"]
 source_url: https://aleph-alpha.com/en/blog/kolibri-has-landed-a-sovereign-open-weight-model/
 hn_url: https://news.ycombinator.com/item?id=49942706
+share_text: "78B open-weight MoE, 1M context, Apache 2.0 — and it knows when to shut up. Meet Kolibri. #OpenWeights"
 summary: >-
   Aleph Alpha released Kolibri, a 78B-total, 3B-active mixture-of-experts
   transformer for English and German, with 1M-token context and Apache 2.0

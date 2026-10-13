@@ -6,6 +6,7 @@ categories: digest
 tags: ["AI/ML"]
 source_url: "https://twitter.com/karpathy/status/2109361546505966046"
 hn_url: "https://news.ycombinator.com/item?id=50047422"
+share_text: "6B haven't touched AI. 5,000 run agent swarms. Karpathy says the gap is now a canyon. #AI"
 summary: >-
   Andrej Karpathy argues that shared understanding of LLM capability is
   splitting into a four-tier funnel: about 6 billion people who have barely

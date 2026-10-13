@@ -6,6 +6,7 @@ categories: digest
 tags: ["Security & Privacy"]
 source_url: "https://www.dexerto.com/entertainment/man-discovers-his-parents-coffee-machine-used-1tb-of-data-in-10-days-3416399/"
 hn_url: "https://news.ycombinator.com/item?id=49995495"
+share_text: "His parents' coffee machine ate 1TB in 10 days. He just unplugged it and bought a dumb one. #IoT"
 summary: >-
   A man auditing his parents' home network found their smart Keurig coffee
   machine had generated a full terabyte of traffic in just ten days, and

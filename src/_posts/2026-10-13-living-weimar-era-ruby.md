@@ -6,6 +6,7 @@ categories: digest
 tags: ["Dev Tools"]
 source_url: "https://blog.julik.nl/2026/10/the-weimar-of-ruby"
 lobsters_url: "https://lobste.rs/s/lfen2h/living_weimar_era_ruby"
+share_text: "DHH left, Ruby bloomed: 8,900 new gems in a year, PDFs and Qt revived by LLMs. Weimar era? #Ruby"
 summary: >-
   Julik Tarkhanov argues Ruby is in a creative renaissance even as David
   Heinemeier Hanson's RailsWorld keynote — announcing he vibe-rewrote HEY and

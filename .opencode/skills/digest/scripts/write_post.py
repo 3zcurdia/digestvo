@@ -23,7 +23,7 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import _common as C  # noqa: E402
 
-REQUIRED_KEYS = ("layout", "title", "date", "categories", "source_url", "summary")
+REQUIRED_KEYS = ("layout", "title", "date", "categories", "source_url", "summary", "share_text")
 
 
 # ---------------------------------------------------------------- render ---
@@ -55,6 +55,7 @@ def render_new(cand, stamp):
     for s in C.SOURCE_ORDER:
         if s in cand["discussion_urls"]:
             lines.append("{0}: {1}".format(C.SOURCES[s]["key"], C.yaml_quote(cand["discussion_urls"][s])))
+    lines.append("share_text: " + C.yaml_quote(cand["share_text"]))
     lines.append("summary: >-")
     lines.append(C.wrap(cand["summary"], width=78, indent="  "))
     lines.append("---")
@@ -138,6 +139,9 @@ def verify(path):
             problems.append("missing " + k)
     if "summary:" not in parts[0]:
         problems.append("missing summary")
+    if keys.get("share_text") and len(keys["share_text"]) > C.SHARE_TEXT_MAX_CHARS:
+        problems.append("share_text is {0} chars, keep it to {1} or fewer".format(
+            len(keys["share_text"]), C.SHARE_TEXT_MAX_CHARS))
     if not any(keys.get(C.SOURCES[s]["key"]) for s in C.SOURCE_ORDER):
         problems.append("no hn_url or lobsters_url")
     if not parts[1].strip():

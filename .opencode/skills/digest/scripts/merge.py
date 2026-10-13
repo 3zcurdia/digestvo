@@ -101,6 +101,7 @@ def build_candidate(members, posts):
         "category": lead["category"],
         "summary": lead["summary"],
         "alt_summary": sources["lobsters"]["summary"] if len(sources) == 2 else None,
+        "share_text": lead["share_text"],
         "readable": all(m["readable"] for m in members),
         "sentiment": {s: m["sentiment"] for s, m in sources.items()},
         "discussion_urls": {s: m["discussion_url"] for s, m in sources.items()},

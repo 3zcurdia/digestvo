@@ -5,8 +5,8 @@ Usage:
     validate_brief.py <brief.json>
 
 Exit 0 and print "OK" when the brief is usable. Otherwise print one line per
-problem and exit 1. The brief has exactly five fields: category, readable,
-summary, take, sentiment. Ids and URLs come from the story file, never from
+problem and exit 1. The brief has exactly six fields: category, readable,
+summary, take, sentiment, share_text. Ids and URLs come from the story file, never from
 the brief.
 """
 
@@ -42,6 +42,23 @@ def check_text(name, text, sentences, words, problems):
         problems.append("take: do not open with 'The thread…'; start with the dominant view itself.")
 
 
+def check_share_text(text, problems):
+    if not isinstance(text, str) or not text.strip():
+        problems.append("share_text: write one hook line, not empty.")
+        return
+    flat = re.sub(r"\s+", " ", text).strip()
+    if len(flat) > C.SHARE_TEXT_MAX_CHARS:
+        problems.append(
+            "share_text: {0} chars, keep it to {1} or fewer so it fits a share-to-X link.".format(
+                len(flat), C.SHARE_TEXT_MAX_CHARS))
+    if "\n" in text or "\\n" in text:
+        problems.append("share_text: one line only — no line breaks.")
+    if re.search(r"[*_`<>]", text):
+        problems.append("share_text: plain text only — no markdown, HTML or backticks. Hashtags (#tag) and mentions (@user) are allowed.")
+    if re.search(r"[\U0001F300-\U0001FAFF☀-➿]", text):
+        problems.append("share_text: remove the emoji.")
+
+
 def validate(path):
     problems = []
     if not os.path.isfile(path):
@@ -53,7 +70,7 @@ def validate(path):
     except json.JSONDecodeError as exc:
         return ["not valid JSON ({0}). Write a bare JSON object, no code fence, no comments.".format(exc)]
     if not isinstance(data, dict):
-        return ["top level must be a JSON object with the five brief fields"]
+        return ["top level must be a JSON object with the six brief fields"]
 
     for key, typ in C.BRIEF_FIELDS.items():
         if key not in data:
@@ -64,7 +81,7 @@ def validate(path):
         return problems
     extra = sorted(set(data) - set(C.BRIEF_FIELDS))
     if extra:
-        problems.append("remove extra field(s): {0}. Only the five brief fields are allowed.".format(", ".join(extra)))
+        problems.append("remove extra field(s): {0}. Only the six brief fields are allowed.".format(", ".join(extra)))
 
     if data["category"] not in C.CATEGORIES:
         problems.append("category: {0!r} is not in the taxonomy. Pick one of: {1}".format(
@@ -75,6 +92,7 @@ def validate(path):
 
     check_text("summary", data["summary"], C.SUMMARY_SENTENCES, C.SUMMARY_WORDS, problems)
     check_text("take", data["take"], C.TAKE_SENTENCES, C.TAKE_WORDS, problems)
+    check_share_text(data["share_text"], problems)
 
     if data["readable"] is False and not re.search(
         r"could not (be )?(open|read|fetch|access)|paywall|not readable|unreadable|behind a", data["summary"], re.I
@@ -102,8 +120,8 @@ def main():
             print("- " + p)
         sys.exit(1)
     data = json.loads(C.read_text(args.brief))
-    print("OK — summary {0} words, take {1} words, category {2}, sentiment {3}".format(
-        C.count_words(data["summary"]), C.count_words(data["take"]), data["category"], data["sentiment"]))
+    print("OK — summary {0} words, take {1} words, share_text {2} chars, category {3}, sentiment {4}".format(
+        C.count_words(data["summary"]), C.count_words(data["take"]), len(re.sub(r"\s+", " ", data["share_text"]).strip()), data["category"], data["sentiment"]))
 
 
 if __name__ == "__main__":

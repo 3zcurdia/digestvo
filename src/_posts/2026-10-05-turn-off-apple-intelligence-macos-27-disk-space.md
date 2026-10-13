@@ -6,6 +6,7 @@ categories: digest
 tags: ["Web & Platforms"]
 source_url: "https://github.com/omlahore/RemoveMacAI"
 hn_url: "https://news.ycombinator.com/item?id=49957116"
+share_text: "macOS 27 won't let Apple Intelligence go. This tiny CLI deletes it and takes your disk back. #macOS"
 summary: >-
   macOS 27 no longer ships a single switch for Apple Intelligence, and its
   downloaded models stay on disk even after the features are turned off.

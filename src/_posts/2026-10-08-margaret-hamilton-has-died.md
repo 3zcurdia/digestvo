@@ -7,6 +7,7 @@ tags: ["Culture"]
 source_url: "https://news.mit.edu/2026/margaret-hamilton-computing-pioneer-dies-1007"
 hn_url: "https://news.ycombinator.com/item?id=49998895"
 lobsters_url: "https://lobste.rs/s/9qtgrm/margaret_hamilton_computing_pioneer_who"
+share_text: "She saved Apollo 11 with code she wrote after her daughter crashed a simulator. RIP Margaret Hamilton. #NASA"
 summary: >-
   Margaret Hamilton, who led the team that wrote NASA's Apollo flight software
   at MIT's Instrumentation Laboratory, died on Sep. 30 at 90. MIT's obituary

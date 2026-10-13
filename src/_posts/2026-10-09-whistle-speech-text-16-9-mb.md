@@ -6,6 +6,7 @@ categories: digest
 tags: ["AI/ML"]
 source_url: "https://cactuscompute.com/blog/whistle"
 hn_url: "https://news.ycombinator.com/item?id=50008427"
+share_text: "Speech-to-text in 16.9MB, on CPU, 11ms to first token. Whisper just got lapped. #AI #STT"
 summary: >-
   Cactus Compute releases Whistle, an open speech recognition model packaged
   as a single 16.9 MB file that runs on the CPU with no dependencies. It

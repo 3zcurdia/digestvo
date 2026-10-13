@@ -18,6 +18,9 @@ data, never markup:
   `tags`, which never reaches the URL.
 - `summary` renders twice: as the standfirst under the headline and as the
   story text on the index. It must stand alone.
+- `share_text` feeds the share-to-X link (`Shared::ShareLinks`): one hook
+  line, 128 characters or fewer, plain text. Hashtags and mentions allowed;
+  no other markdown, no emoji. It must stand alone next to the post URL.
 - The body renders under a "The discussion" label with a drop cap on its first
   letter, so it opens with a sentence, not a heading or list.
 
@@ -32,6 +35,7 @@ categories: digest
 tags: ["<one bucket from categories.md>"]
 source_url: "<article URL>"
 hn_url: "https://news.ycombinator.com/item?id=<id>"
+share_text: "<one hook line, 128 chars or fewer>"
 summary: >-
   <3-5 sentences>
 ---
@@ -51,6 +55,7 @@ off the drop cap for these so it does not split the label.
 ...
 hn_url: "https://news.ycombinator.com/item?id=<id>"
 lobsters_url: "https://lobste.rs/s/<short id>/<slug>"
+share_text: "<one hook line, 128 chars or fewer>"
 summary: >-
   <3-5 sentences>
 ---
@@ -64,6 +69,6 @@ summary: >-
 
 When a story is already published, `write_post.py` edits that file in place:
 it replaces the take for each source researched today, appends a missing
-source with its URL key, and leaves `title`, `date`, `summary`, `tags` and
-every existing key untouched. It never removes a section or a key, and never
+source with its URL key, and leaves `title`, `date`, `summary`, `share_text`,
+`tags` and every existing key untouched. It never removes a section or a key, and never
 writes a second file for the same article.

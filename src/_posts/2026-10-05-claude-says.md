@@ -6,6 +6,7 @@ categories: digest
 tags: ["AI/ML"]
 source_url: "https://ohhfishal.net/Posts/claude"
 lobsters_url: "https://lobste.rs/s/7faqgg/claude_says"
+share_text: "'Claude says' makes you sound like you don't know. Stop outsourcing your authority. #AI"
 summary: >-
   A blog post argues that opening a reply with "Claude says" undermines the
   speaker: deferring to an LLM signals the topic is outside their expertise,

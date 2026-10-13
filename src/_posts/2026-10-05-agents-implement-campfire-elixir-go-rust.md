@@ -5,6 +5,7 @@ date: 2026-10-05 09:42:17 -0600
 categories: digest
 tags: ["Dev Tools"]
 source_url: "https://x.com/dhh/status/2106810173683851564"
+share_text: "DHH let agents rewrite Campfire in 3 languages. Ruby lost. Does language choice even matter now? #Ruby #Rust"
 summary: >-
   DHH says he had coding agents implement and optimize the Campfire web app in Elixir, Go, and Rust, with Ruby slowest. He long accepted that cost for productivity and developer joy. He asks whether that trade still holds if agents write and validate code humans no longer read. In a follow-up he adds Rust has costs like slow compiles, but insists agent-written code demands a new view of language choice.
 ---

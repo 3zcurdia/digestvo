@@ -5,6 +5,7 @@ date: 2026-10-04 08:11:16 -0600
 categories: digest
 tags: ["Culture"]
 hn_url: "https://news.ycombinator.com/item?id=49949438"
+share_text: "The man who taught a generation how Silicon Valley happened has died. RIP Bob Cringely. #TechHistory"
 summary: >-
   It has been reported that Bob Cringely, the tech journalist and PBS
   documentarian whose real name was Mark Stevens, died in his sleep early

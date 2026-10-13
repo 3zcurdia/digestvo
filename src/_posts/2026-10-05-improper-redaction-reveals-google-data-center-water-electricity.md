@@ -6,6 +6,7 @@ categories: digest
 tags: ["Systems & Infra"]
 source_url: "https://www.1011now.com/2026/09/30/more-questions-than-answers-about-lincolns-google-data-center-water-electricity-usage/"
 hn_url: "https://news.ycombinator.com/item?id=49957068"
+share_text: "Google 'redacted' its water use. Highlight, copy, paste — revealed. 765M gallons. Oops. #DataCenters"
 summary: >-
   Nebraska now requires data centers to self-report their water and power use
   to the state's Department of Water, Energy, and Environment under a July

@@ -6,6 +6,7 @@ categories: digest
 tags: ["Culture"]
 source_url: "https://refactoringenglish.com/blog/anti-patterns-software-blogging/"
 lobsters_url: "https://lobste.rs/s/rwdufq/anti_patterns_software_blogging"
+share_text: "Your blog intro is too long and your links aren't explanations. Fix it in 3 sentences. #Blogging"
 summary: >-
   Michael Lynch catalogs the anti-patterns he sees in developer blogs:
   meandering intros that delay the payoff, assuming readers share your

@@ -6,6 +6,7 @@ categories: digest
 tags: ["Dev Tools"]
 source_url: "https://blog.buenzli.dev/flirt-is-open-source/"
 lobsters_url: "https://lobste.rs/s/9iztqv/flirt_is_now_open_source"
+share_text: "Reviewers drowning in force-pushes? Flirt shows only what you haven't seen. Now open source. #DevTools"
 summary: >-
   Flirt, a local-first code review tool built around the patch-series workflow
   where authors continuously amend, rebase and force-push, has been released

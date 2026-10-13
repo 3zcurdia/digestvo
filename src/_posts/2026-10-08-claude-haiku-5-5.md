@@ -6,6 +6,7 @@ categories: digest
 tags: ["AI Release"]
 source_url: "https://www.anthropic.com/claude-haiku-5-5"
 hn_url: "https://news.ycombinator.com/item?id=49996437"
+share_text: "Haiku 5.5: 75% cheaper, beats GPT-6 Luna on agentic benchmarks. The subagent era is here. #Claude"
 summary: >-
   Anthropic launched Claude Haiku 5.5, its cheapest, fastest small model,
   aimed at high-volume work like summaries, compaction, classification and

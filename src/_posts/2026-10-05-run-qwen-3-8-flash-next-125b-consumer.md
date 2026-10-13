@@ -6,6 +6,7 @@ categories: digest
 tags: ["AI/ML"]
 source_url: "https://github.com/Niko1221/Strata"
 hn_url: "https://news.ycombinator.com/item?id=49953495"
+share_text: "125B model on a gaming PC at 100+ tok/s. Your RTX 4090 is now a datacenter. #LLM #OpenSource"
 summary: >-
   Strata is an open-source inference engine and one-click installer that runs
   Qwen3.8-Flash-Next, a 125-billion-parameter mixture-of-experts model, on

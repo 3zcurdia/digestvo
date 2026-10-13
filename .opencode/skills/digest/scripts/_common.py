@@ -57,11 +57,13 @@ BRIEF_FIELDS = {
     "summary": str,
     "take": str,
     "sentiment": str,
+    "share_text": str,
 }
 SUMMARY_SENTENCES = (3, 6)
 SUMMARY_WORDS = (40, 110)
 TAKE_SENTENCES = (3, 7)
 TAKE_WORDS = (60, 200)
+SHARE_TEXT_MAX_CHARS = 128
 
 UA = "digestvo-digest-skill/2.0 (newsletter aggregator)"
 

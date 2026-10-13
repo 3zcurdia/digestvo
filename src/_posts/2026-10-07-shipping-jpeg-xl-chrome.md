@@ -6,6 +6,7 @@ categories: digest
 tags: ["Web & Platforms"]
 source_url: "https://developer.chrome.com/blog/jpeg-xl-in-chrome"
 hn_url: "https://news.ycombinator.com/item?id=49991227"
+share_text: "JPEG XL is back in Chrome — decoded by a pure-Rust rewrite for memory safety. Finally. #WebPerf"
 summary: >-
   Chrome is shipping JPEG XL decoding starting in Chrome 155, reversing the
   removal it made back in Chrome 110. The post explains that the decoder is

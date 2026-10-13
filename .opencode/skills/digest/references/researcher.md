@@ -26,7 +26,7 @@ Your prompt gives you `source` (`hn` or `lobsters`) and `id`.
    summary that the article could not be opened. Never guess the article's
    contents.
 
-4. Write the brief to the brief path. Exactly these five fields, bare JSON, no
+4. Write the brief to the brief path. Exactly these six fields, bare JSON, no
    code fence, no comments, no other fields:
 
    ```json
@@ -35,7 +35,8 @@ Your prompt gives you `source` (`hn` or `lobsters`) and `id`.
      "readable": true,
      "summary": "...",
      "take": "...",
-     "sentiment": "mixed"
+     "sentiment": "mixed",
+     "share_text": "..."
    }
    ```
 
@@ -50,7 +51,7 @@ Your prompt gives you `source` (`hn` or `lobsters`) and `id`.
 
 6. Reply with only the brief path.
 
-## The five fields
+## The six fields
 
 **category** — one of: `AI/ML`, `Dev Tools`, `Security & Privacy`,
 `Startups & Business`, `Systems & Infra`, `Science`, `Policy & Law`,
@@ -88,6 +89,12 @@ not write "commenters were divided", and do not open with "The thread".
 **sentiment** — the thread's mood, not the news: `enthusiasm` or `skeptical`
 when one side clearly wins, `mixed` when it splits on something substantive,
 `neutral` when there is no real argument.
+
+**share_text** — one hook line, 128 characters or fewer, plain text on one
+line. A short summary or catchphrase that earns the click on X, not a copy
+of the headline: name the sharpest number, tension or objection from the
+take. Hashtags (`#tag`) and mentions (`@user`) are allowed; no other
+markdown, no HTML, no backticks, no line breaks, no emoji.
 
 ## Do not
 

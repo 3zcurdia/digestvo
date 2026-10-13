@@ -6,6 +6,7 @@ categories: digest
 tags: ["AI Release"]
 source_url: "https://docs.mistral.ai/models/mistral-large-4-0"
 hn_url: "https://news.ycombinator.com/item?id=49977979"
+share_text: "1.05T parameters, open weights, $0.68/M tokens. Mistral just undercut everyone. #Mistral #AI"
 summary: >-
   Mistral has released Mistral Large 4, an open-weight general-purpose
   multimodal model built on a granular mixture-of-experts architecture with 49

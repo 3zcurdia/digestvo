@@ -6,6 +6,7 @@ categories: digest
 tags: ["AI Release"]
 source_url: "https://reflection.ai/blog/introducing-beam"
 hn_url: "https://news.ycombinator.com/item?id=49969183"
+share_text: "501B parameters, open weights, 1M context. Beam wants to eat frontier models' lunch. #AI"
 summary: >-
   Reflection AI introduces Beam, a 501-billion-parameter sparse
   mixture-of-experts model with 23 billion active parameters, pretrained on

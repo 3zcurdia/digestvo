@@ -6,6 +6,7 @@ categories: digest
 tags: ["AI/ML"]
 source_url: "https://fortune.com/2026/10/01/ai-godfather-yann-lecun-has-zero-concerns-about-human-extinction-says-anthropic-ceo-dario-amodei-is-deuded/"
 hn_url: "https://news.ycombinator.com/item?id=49946228"
+share_text: "LeCun has 'zero concerns' AI wipes us out — calls Amodei deluded. Boldest take in AI right now. #AI"
 summary: >-
   Yann LeCun, the only one of deep learning's three "godfathers" still
   unconcerned about AI risk, tells Fortune he has zero concerns about AI

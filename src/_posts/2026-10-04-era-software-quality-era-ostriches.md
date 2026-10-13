@@ -6,6 +6,7 @@ categories: digest
 tags: ["Security & Privacy"]
 source_url: "https://blogs.gnome.org/mcatanzaro/2026/10/02/the-era-of-software-quality-or-the-era-of-ostriches/"
 lobsters_url: "https://lobste.rs/s/elziso/era_software_quality_era_ostriches"
+share_text: "GNOME went from 13 CVEs to 188 projected — all AI-found. Stop banning AI bug reports. #Security"
 summary: >-
   GNOME release team member Michael Catanzaro argues that AI vulnerability
   scanning is now mandatory: GNOME went from 13 CVEs in 2023 to a projected

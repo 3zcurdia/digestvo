@@ -5,7 +5,7 @@ layout: default
 <%
   tags = Array(data.tags)
   sources = Shared::SourceLinks.new(data: data)
-  share = Shared::ShareLinks.new(data.title, url: resource.absolute_url)
+  share = Shared::ShareLinks.new(data, url: resource.absolute_url)
   # A story from both sites opens each take with a bold "On Hacker News." /
   # "On Lobsters." lead-in, and a drop cap would split that label in two.
   dropcap = sources.discussions.size < 2

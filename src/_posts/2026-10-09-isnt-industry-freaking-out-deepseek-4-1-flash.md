@@ -6,6 +6,7 @@ categories: digest
 tags: ["AI/ML"]
 source_url: "https://www.dgt.is/blog/2026-10-07-deepseek-freek-out/"
 hn_url: "https://news.ycombinator.com/item?id=50000488"
+share_text: "Indistinguishable from Claude Opus at a fraction of the price. Why isn't everyone panicking? #DeepSeek"
 summary: >-
   The author says a month of heavy use of DeepSeek 4.1 Flash across a dozen
   projects left him unable to tell it apart from Claude Opus, at a small

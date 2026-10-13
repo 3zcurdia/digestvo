@@ -6,6 +6,7 @@ categories: digest
 tags: ["Systems & Infra"]
 source_url: "https://sheets.works/data-viz/holding-up-the-internet"
 lobsters_url: "https://lobste.rs/s/lhr4oy/people_holding_up_internet"
+share_text: "11 of 23 internet-critical projects rest on 1–2 humans. Time zones, curl, sudo — all vibes. #OpenSource"
 summary: >-
   The article downloads the full commit history of 23 projects that phones,
   browsers and servers depend on and counts who did the regular work, defined

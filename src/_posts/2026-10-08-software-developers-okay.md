@@ -6,6 +6,7 @@ categories: digest
 tags: ["Culture"]
 source_url: "https://www.baldurbjarnason.com/2026/05-software-developers-are-not-okay/"
 lobsters_url: "https://lobste.rs/s/0gvyif/software_developers_are_not_okay"
+share_text: "Developers aren't okay: burnout, layoffs, and AI that feels like a clueless junior. Brutal honesty. #DevLife"
 summary: >-
   Baldur Bjarnason argues that software developers and UX designers are doing
   badly: a wave of 'I'm leaving tech' videos, burnout, and a 30% drop in

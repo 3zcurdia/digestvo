@@ -6,6 +6,7 @@ categories: digest
 tags: ["Security & Privacy"]
 source_url: https://frankwiles.com/posts/i-got-targeted/
 lobsters_url: https://lobste.rs/s/cd5gdk/i_got_targeted_trying_get_your
+share_text: "A 'client' sent a Dropbox git repo. The post-checkout hook stole credentials. Trust no repo. #InfoSec"
 summary: >-
   Frank Wiles, founder of REVSYS, describes a targeted phishing attempt that
   delivered a fake Ed Tech project brief via a Dropbox folder containing a git

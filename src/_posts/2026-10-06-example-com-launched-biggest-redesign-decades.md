@@ -6,6 +6,7 @@ categories: digest
 tags: ["Web & Platforms"]
 source_url: "https://www.debugbear.com/blog/example-dot-com-redesign-history"
 hn_url: "https://news.ycombinator.com/item?id=49971921"
+share_text: "example.com got its biggest redesign in decades. Six languages, one SVG book. The internet's museum moved. #Web"
 summary: >-
   IANA's reserved documentation domain example.com got its biggest overhaul in
   decades on 28 September 2026. The static English page gained six languages —

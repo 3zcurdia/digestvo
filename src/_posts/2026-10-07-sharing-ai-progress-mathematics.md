@@ -6,6 +6,7 @@ categories: digest
 tags: ["AI/ML"]
 source_url: "https://openai.com/index/sharing-ai-progress-in-mathematics/"
 hn_url: "https://news.ycombinator.com/item?id=49984923"
+share_text: "OpenAI dropped machine-made math proofs, Lean-checked. 3 hours of thinking per theorem. #Math #AI"
 summary: >-
   OpenAI is releasing a batch of new mathematical results produced by an
   internal frontier model, published in a GitHub repository. The company says

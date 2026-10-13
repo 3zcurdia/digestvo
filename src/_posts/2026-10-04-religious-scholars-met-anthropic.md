@@ -6,6 +6,7 @@ categories: digest
 tags: ["AI/ML"]
 source_url: "https://www.nytimes.com/2026/09/29/us/anthropic-claude-morals-ai.html"
 hn_url: "https://news.ycombinator.com/item?id=49950052"
+share_text: "Anthropic held secret meetings with priests about Claude's soul. Yes, really. #AIethics"
 summary: >-
   The New York Times reports that Anthropic co-founder Christopher Olah spent
   a year convening confidential meetings with dozens of religious scholars

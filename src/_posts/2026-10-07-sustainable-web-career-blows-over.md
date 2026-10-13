@@ -6,6 +6,7 @@ categories: digest
 tags: ["Culture"]
 source_url: "https://dbushell.com/2026/10/07/sustainable-web-career/"
 lobsters_url: "https://lobste.rs/s/jxhi2i/sustainable_web_career_for_when_all_this"
+share_text: "React is legacy, GitHub is a liability, CSS is forever. A career plan for after the hype. #WebDev"
 summary: >-
   David Bushell argues that web professionals should ride out the current
   AI-driven slump by investing in skills that hype cycles cannot replace. His

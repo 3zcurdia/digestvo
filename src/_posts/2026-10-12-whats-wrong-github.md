@@ -6,6 +6,7 @@ categories: digest
 tags: ["Dev Tools"]
 source_url: "https://www.gnu.org/philosophy/whats-wrong-with-github.html"
 lobsters_url: "https://lobste.rs/s/u9ue6c/what_s_wrong_with_github"
+share_text: "GNU says quit GitHub: nonfree JS, Copilot lock-in, fake-distributed git. Self-host or submit. #GitHub #FOSS"
 summary: >-
   The GNU Project urges developers to stop hosting repositories on GitHub,
   faulting its vague licensing guidance (Choose a License treats a copied

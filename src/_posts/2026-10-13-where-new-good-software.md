@@ -17,13 +17,14 @@ summary: >-
   10x tools.
 ---
 
-Most commenters land on the idea that the gains are real but invisible, because
-AI output goes into private dashboards, personal itch-scratchers like a Sony
-headset tray app, and internal maintenance instead of shippable products. They
-point to the 2x speedup teams report while holding 10x tools as evidence the
-surplus is absorbed as coffee breaks and review overhead rather than new
-releases. The sharpest objection is that cheaper code actively lowers the bar,
-because when slop is cheap to produce and cheap to fix there is less risk in
-shipping worse software and users will accept it anyway. That camp sees fast
-fashion, not hidden abundance, with horrendous LLM-generated code that no human
-wants to maintain.
+Most commenters reject the premise that AI coding is meant to produce better
+consumer software, arguing that entrenched companies use LLMs to cut labor costs
+and ship barely functional products faster while captive users absorb the
+quality drop. Even the author's claim that developers are pocketing a 10x
+speedup for long coffee breaks draws pushback from engineers who point out that
+human code review, QA accountability, and cognitive overhead cap real-world
+output around 2x to 3x. The strongest counterexample comes from developers
+building tiny, single-purpose personal tools—like a custom Rust tray app for a
+Sony wireless headset on Linux or a 1GB RAM Raspberry Pi flow monitor—which
+supports the thesis that AI's real output is bespoke private software nobody
+else ever sees.

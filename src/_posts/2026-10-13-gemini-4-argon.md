@@ -17,13 +17,16 @@ summary: >-
   safeguards. Availability is stated as Pro and Ultra subscribers.
 ---
 
-Most commenters land on frustration with the rollout, because Pro subscribers in
-the EU and US report 404s, missing model selectors, and conflicting messages
-about whether Argon needs Ultra or also works in the Gemini app and Antigravity.
-The sharpest objection is that the benchmark leads are benchmaxxing to please
-markets, because several heavy users say Opus 5.5 feels only marginally better
-and top models are indistinguishable once you validate thoroughly for shipped
-code. Defenders of rapid progress point to year-over-year jumps in math, code,
-and the claimed Millennium-prize solve as proof the slowdown talk is wishful
-thinking. A second front mocks the announcement page itself, whose broken
-scrolling and memory-hungry motion fail even on high-end phones and desktops.
+Most commenters focus on the botched rollout and heavy landing page, noting that
+while the announcement promises availability for both Pro and Ultra tiers, Pro
+subscribers in the EU and inside the Antigravity IDE are hit with Ultra upgrade
+prompts, and the page itself crashes mobile Safari and breaks desktop scrolling
+unless reduced motion is enabled. On the model's substance, a debate breaks out
+over whether frontier capabilities are accelerating or hitting diminishing
+returns. One camp argues progress is unstoppable whenever a verification
+environment exists, pointing to recent leaps from high-school math competitions
+to Quasi-Riemann and Navier-Stokes problems. The sharpest objection counters
+that the capability delta between top releases like Claude Opus 5.5 and Argon
+has narrowed to incremental, harness-driven gains that still require thorough
+human validation on $200-a-week coding plans, making a 10x speedup in tokens per
+second far more valuable than marginal benchmark bumps.

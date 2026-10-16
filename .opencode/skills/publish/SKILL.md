@@ -1,6 +1,6 @@
 ---
 name: publish
-description: Commit every pending change and push to main, which deploys the site via GitHub Actions. Use when the user runs /publish or asks to publish, ship, deploy, or push the current changes.
+description: Commit every pending change and push to main, which deploys the site via GitHub Actions, or announce new posts on the Telegram channel. Use when the user runs /publish or asks to publish, ship, deploy, or push the current changes, or to post to Telegram.
 compatibility: opencode
 metadata:
   opencode/autoinvoke: "false"
@@ -52,3 +52,30 @@ conflicts, and never pulls, rebases, or force-pushes.
 Paste the `REPORT` block. Then add: the commit landed on `main` and the
 site redeploys in a couple of minutes. If the user wants to watch the
 run: `gh run watch` from the repo root.
+
+## Step 4 — Telegram (opt-in, only when asked)
+
+After a successful push, the user may ask to announce the new posts on
+the Telegram public channel. Never run this step unprompted. In its
+default form (no file args, takes posts from the HEAD commit) only run it
+after the push succeeds; with explicit file args it can run standalone,
+no commit needed. One message per post: title, hook,
+summary, and links (site, original, HN/Lobsters when present).
+
+- Script: `.opencode/skills/publish/scripts/telegram_post.py`.
+- Config (environment, never committed): `TELEGRAM_BOT_TOKEN` (from
+  @BotFather), `TELEGRAM_CHANNEL` (e.g. `@digestvo`). The bot must be an
+  administrator of the channel. The script never prints the token.
+
+```sh
+python3 .opencode/skills/publish/scripts/telegram_post.py --dry-run
+python3 .opencode/skills/publish/scripts/telegram_post.py
+```
+
+With no file args it sends the posts Added in the HEAD commit and skips
+Modified ones (pass `--include-updated` to include them, or pass explicit
+`src/_posts/…md` paths). `--chat @handle` overrides `TELEGRAM_CHANNEL`
+for one run. Telegram-only (no commit needed): pass explicit post paths —
+the script touches git only when no files are given. If it prints `NOTHING TO SEND`, say so and stop. On any
+error, stop and paste it verbatim — a failed run may already have sent
+some messages, and the error names which ones.

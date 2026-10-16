@@ -9,7 +9,7 @@ With no file args, posts are taken from the HEAD commit
 commit are sent, Modified ones are skipped unless --include-updated is given.
 With file args, exactly those files are sent.
 
-Each post becomes one message: title, share_text hook, summary, and links
+Each post becomes one message: title, share_text hook, and links
 (site, original, HN/Lobsters when present), sent via the Bot API as HTML.
 
 Config comes from the environment and is never committed:
@@ -127,7 +127,6 @@ def build_message(keys, url):
     """HTML message for one post, truncated to Telegram's 4096-char limit."""
     title = keys.get("title", "(untitled)").strip()
     share = keys.get("share_text", "").strip()
-    summary = re.sub(r"\s+", " ", keys.get("summary", "")).strip()
 
     links = []
     if url:
@@ -145,16 +144,14 @@ def build_message(keys, url):
     head = "<b>{0}</b>".format(html.escape(title, quote=False))
     parts = [head]
     if share:
-        parts.append("<i>{0}</i>".format(html.escape(share, quote=False)))
-    parts.append("{SUMMARY}")
+        parts.append(html.escape(share, quote=False))
     if links:
         parts.append("  ·  ".join(links))
-    template = "\n\n".join(parts)
+    message = "\n\n".join(parts)
 
-    budget = MESSAGE_LIMIT - len(template.replace("{SUMMARY}", "")) - 1
-    if len(summary) > budget:
-        summary = summary[:max(0, budget - 1)].rstrip() + "…"
-    return template.replace("{SUMMARY}", html.escape(summary, quote=False))
+    if len(message) > MESSAGE_LIMIT:
+        message = message[:MESSAGE_LIMIT - 1].rstrip() + "…"
+    return message
 
 
 def send_message(api_base, chat, message):

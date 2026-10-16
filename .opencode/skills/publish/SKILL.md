@@ -59,8 +59,8 @@ After a successful push, the user may ask to announce the new posts on
 the Telegram public channel. Never run this step unprompted. In its
 default form (no file args, takes posts from the HEAD commit) only run it
 after the push succeeds; with explicit file args it can run standalone,
-no commit needed. One message per post: title, hook,
-summary, and links (site, original, HN/Lobsters when present).
+no commit needed. One message per post: title, hook, and links (site,
+original, HN/Lobsters when present).
 
 - Script: `.opencode/skills/publish/scripts/telegram_post.py`.
 - Config (environment, never committed): `TELEGRAM_BOT_TOKEN` (from

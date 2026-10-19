@@ -5,6 +5,7 @@
   </head>
   <body class="m-0 flex min-h-screen flex-col bg-body-background font-serif text-[1.1875rem] leading-[1.6] text-body-color [font-kerning:normal] [font-optical-sizing:auto] [text-rendering:optimizeLegibility] selection:bg-action-color/30 dark:antialiased">
     <%= render Shared::Navbar.new(metadata: site.metadata, resource: resource) %>
+    <%= render Shared::ReleaseBanner.new(posts: collections.posts.resources) %>
 
     <main class="w-full flex-1 px-[clamp(1rem,4vw,3rem)] pt-10 pb-16">
       <%# One column for every page, so the masthead, the index and every

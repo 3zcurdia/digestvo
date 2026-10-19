@@ -52,4 +52,37 @@ deviceScheme.addEventListener("change", () => {
 
 renderToggle()
 
+// Days-since recount for the release ticker below the masthead. The banner is
+// server-rendered with the build day's count as the no-JS fallback; here the
+// count is recomputed from the <p data-last-release="YYYY-MM-DD"> date so it
+// stays right when the page is read days after the last build. Both phrasings
+// come from the locale (data-since-one / data-since-other), so no language is
+// hardcoded here — the plural template carries a %{count} placeholder.
+const banner = document.querySelector("[data-release-banner]")
+if (banner?.dataset.lastRelease) {
+  const [year, month, day] = banner.dataset.lastRelease.split("-").map(Number)
+  const utcLast = Date.UTC(year, month - 1, day)
+  const now = new Date()
+  const utcToday = Date.UTC(
+    now.getFullYear(),
+    now.getMonth(),
+    now.getDate()
+  )
+  const days = Math.max(
+    0,
+    Math.round((utcToday - utcLast) / 86_400_000)
+  )
+  const count = banner.querySelector("[data-days-since]")
+  if (count) {
+    if (days === 1 && banner.dataset.sinceOne) {
+      count.textContent = banner.dataset.sinceOne
+    } else if (banner.dataset.sinceOther) {
+      count.textContent = banner.dataset.sinceOther.replace(
+        "%{count}",
+        String(days)
+      )
+    }
+  }
+}
+
 console.info("Bridgetown is loaded!")

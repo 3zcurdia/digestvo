@@ -1,7 +1,10 @@
 # Spanish locale data, auto-loaded into I18n by Site::Localizable.
-# Only the date vocabulary lives here — UI strings are translated in place in
-# the templates. Formats use strftime directives; %A and %B are swapped for the
-# names below by I18n, not by Ruby.
+# Date vocabulary plus the release-ticker UI strings (`release_banner`), read
+# via the `t` helper in src/_components/shared/release_banner.erb — the JS
+# recount in frontend/javascript/index.js reuses the same strings from data
+# attributes so no language is hardcoded outside this file. Formats use
+# strftime directives; %A and %B are swapped for the names below by I18n, not
+# by Ruby.
 es:
   date:
     formats:
@@ -30,3 +33,13 @@ es:
       long: "%A, %-d de %B de %Y"
     am: "am"
     pm: "pm"
+
+  # Full-width strip under the masthead, rendered as
+  # "<label>: <since>, <average>" — e.g. "Lanzamiento de IA: hace 2 días,
+  # 3.3 promedio en días de release".
+  release_banner:
+    label: "Lanzamientos de IA"
+    since:
+      one: "hace 1 día"
+      other: "hace %{count} días"
+    average: "%{avg} promedio en días entre releases"

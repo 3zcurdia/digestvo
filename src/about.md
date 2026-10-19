@@ -5,50 +5,51 @@ description: >-
   Qué es digesTvo, de dónde salen las historias y por qué todo está compuesto
   como un periódico.
 summary: >-
-  Las noticias técnicas y frikis que valen tu mañana, leídas en Hacker News y
+  Las noticias técnicas y nerd que valen tu mañana, leídas en Hacker News y
   Lobsters, masticadas y servidas en formato de periódico.
 ---
 
-Every morning the two biggest nerd front pages publish more than anyone can
-read, and none of it will still matter by lunch. So somebody has to read it.
-That is the whole business model.
+Cada mañana las dos portadas más nerd publican más de lo que nadie puede
+leer, y nada seguirá importando a la hora de la comida. Así que alguien tiene
+que leerlo. Ese es todo el modelo de negocio.
 
-This is my personal edit: the handful of stories that survived I consider
-a close read, each one boiled down to what the article says and what the people say,
-with a link to the original post so you can read it properly or go argue with
-strangers. A story that ran on both sites gets one entry, not two — overlap is a
-signal, and two communities with different tastes pushing the same thing to the
-top means it probably matters.
+Esta es mi selección personal: el puñado de historias que sobrevivieron a una
+lectura atenta, cada una reducida a lo que dice el artículo y a lo que dice la
+gente, con un enlace a la publicación original para que puedas leerla bien o ir
+a discutir con desconocidos. Una historia que salió en ambos sitios tiene una
+sola entrada, no dos el solapamiento es una señal, y que dos comunidades con
+gustos distintos pongan lo mismo arriba significa que probablemente importa.
 
-The look is old on purpose: a nameplate, dated editions, a hairline between
-sections, nothing blinking. The pace is not. It is built for the two minutes
-between the kettle boiling and the first meeting.
+El aspecto es viejo a propósito: un cabezal, ediciones fechadas, un filete
+entre secciones, nada parpadeando. El ritmo no. Está hecho para los dos minutos
+entre que hierve el agua y la primera reunión.
 
-## How a story reads
+## Cómo se lee una historia
 
-The headline, verbatim — nobody rewrites a good title. Then three or four
-sentences on what the article actually says, written to stand entirely on its
-own. Then **the discussion**: what the thread agreed on, where it split, and the
-sharpest objection in it. Not a second summary, a read of the argument, which
-is usually the part nobody wrote down.
+El titular, literal — nadie reescribe un buen título. Luego tres o cuatro
+frases sobre lo que dice realmente el artículo, escritas para sostenerse por sí
+solas. Después **la discusión**: en qué estuvo de acuerdo el hilo, dónde se
+dividió y la objeción más afilada. No un segundo resumen, sino una lectura del
+argumento, que suele ser la parte que nadie escribió.
 
-## What it is not
+## Lo que no es
 
-Not a firehose. An edition is picked, not accumulated, and most of the work is
-saying no. No ads, no trackers, no newsletter pop-up, no "read more" teasers.
-No hot takes either: the digest reports what a story said and what the thread
-argued, then leaves the verdict to you.
+No es una manguera. Una edición se elige, no se acumula, y la mayor parte del
+trabajo es decir que no. Sin anuncios, sin rastreadores, sin pop-up de
+newsletter, sin adelantos de "leer más". Tampoco opiniones en caliente: el
+digest cuenta lo que dijo una historia y lo que argumentó el hilo, y luego deja
+el veredicto en tus manos.
 
-## The name
+## El nombre
 
-Digestvo is the *digestive*, the noun — the thing your body breaks a meal down
-into so the rest of you can use it. You are handed the raw feed, a thousand
-submissions and a few thousand comments, and you get back the part that was
-worth the chewing.
+Digestvo es el *digestivo*, el sustantivo — aquello en lo que tu cuerpo
+descompone una comida para que el resto pueda usarla. Tú entregas el feed crudo,
+mil envíos y unos miles de comentarios, y recibes de vuelta la parte que valió
+la pena masticar.
 
-> We brew the coffee. You get to 💩 in social media with the energy to spare.
+> Preparamos el café. Tú te encargas de 💩 en redes sociales con la energía que te sobre.
 
-Set in Newsreader and Alfa Slab One, deployed by GitHub Pages, tracked by
-nobody, and open at
-[github.com/3zcurdia/digestvo](https://github.com/3zcurdia/digestvo) if you
-want to check the work.
+Compuesto en Newsreader y Alfa Slab One, desplegado con GitHub Pages, sin que
+nadie te rastree, y abierto en
+[github.com/3zcurdia/digestvo](https://github.com/3zcurdia/digestvo) por si
+quieres revisar el trabajo.

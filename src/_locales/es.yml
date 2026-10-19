@@ -1,0 +1,32 @@
+# Spanish locale data, auto-loaded into I18n by Site::Localizable.
+# Only the date vocabulary lives here — UI strings are translated in place in
+# the templates. Formats use strftime directives; %A and %B are swapped for the
+# names below by I18n, not by Ruby.
+es:
+  date:
+    formats:
+      default: "%d/%m/%Y"
+      short: "%-d de %B de %Y"
+      long: "%A, %-d de %B de %Y"
+
+    day_names: [domingo, lunes, martes, miércoles, jueves, viernes, sábado]
+    abbr_day_names: [dom, lun, mar, mié, jue, vie, sáb]
+
+    # Don't forget the nil at the beginning; there's no such thing as a 0th month
+    month_names: [~, enero, febrero, marzo, abril, mayo, junio, julio, agosto, septiembre, octubre, noviembre, diciembre]
+    abbr_month_names: [~, ene, feb, mar, abr, may, jun, jul, ago, sep, oct, nov, dic]
+    order:
+      - year
+      - month
+      - day
+
+  # Post and edition dates are Time objects, so I18n resolves them against
+  # `time.formats`, not `date.formats`. Nothing on the site renders a clock
+  # time, so both namespaces carry the same date-only patterns.
+  time:
+    formats:
+      default: "%A, %-d de %B de %Y"
+      short: "%-d de %B de %Y"
+      long: "%A, %-d de %B de %Y"
+    am: "am"
+    pm: "pm"

@@ -2,7 +2,7 @@
   <% if original_url %>
     <li>
       <a class="inline-flex items-center gap-0 text-action-color no-underline underline-offset-[0.18em] hover:underline focus-visible:rounded-[2px] focus-visible:outline-2 focus-visible:outline-action-color focus-visible:outline-offset-[3px]" href="<%= original_url %>">
-        Read the original<span aria-hidden="true">&nbsp;&rarr;</span>
+        Leer el original<span aria-hidden="true">&nbsp;&rarr;</span>
       </a>
     </li>
   <% end %>
@@ -27,7 +27,7 @@
             <path fill-rule="evenodd" d="M0 0h24v24H0V0Zm8 5.5v13h9.25v-2h-7V5.5H8Z" />
           </svg>
         <% end %>
-        <%= source[:label] %><span class="sr-only"> discussion</span>
+        <%= source[:label] %><span class="sr-only"> discusión</span>
       </a>
     </li>
   <% end %>
@@ -40,7 +40,7 @@
         <svg class="size-[1.05em] flex-none fill-current" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
           <path d="M18.9 1.15h3.68l-8.04 9.19L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.47l8.6-9.83L0 1.15h7.59l5.24 6.93 6.07-6.93Zm-1.29 19.5h2.04L6.49 3.24H4.3l13.31 17.41Z" />
         </svg>
-        <%= source[:label] %><span class="sr-only"> on X</span>
+        <%= source[:label] %><span class="sr-only"> en X</span>
       </a>
     </li>
   <% end %>

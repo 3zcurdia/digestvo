@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Bob Cringely ha muerto"
+title: "Bob Cringely ha fallecido"
 date: 2026-10-04 08:11:16 -0600
 categories: digest
 tags: ["Culture"]

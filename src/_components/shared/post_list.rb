@@ -11,7 +11,7 @@ class Shared::PostList < Bridgetown::Component
   # `limit` caps the list and turns on a link to the full archive when
   # stories were cut. `latest_day` keeps only the newest edition day (the home
   # page shows just the current day's stories) while `more_url` still compares
-  # against the full archive, so the "All stories" link stays visible whenever
+  # against the full archive, so the "Todas las historias" link stays visible whenever
   # older editions exist. `lead` sets the newest story as the front-page lead,
   # with a larger headline.
   def initialize(posts:, limit: nil, lead: false, more_url: nil, latest_day: false)

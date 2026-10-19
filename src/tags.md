@@ -1,9 +1,9 @@
 ---
 layout: page
-title: Topics
+title: Temas
 prose: false
 summary: >-
-  Every story is filed under one topic. Follow a topic to read the rest.
+  Cada historia está archivada en un tema. Sigue un tema para leer el resto.
 ---
 
 <%
@@ -17,10 +17,10 @@ summary: >-
         <h2 class="m-0 font-serif text-[1.375rem] leading-[1.2] font-[650] tracking-[-0.005em] text-balance text-heading-color">
           <a class="text-heading-color no-underline after:absolute after:inset-0 after:content-[''] focus-visible:outline-none group-hover:text-action-color" href="<%= tag[:path] %>"><%= tag[:display] %></a>
         </h2>
-        <span class="font-meta text-sm leading-[1.6] text-muted-color"><%= tag[:count] %> <%= tag[:count] == 1 ? "story" : "stories" %></span>
+        <span class="font-meta text-sm leading-[1.6] text-muted-color"><%= tag[:count] %> <%= tag[:count] == 1 ? "historia" : "historias" %></span>
       </li>
     <% end %>
   </ul>
 <% else %>
-  <p class="text-muted-color">No topics yet.</p>
+  <p class="text-muted-color">Aún no hay temas.</p>
 <% end %>

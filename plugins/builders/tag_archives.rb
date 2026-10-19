@@ -16,9 +16,9 @@ module Builders
           )
           page.data = HashWithDotAccess::Hash.new(
             "layout"    => "tag",
-            "title"     => "Stories in #{tag[:display]}",
-            "summary"   => "#{tag[:count]} #{tag[:count] == 1 ? "story" : "stories"} " \
-                           "filed under #{tag[:display]}",
+            "title"     => "Historias sobre #{tag[:display]}",
+            "summary"   => "#{tag[:count]} #{tag[:count] == 1 ? "historia" : "historias"} " \
+                           "registradas en #{tag[:display]}",
             "tag"       => tag[:display],
             "tag_slug"  => tag[:slug],
             "prose"     => false

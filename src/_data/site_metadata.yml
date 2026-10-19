@@ -5,12 +5,12 @@
 # in the templates via {{ site.metadata.myvariable }}.
 
 title: digesTvo
-tagline: Your nerdy news, digested
+tagline: Tus noticias nerd, digeridas
 email: ing.ezcurdia@gmail.com
 github: 3zcurdia
 buymeacoffee: 3zcurdia
 author:
   name: Luis Ezcurdia
 description: >-
-  A daily digest of the stories on nerdy news: what each article
-  says, and what the comment threads argued about.
+  Un resumen diario de las historias de la actualidad nerd: qué dice cada
+  artículo y sobre qué discutió el hilo de comentarios.

@@ -32,7 +32,7 @@ const renderToggle = () => {
   // The label offers the *other* edition — in the day's paper you are offered
   // the night edition, and the other way around.
   toggle.textContent =
-    currentEdition() === "dark" ? "Day edition" : "Night edition"
+    currentEdition() === "dark" ? "Edición de día" : "Edición de noche"
   toggle.hidden = false
 }
 

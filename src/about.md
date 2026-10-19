@@ -1,12 +1,12 @@
 ---
 layout: page
-title: About digesTvo
+title: Acerca de digesTvo
 description: >-
-  What digesTvo is, where the stories come from, and why the whole thing is set
-  like a newspaper.
+  Qué es digesTvo, de dónde salen las historias y por qué todo está compuesto
+  como un periódico.
 summary: >-
-  The tech and nerd news worth your morning, read off Hacker News and Lobsters,
-  chewed up and served in newspaper format.
+  Las noticias técnicas y frikis que valen tu mañana, leídas en Hacker News y
+  Lobsters, masticadas y servidas en formato de periódico.
 ---
 
 Every morning the two biggest nerd front pages publish more than anyone can

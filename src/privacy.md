@@ -1,36 +1,37 @@
 ---
 layout: page
-title: Privacy policy
+title: Política de privacidad
 description: >-
-  What digesTvo collects, which is nothing, and who else is in the loop when
-  you read an edition.
+  Qué recopila digesTvo, que es nada, y quién más entra en la ecuación cuando
+  lees una edición.
 summary: >-
-  No trackers, no cookies, no accounts. The short version of everything a
-  privacy policy usually has to say.
+  Sin rastreadores, sin cookies, sin cuentas. La versión corta de todo lo que
+  una política de privacidad suele tener que decir.
 ---
 
-## What this site collects
+## Qué recopila este sitio
 
-Nothing. digesTvo is a pile of static files: no cookies, no analytics, no
-ad tech, no accounts, no forms, nothing in `localStorage` except your edition
-choice — Day or Night — which never leaves your browser. There is no database
-to leak because there is no database.
+Nada. digesTvo es un montón de archivos estáticos: sin cookies, sin analíticas,
+sin publicidad, sin cuentas, sin formularios, y sin nada en `localStorage` más
+allá de tu elección de edición —día o noche—, que nunca sale de tu navegador.
+No hay ninguna base de datos que filtrar porque no hay ninguna base de datos.
 
-## Where it is hosted
+## Dónde está alojado
 
-The site is served by GitHub Pages, which keeps standard server logs —
-typically your IP address, the page requested and the time — to run and
-secure the service. Those logs are GitHub's, under
-[GitHub's Privacy Statement](https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement).
-Fonts are self-hosted, so loading a page calls no third-party asset service.
+El sitio lo sirve GitHub Pages, que guarda los registros estándar del servidor
+—normalmente tu dirección IP, la página solicitada y la hora— para operar y
+proteger el servicio. Esos registros son de GitHub, y se rigen por
+[la Declaración de privacidad de GitHub](https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement).
+Las tipografías se alojan en el propio sitio, así que cargar una página no llama
+a ningún servicio de recursos de terceros.
 
-## When you leave
+## Cuando te vas
 
-Story links point at the original articles, Hacker News, Lobsters and the
-rest. Once you follow one, that site's own policy applies — this one travels
-no further than the link.
+Los enlaces de las historias apuntan a los artículos originales, a Hacker News,
+a Lobsters y a los demás. En cuanto sigues uno, se aplica la política de ese
+sitio: ésta no viaja más allá del enlace.
 
-## Questions
+## Preguntas
 
-Write me an email [ing.ezcurdia@gmail.com](mailto:ing.ezcurdia@gmail.com) for a human
-answer.
+Escríbeme a [ing.ezcurdia@gmail.com](mailto:ing.ezcurdia@gmail.com) para una
+respuesta humana.

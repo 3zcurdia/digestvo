@@ -35,7 +35,7 @@ layout: default
     <div class="flex mt-5 items-center justify-between">
       <div class="flex flex-wrap gap-5">
         <time class="font-meta text-sm leading-[1.6] text-muted-color" datetime="<%= resource.date.strftime('%Y-%m-%d') %>">
-          <%= resource.date.strftime("%A, %B %-d, %Y") %>
+          <%= l(resource.date, format: :long) %>
         </time>
         <%= render sources %>
       </div>
@@ -46,7 +46,7 @@ layout: default
   <%# The body is always the digest of the comment threads, never a second
       summary — label it so a reader knows which voice they are reading. %>
   <section aria-labelledby="discussion-heading">
-    <h2 class="mb-4 font-meta text-xs leading-[1.6] font-bold uppercase tracking-[0.1em] text-muted-color" id="discussion-heading">The discussion</h2>
+    <h2 class="mb-4 font-meta text-xs leading-[1.6] font-bold uppercase tracking-[0.1em] text-muted-color" id="discussion-heading">La discusión</h2>
     <div class="prose<%= ' prose-dropcap' if dropcap %>">
       <%= yield %>
     </div>
@@ -56,15 +56,15 @@ layout: default
       the front page, next_post the one below. Each row only when it exists;
       the whole block drops out on a day with a single story. %>
   <% if prev_post || next_post %>
-    <nav class="mt-12 flex items-center justify-center gap-10 border-t border-border-color pt-4" aria-label="More stories">
+    <nav class="mt-12 flex items-center justify-center gap-10 border-t border-border-color pt-4" aria-label="Más historias">
       <% if prev_post %>
         <a class="group inline-flex items-center gap-[0.5em] font-meta text-sm leading-[1.6] font-bold uppercase tracking-[0.1em] text-heading-color no-underline hover:text-action-color focus-visible:rounded-[2px] focus-visible:text-action-color focus-visible:outline-2 focus-visible:outline-action-color focus-visible:outline-offset-4" href="<%= prev_post.relative_url %>">
-          <span class="inline-block text-[1.25em] leading-none font-normal group-hover:-translate-x-[0.2em] group-focus-visible:-translate-x-[0.2em]" aria-hidden="true">&larr;</span>Previous
+          <span class="inline-block text-[1.25em] leading-none font-normal group-hover:-translate-x-[0.2em] group-focus-visible:-translate-x-[0.2em]" aria-hidden="true">&larr;</span>Anterior
         </a>
       <% end %>
       <% if next_post %>
         <a class="group inline-flex items-center gap-[0.5em] font-meta text-sm leading-[1.6] font-bold uppercase tracking-[0.1em] text-heading-color no-underline hover:text-action-color focus-visible:rounded-[2px] focus-visible:text-action-color focus-visible:outline-2 focus-visible:outline-action-color focus-visible:outline-offset-4" href="<%= next_post.relative_url %>">
-          Next<span class="inline-block text-[1.25em] leading-none font-normal group-hover:translate-x-[0.2em] group-focus-visible:translate-x-[0.2em]" aria-hidden="true">&rarr;</span>
+          Siguiente<span class="inline-block text-[1.25em] leading-none font-normal group-hover:translate-x-[0.2em] group-focus-visible:translate-x-[0.2em]" aria-hidden="true">&rarr;</span>
         </a>
       <% end %>
     </nav>
@@ -74,14 +74,14 @@ layout: default
       when the tag is unique to this post — a lone story is not a thread. %>
   <% if related.any? && tags.any? %>
     <section class="mt-12" aria-labelledby="related-heading">
-      <h2 class="mb-4 font-meta text-xs leading-[1.6] font-bold uppercase tracking-[0.1em] text-muted-color" id="related-heading">More in <%= tags.first %></h2>
+      <h2 class="mb-4 font-meta text-xs leading-[1.6] font-bold uppercase tracking-[0.1em] text-muted-color" id="related-heading">Más en <%= tags.first %></h2>
       <ol class="m-0 list-none divide-y divide-border-color p-0" role="list">
         <% related.each do |post| %>
           <li class="group relative py-4 has-[a:focus-visible]:outline-2 has-[a:focus-visible]:outline-action-color has-[a:focus-visible]:outline-offset-4">
             <h3 class="m-0 font-serif text-[1.25rem] leading-[1.2] font-[650] tracking-[-0.005em] text-balance text-heading-color">
               <a class="text-heading-color no-underline after:absolute after:inset-0 after:content-[''] focus-visible:outline-none group-hover:text-action-color" href="<%= post.relative_url %>"><%= post.data.title %></a>
             </h3>
-            <time class="mt-1 block font-meta text-sm leading-[1.6] text-muted-color" datetime="<%= post.date.strftime('%Y-%m-%d') %>"><%= post.date.strftime("%B %-d, %Y") %></time>
+            <time class="mt-1 block font-meta text-sm leading-[1.6] text-muted-color" datetime="<%= post.date.strftime('%Y-%m-%d') %>"><%= l(post.date, format: :short) %></time>
           </li>
         <% end %>
       </ol>

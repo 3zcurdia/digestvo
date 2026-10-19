@@ -29,6 +29,12 @@ Bridgetown.configure do |config|
   # Available options are `erb` (default), `serbea`, or `liquid`
   template_engine "erb"
 
+  # The site is written in Spanish: `default_locale` drives `<html lang>`,
+  # `I18n.l` date formatting (see src/_locales/es.yml) and the `t` helper.
+  # `prefix_default_locale` stays false, so this adds no /es/ URL prefix.
+  config.default_locale = :es
+  config.available_locales = [:es]
+
   # Generate the Atom feed at /feed.xml and the `feed_meta` discovery tag
   init :"bridgetown-feed"
 

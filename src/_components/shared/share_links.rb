@@ -3,7 +3,7 @@ class Shared::ShareLinks < Bridgetown::Component
   # (resource.absolute_url bakes in site.config.url) and the post's share_text
   # (falling back to the title when share_text is absent), and turns them
   # into an X Web Intent link. Renders as a single inline anchor
-  # matching the SourceLinks row, so it sits next to "Read the original" /
+  # matching the SourceLinks row, so it sits next to "Leer el original" /
   # discussion links in the post header.
   def initialize(data, url:)
     text = data["share_text"]

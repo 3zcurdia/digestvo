@@ -30,7 +30,7 @@ class Shared::SourceLinks < Bridgetown::Component
   def related
     Array(@data["related_x_urls"]).filter_map do |url|
       url = present(url)
-      { label: "Related post", mark: :x, url: url } if url
+      { label: "Publicación relacionada", mark: :x, url: url } if url
     end
   end
 

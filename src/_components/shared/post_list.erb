@@ -3,7 +3,7 @@
     <% editions.each do |day, posts| %>
       <section aria-labelledby="edition-<%= day.iso8601 %>">
         <h2 class="mb-1 border-b-2 border-heading-color pb-[0.4rem] font-meta text-xs leading-[1.6] font-bold uppercase tracking-[0.1em] text-heading-color" id="edition-<%= day.iso8601 %>">
-          <time datetime="<%= day.iso8601 %>"><%= day.strftime("%A, %B %-d, %Y") %></time>
+          <time datetime="<%= day.iso8601 %>"><%= l(day, format: :long) %></time>
         </h2>
 
         <ol class="m-0 list-none divide-y divide-border-color p-0" role="list">
@@ -36,10 +36,10 @@
 
     <% if more_url %>
       <p class="mt-8 border-t border-border-color pt-4 font-meta text-sm leading-[1.6] font-semibold">
-        <a class="text-action-color no-underline underline-offset-[0.18em] focus-visible:rounded-[2px] focus-visible:outline-2 focus-visible:outline-action-color focus-visible:outline-offset-[3px]" href="<%= more_url %>">All stories<span aria-hidden="true">&nbsp;&rarr;</span></a>
+        <a class="text-action-color no-underline underline-offset-[0.18em] focus-visible:rounded-[2px] focus-visible:outline-2 focus-visible:outline-action-color focus-visible:outline-offset-[3px]" href="<%= more_url %>">Todas las historias<span aria-hidden="true">&nbsp;&rarr;</span></a>
       </p>
     <% end %>
   </div>
 <% else %>
-  <p class="text-muted-color">No stories published yet.</p>
+  <p class="text-muted-color">Aún no hay historias publicadas.</p>
 <% end %>

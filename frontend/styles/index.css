@@ -73,14 +73,10 @@
   }
 
   & h2 {
+    @apply section-label;
     margin-top: 2.75rem;
     padding-bottom: 0.4rem;
     border-bottom: 2px solid var(--color-heading-color);
-    font-family: var(--font-meta);
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
     color: var(--color-heading-color);
     text-wrap: balance;
   }
@@ -271,6 +267,129 @@
 
   & > p:first-child + * {
     clear: left;
+  }
+}
+
+/* Shared link and label treatments. The same focus ring, section label and
+   link styles repeat across the masthead, the banner, the index, the footer
+   and the post chrome — one `@utility` each so each value lives in one place
+   and templates compose them with the layout and color that differ per use.
+   Every interactive element pairs its link utility with `focus-ring`; the one
+   accent color and the flat ground are unchanged. */
+@utility focus-ring {
+  &:focus-visible {
+    border-radius: 2px;
+    outline: 2px solid var(--color-action-color);
+    outline-offset: 3px;
+  }
+}
+
+/* Small letter-spaced sans caps: edition dates, kickers, "La discusión". */
+@utility section-label {
+  font-family: var(--font-meta);
+  font-size: 0.75rem;
+  line-height: 1.6;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Bold body-ink link that lights up on hover: nav items, banner, kickers. */
+@utility link-plain {
+  font-weight: 700;
+  text-decoration-line: none;
+  text-underline-offset: 0.18em;
+
+  &:hover {
+    color: var(--color-action-color);
+  }
+}
+
+/* Accent-colored inline link: source lists, share, "more" links. Templates
+   add `hover:underline` where the underline only appears on hover. */
+@utility link-accent {
+  color: var(--color-action-color);
+  text-decoration-line: none;
+  text-underline-offset: 0.18em;
+}
+
+/* Footer links and the edition-toggle button share layout, type and color. */
+@utility link-footer {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-weight: 600;
+  color: var(--color-body-color);
+  text-decoration-line: none;
+  text-underline-offset: 0.18em;
+
+  &:hover {
+    color: var(--color-action-color);
+  }
+}
+
+/* Icon-only buttons in the masthead strip. */
+@utility link-icon {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem;
+  line-height: 0;
+  color: var(--color-body-color);
+  text-decoration-line: none;
+
+  &:hover {
+    color: var(--color-action-color);
+  }
+
+  &:focus-visible {
+    color: var(--color-action-color);
+  }
+}
+
+/* Previous/next pager on posts. */
+@utility link-pager {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  font-family: var(--font-meta);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-heading-color);
+  text-decoration-line: none;
+
+  &:hover {
+    color: var(--color-action-color);
+  }
+
+  &:focus-visible {
+    color: var(--color-action-color);
+  }
+}
+
+/* Stretched card title: the whole row is the hit area, so the link itself
+   takes no focus outline — the parent shows the ring via `card-focus`. */
+@utility link-card {
+  color: var(--color-heading-color);
+  text-decoration-line: none;
+
+  &::after {
+    position: absolute;
+    inset: 0;
+    content: "";
+  }
+
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+@utility card-focus {
+  &:has(a:focus-visible) {
+    outline: 2px solid var(--color-action-color);
+    outline-offset: 3px;
   }
 }
 

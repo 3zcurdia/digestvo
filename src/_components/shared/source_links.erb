@@ -1,7 +1,7 @@
 <ul class="m-0 flex list-none flex-wrap gap-x-5 gap-y-[0.4rem] p-0 font-meta text-sm leading-[1.6] font-semibold" role="list">
   <% if original_url %>
     <li>
-      <a class="inline-flex items-center gap-0 text-action-color no-underline underline-offset-[0.18em] hover:underline focus-visible:rounded-[2px] focus-visible:outline-2 focus-visible:outline-action-color focus-visible:outline-offset-[3px]" href="<%= original_url %>">
+      <a class="inline-flex items-center gap-0 link-accent hover:underline focus-ring" href="<%= original_url %>">
         Leer el original<span aria-hidden="true">&nbsp;&rarr;</span>
       </a>
     </li>
@@ -9,7 +9,7 @@
 
   <% discussions.each do |source| %>
     <li>
-      <a class="inline-flex items-center gap-[0.4rem] text-action-color no-underline underline-offset-[0.18em] hover:underline focus-visible:rounded-[2px] focus-visible:outline-2 focus-visible:outline-action-color focus-visible:outline-offset-[3px]" href="<%= source[:url] %>">
+      <a class="inline-flex items-center gap-[0.4rem] link-accent hover:underline focus-ring" href="<%= source[:url] %>">
         <% if source[:mark] == :hn %>
           <%# Y Combinator square, the mark Hacker News uses for itself. %>
           <svg class="size-[1.05em] flex-none fill-current" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
@@ -36,7 +36,7 @@
       discussions, so they never trigger the two-source lead-ins in post.erb. %>
   <% related.each do |source| %>
     <li>
-      <a class="inline-flex items-center gap-[0.4rem] text-action-color no-underline underline-offset-[0.18em] hover:underline focus-visible:rounded-[2px] focus-visible:outline-2 focus-visible:outline-action-color focus-visible:outline-offset-[3px]" href="<%= source[:url] %>">
+      <a class="inline-flex items-center gap-[0.4rem] link-accent hover:underline focus-ring" href="<%= source[:url] %>">
         <svg class="size-[1.05em] flex-none fill-current" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
           <path d="M18.9 1.15h3.68l-8.04 9.19L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.47l8.6-9.83L0 1.15h7.59l5.24 6.93 6.07-6.93Zm-1.29 19.5h2.04L6.49 3.24H4.3l13.31 17.41Z" />
         </svg>

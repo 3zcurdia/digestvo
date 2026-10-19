@@ -17,10 +17,10 @@ class Shared::Navbar < Bridgetown::Component
     url == path || url == "#{path}/" || section_collection(path) == resource_collection&.label
   end
 
-  # Nav links are Tailwind utilities (no site-nav CSS remains). The only
-  # difference between states is the text color: body ink at rest, the neon
-  # accent on hover or when the section is active.
-  NAV_LINK_BASE = "font-bold no-underline underline-offset-[0.18em] hover:text-action-color focus-visible:rounded-[2px] focus-visible:outline-2 focus-visible:outline-action-color focus-visible:outline-offset-[3px]".freeze
+  # Nav links compose the shared `link-plain`/`focus-ring` utilities (no
+  # site-nav CSS remains). The only difference between states is the text
+  # color: body ink at rest, the neon accent on hover or when active.
+  NAV_LINK_BASE = "link-plain focus-ring".freeze
 
   def nav_link_class(path)
     "#{NAV_LINK_BASE} #{active?(path) ? 'text-action-color' : 'text-body-color'}"

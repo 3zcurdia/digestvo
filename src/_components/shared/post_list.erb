@@ -2,16 +2,16 @@
   <div class="[&>section+section]:mt-12">
     <% editions.each do |day, posts| %>
       <section aria-labelledby="edition-<%= day.iso8601 %>">
-        <h2 class="mb-1 border-b-2 border-heading-color pb-[0.4rem] font-meta text-xs leading-[1.6] font-bold uppercase tracking-[0.1em] text-heading-color" id="edition-<%= day.iso8601 %>">
+        <h2 class="section-label mb-1 border-b-2 border-heading-color pb-[0.4rem] text-heading-color" id="edition-<%= day.iso8601 %>">
           <time datetime="<%= day.iso8601 %>"><%= l(day, format: :long) %></time>
         </h2>
 
         <ol class="m-0 list-none divide-y divide-border-color p-0" role="list">
           <% posts.each do |post| %>
             <% if lead?(post) %>
-              <li class="group relative pt-6 pb-5 has-[a:focus-visible]:outline-2 has-[a:focus-visible]:outline-action-color has-[a:focus-visible]:outline-offset-4">
+              <li class="group relative pt-6 pb-5 card-focus">
                 <h3 class="m-0 font-serif text-[clamp(1.75rem,1.2rem_+_2.2vw,2.375rem)] leading-[1.1] font-bold tracking-[-0.015em] text-balance text-heading-color">
-                  <a class="text-heading-color no-underline after:absolute after:inset-0 after:content-[''] focus-visible:outline-none group-hover:text-action-color" href="<%= post.relative_url %>"><%= post.data.title %></a>
+                  <a class="link-card group-hover:text-action-color" href="<%= post.relative_url %>"><%= post.data.title %></a>
                 </h3>
 
                 <% if post.data.summary %>
@@ -19,9 +19,9 @@
                 <% end %>
               </li>
             <% else %>
-              <li class="group relative py-5 has-[a:focus-visible]:outline-2 has-[a:focus-visible]:outline-action-color has-[a:focus-visible]:outline-offset-4">
+              <li class="group relative py-5 card-focus">
                 <h3 class="m-0 font-serif text-[1.375rem] leading-[1.2] font-[650] tracking-[-0.005em] text-balance text-heading-color">
-                  <a class="text-heading-color no-underline after:absolute after:inset-0 after:content-[''] focus-visible:outline-none group-hover:text-action-color" href="<%= post.relative_url %>"><%= post.data.title %></a>
+                  <a class="link-card group-hover:text-action-color" href="<%= post.relative_url %>"><%= post.data.title %></a>
                 </h3>
 
                 <% if post.data.summary %>
@@ -36,7 +36,7 @@
 
     <% if more_url %>
       <p class="mt-8 border-t border-border-color pt-4 font-meta text-sm leading-[1.6] font-semibold">
-        <a class="text-action-color no-underline underline-offset-[0.18em] focus-visible:rounded-[2px] focus-visible:outline-2 focus-visible:outline-action-color focus-visible:outline-offset-[3px]" href="<%= more_url %>">Todas las historias<span aria-hidden="true">&nbsp;&rarr;</span></a>
+        <a class="link-accent focus-ring" href="<%= more_url %>">Todas las historias<span aria-hidden="true">&nbsp;&rarr;</span></a>
       </p>
     <% end %>
   </div>

@@ -3,18 +3,18 @@
   <head>
     <%= render "head", metadata: site.metadata, title: data.title %>
   </head>
-  <body class="m-0 flex min-h-screen flex-col bg-body-background font-serif text-[1.1875rem] leading-[1.6] text-body-color [font-kerning:normal] [font-optical-sizing:auto] [text-rendering:optimizeLegibility] selection:bg-action-color/30 dark:antialiased">
-    <%= render Shared::Navbar.new(metadata: site.metadata, resource: resource) %>
-    <%= render Shared::ReleaseBanner.new(posts: collections.posts.resources) %>
+  <body class="m-0 bg-body-background font-serif text-[1.1875rem] leading-[1.6] text-body-color [font-kerning:normal] [font-optical-sizing:auto] [text-rendering:optimizeLegibility] selection:bg-action-color/30 dark:antialiased">
+    <%# Single page container: the masthead, the banner, the content and the
+        footer share the same edges and the same measure. %>
+    <div class="mx-auto flex min-h-screen w-full max-w-[calc(var(--container-column)_+_2*clamp(1rem,4vw,3rem))] flex-col px-[clamp(1rem,4vw,3rem)]">
+      <%= render Shared::Navbar.new(metadata: site.metadata, resource: resource) %>
+      <%= render Shared::ReleaseBanner.new(posts: collections.posts.resources) %>
 
-    <main class="w-full flex-1 px-[clamp(1rem,4vw,3rem)] pt-10 pb-16">
-      <%# One column for every page, so the masthead, the index and every
-          article share the same edges and the same measure. %>
-      <div class="mx-auto w-full max-w-column">
+      <main class="w-full flex-1 pt-10 pb-16">
         <%= yield %>
-      </div>
-    </main>
+      </main>
 
-    <%= render "footer", metadata: site.metadata %>
+      <%= render "footer", metadata: site.metadata %>
+    </div>
   </body>
 </html>

@@ -1,34 +1,37 @@
 ---
 layout: post
-title: "Flirt is now Open-Source"
+title: "Flirt ahora es de código abierto"
 date: 2026-10-06 09:23:08 -0600
 categories: digest
 tags: ["Dev Tools"]
 source_url: "https://blog.buenzli.dev/flirt-is-open-source/"
 lobsters_url: "https://lobste.rs/s/9iztqv/flirt_is_now_open_source"
-share_text: "Reviewers drowning in force-pushes? Flirt shows only what you haven't seen. Now open source. #DevTools"
+share_text: "¿Ahogado en force-pushes al revisar? Flirt muestra solo lo no visto. Ya es open source. #DevTools"
 summary: >-
-  Flirt, a local-first code review tool built around the patch-series workflow
-  where authors continuously amend, rebase and force-push, has been released
-  as open source on Codeberg. The tool remembers what a reviewer has already
-  seen and shows the difference to the current state, working across backends
-  such as GitHub and email mailing lists. Its author warns that Flirt is not
-  yet ready for general use, with bugs and missing features still outstanding,
-  and points contributors to a Zulip instance where LLM-written messages are
-  banned. A Forgejo backend, which would let the project dogfood itself, is
-  next on the roadmap.
+  Flirt, una herramienta de revisión de código local-first construida alrededor
+  del flujo de series de parches donde los autores enmiendan, hacen rebase y
+  force-push continuamente, se publicó como código abierto en Codeberg. La
+  herramienta recuerda lo que el revisor ya vio y muestra la diferencia con el
+  estado actual, funcionando con backends como GitHub y listas de correo. Su
+  autor advierte que Flirt aún no está listo para uso general, con errores y
+  funciones faltantes todavía pendientes, y dirige a los colaboradores a una
+  instancia de Zulip donde los mensajes escritos por LLM están prohibidos. Un
+  backend de Forgejo, que permitiría al proyecto probarse a sí mismo, es lo
+  siguiente en la hoja de ruta.
 ---
 
-Most commenters land on enthusiasm for the tool itself, because sjamaan and
-arcade say they had independently wanted this patch-series review workflow and
-value its local-first, forge-agnostic design. The sharpest objection is the AGPL
-license, because novafacing reports that legal departments at every employer
-they have worked for ban AGPL software even as a locally run binary on a work
-laptop, leaving them unable to try a tool they badly need; singpolyma pushes
-back that reviewing patches never involves deploying or shipping the code. A
-second argument concerns the LLM contribution policy: mxey notes that merely
-saying contributors may use LLMs personally is enough to land a project on the
-open-slopware list, while senekor replies that what people do outside the
-project is none of his business and agrees to soften the wording. manfred's
-practical criticism is that the launch post and README did not explain what
-Flirt is or how to install it, which the author fixed within the thread.
+La mayoría de los comentarios coincide en el entusiasmo por la herramienta en
+sí, porque sjamaan y arcade dicen que habían querido de forma independiente
+este flujo de revisión de series de parches y valoran su diseño local-first y
+agnóstico al forge. La objeción más aguda es la licencia AGPL, porque
+novafacing reporta que los departamentos legales de cada empleador para el
+que ha trabajado prohíben el software AGPL incluso como binario local en una
+portátil de trabajo, lo que le impide probar una herramienta que necesita
+mucho; singpolyma responde que revisar parches nunca implica desplegar ni
+distribuir el código. Un segundo debate concierne la política de
+contribuciones con LLM: mxey señala que con solo decir que los colaboradores
+pueden usar LLM en lo personal basta para que un proyecto caiga en la lista de
+open-slopware, mientras senekor responde que lo que la gente hace fuera del
+proyecto no es su asunto y acepta suavizar la redacción. La crítica práctica
+de manfred es que la publicación de lanzamiento y el README no explicaban qué
+es Flirt ni cómo instalarlo, lo que el autor corrigió dentro del hilo.

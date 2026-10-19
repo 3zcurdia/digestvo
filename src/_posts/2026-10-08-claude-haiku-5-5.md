@@ -6,31 +6,18 @@ categories: digest
 tags: ["AI Release"]
 source_url: "https://www.anthropic.com/claude-haiku-5-5"
 hn_url: "https://news.ycombinator.com/item?id=49996437"
-share_text: "Haiku 5.5: 75% cheaper, beats GPT-6 Luna on agentic benchmarks. The subagent era is here. #Claude"
+share_text: "Haiku 5.5: 75% más barato, supera a GPT-6 Luna en benchmarks agénticos. Llegó la era subagente. #Claude"
 summary: >-
-  Anthropic launched Claude Haiku 5.5, its cheapest, fastest small model,
-  aimed at high-volume work like summaries, compaction, classification and
-  subagent tasks running under Opus 5.5 and Sonnet 5.5. The company says it
-  costs about 75% less than Haiku 4.5 to run, scoring far above its
-  predecessor and above GPT-6 Luna on Terminal-Bench, OSWorld and Humanity's
-  Last Exam while still trailing Sonnet 5.5. Pricing splits at 100,000 tokens:
-  $0.10 per million input and $0.50 output below that line, five times more
-  above it. Anthropic also halved Sonnet 5.5's cache-read price and added
-  monthly API credits for Max and Team subscribers.
+  Anthropic lanzó Claude Haiku 5.5, su modelo pequeño más barato y rápido,
+  pensado para trabajo de alto volumen como resúmenes, compactación,
+  clasificación y tareas de subagentes bajo Opus 5.5 y Sonnet 5.5. La empresa
+  dice que cuesta cerca de 75% menos operarlo que Haiku 4.5, con puntajes muy
+  por encima de su predecesor y de GPT-6 Luna en Terminal-Bench, OSWorld y
+  Humanity's Last Exam, aunque sigue detrás de Sonnet 5.5. Los precios se
+  dividen en 100.000 tokens: $0.10 por millón de entrada y $0.50 de salida
+  por debajo de esa línea, cinco veces más por encima. Anthropic también
+  redujo a la mitad el precio de lectura de caché de Sonnet 5.5 y agregó
+  créditos mensuales de API para suscriptores Max y Team.
 ---
 
-Most commenters land on the new pricing tiers rather than the benchmarks,
-because the 100,000-token cutoff jumps input and output prices 5x and applies
-only to Haiku. The sharpest objection is that agentic work routinely blows past
-100k, so the headline discount evaporates exactly where Haiku would be used as a
-subagent, at which point one commenter's reading of Artificial Analysis data
-puts Haiku at roughly 3x Luna's cost per task, with GPT-6.1 Sol matching it on
-cost at higher intelligence. The counter is that flat per-token pricing was
-always a fiction, since neither encode nor decode scales linearly with compute,
-so tiering merely approximates real serving cost; others argue token price is
-the wrong yardstick and cost per completed task favors Haiku on Anthropic's own
-chart. Supporters add that Haiku was noticeably smarter than Luna and finally
-gives Anthropic a cheap model for summarization and triage work. A smaller
-current underneath debates whether the 47% quarterly drop in cost per unit of
-intelligence survives Jevons-paradox demand, which is why total AI spending
-keeps climbing.
+La mayoría de los comentarios se concentran en los nuevos niveles de precios más que en los benchmarks, porque el corte en 100.000 tokens multiplica por 5 los precios de entrada y salida y aplica solo a Haiku. La objeción más aguda es que el trabajo agéntico supera rutinariamente los 100k, así que el descuento anunciado se evapora justo donde Haiku se usaría como subagente, punto en el que la lectura de un comentarista de los datos de Artificial Analysis ubica a Haiku en unas 3 veces el costo por tarea de Luna, con GPT-6.1 Sol igualándolo en costo con mayor inteligencia. La réplica es que el precio plano por token siempre fue una ficción, porque ni la codificación ni la decodificación escalan de forma lineal con el cómputo, así que los niveles solo aproximan el costo real de servirlo; otros sostienen que el precio por token es la vara equivocada y que el costo por tarea completada favorece a Haiku en el propio gráfico de Anthropic. Sus defensores agregan que Haiku resultó notablemente más inteligente que Luna y que por fin le da a Anthropic un modelo barato para resúmenes y triaje. Una corriente menor por debajo debate si la caída trimestral del 47% en el costo por unidad de inteligencia sobrevive a la demanda de la paradoja de Jevons, que es por lo que el gasto total en IA sigue subiendo.

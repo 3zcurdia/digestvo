@@ -1,31 +1,22 @@
 ---
 layout: post
-title: "Whistle: Speech to Text in 16.9 MB"
+title: "Whistle: voz a texto en 16.9 MB"
 date: 2026-10-09 08:51:10 -0600
 categories: digest
 tags: ["AI/ML"]
 source_url: "https://cactuscompute.com/blog/whistle"
 hn_url: "https://news.ycombinator.com/item?id=50008427"
-share_text: "Speech-to-text in 16.9MB, on CPU, 11ms to first token. Whisper just got lapped. #AI #STT"
+share_text: "Voz a texto en 16.9MB, en CPU, 11ms al primer token. Whisper quedó atrás. #AI #STT"
 summary: >-
-  Cactus Compute releases Whistle, an open speech recognition model packaged
-  as a single 16.9 MB file that runs on the CPU with no dependencies. It
-  transcribes seven languages, English, German, French, Spanish, Italian,
-  Dutch and Polish, with word timestamps and speech embeddings, all on device.
-  The blog post reports it beating Whisper base and Moonshine tiny v2 on
-  several word error rate benchmarks while reaching its first token in 11.1 ms
-  and decoding 1,319 tokens per second. Weights, a C++ engine and a Python
-  package ship on Hugging Face, GitHub and PyPI.
+  Cactus Compute lanza Whistle, un modelo abierto de reconocimiento de voz
+  empaquetado como un solo archivo de 16.9 MB que corre en la CPU sin
+  dependencias. Transcribe siete idiomas, inglés, alemán, francés, español,
+  italiano, neerlandés y polaco, con marcas de tiempo por palabra y embeddings
+  de voz, todo en el dispositivo. La publicación reporta que supera a Whisper
+  base y a Moonshine tiny v2 en varios benchmarks de tasa de error de
+  palabras, alcanzando su primer token en 11.1 ms y decodificando 1.319 tokens
+  por segundo. Los pesos, un motor en C++ y un paquete de Python llegan en
+  Hugging Face, GitHub y PyPI.
 ---
 
-Most commenters land on the benchmarks being genuinely impressive for the size,
-because hands-on tests in the thread transcribed complex sentences accurately in
-a footprint small enough to sit in CPU L3 cache. The sharpest objection is that
-binary size was never the hard part of speech-to-text: one commenter says the
-real challenge is transcribing his 84-year-old stroke-impaired father, and every
-sound his mouth makes still lands on the page. That connects to a recurring
-quality complaint, since small models reportedly hold up on clean
-in-distribution western accents but degrade on Mexican and Venezuelan Spanish
-and on conversational rhythm. A narrower argument runs over the L3 claim itself:
-one reader says cache residency buys an order of magnitude in latency, another
-replies it mostly shows up as throughput rather than end-to-end latency.
+La mayoría de los comentarios coinciden en que los benchmarks son genuinamente impresionantes para el tamaño, porque pruebas directas en el hilo transcribieron frases complejas con precisión en una huella lo bastante pequeña para caber en la caché L3 de la CPU. La objeción más aguda es que el tamaño del binario nunca fue lo difícil de la voz a texto: un comentarista dice que el verdadero reto es transcribir a su padre de 84 años con secuelas de un derrame, y cada sonido que sale de su boca igual termina en la página. Eso conecta con una queja recurrente de calidad, porque los modelos pequeños supuestamente rinden en acentos occidentales limpios dentro de la distribución pero se degradan con el español mexicano y venezolano y con el ritmo conversacional. Un argumento más estrecho corre sobre la afirmación de la L3 misma: un lector dice que residir en caché compra un orden de magnitud en latencia, otro responde que se nota sobre todo en throughput más que en latencia de punta a punta.

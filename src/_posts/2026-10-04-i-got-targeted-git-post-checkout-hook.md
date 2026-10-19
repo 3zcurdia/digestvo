@@ -1,32 +1,32 @@
 ---
 layout: post
-title: "I got targeted: Trying to get your credentials via a git post-checkout hook"
+title: "Fui un objetivo: intentaron robar mis credenciales con un hook post-checkout de git"
 date:   2026-10-04 00:44:46 -0600
 categories: digest
 tags: ["Security & Privacy"]
 source_url: https://frankwiles.com/posts/i-got-targeted/
 lobsters_url: https://lobste.rs/s/cd5gdk/i_got_targeted_trying_get_your
-share_text: "A 'client' sent a Dropbox git repo. The post-checkout hook stole credentials. Trust no repo. #InfoSec"
+share_text: "'Cliente' envió un repo git por Dropbox. El hook post-checkout robaba credenciales. No confíe en ningún repo. #InfoSec"
 summary: >-
-  Frank Wiles, founder of REVSYS, describes a targeted phishing attempt that
-  delivered a fake Ed Tech project brief via a Dropbox folder containing a git
-  repository. Inside .git/hooks sat a real post-checkout hook alongside the usual
-  .example files; it fetched an OS-specific binary from a Vercel-hosted
-  command-and-control server, made it executable, ran it, and deleted itself.
-  Wiles caught it when the "client" told him to switch to an NDA branch, and
-  alerted Dropbox and Vercel. The operators were also impersonating a real
-  development shop.
+  Frank Wiles, fundador de REVSYS, describe un intento de phishing dirigido que
+  entregó un brief falso de un proyecto de tecnología educativa mediante una carpeta de Dropbox
+  con un repositorio git. Dentro de .git/hooks había un hook post-checkout real junto a los
+  habituales archivos .example; descargaba un binario específico del sistema operativo desde un servidor
+  de comando y control alojado en Vercel, lo hacía ejecutable, lo corría y se borraba a sí mismo.
+  Wiles lo detectó cuando el "cliente" le dijo que cambiara a una rama de NDA, y
+  alertó a Dropbox y a Vercel. Los atacantes también estaban suplantando a una
+  empresa de desarrollo real.
 ---
 
-Most commenters land on Git needing a direnv-style gate before hooks run,
-because .git is treated as trusted local state even when a repo arrived as a
-Dropbox download or a tarball rather than a clone; the post author himself
-endorses the idea. The sharpest objection comes from agwa, who notes that a
-plain git clone is safe by design: Git refuses to check out paths under .git/
-and treats a clone that pwns you as a vulnerability, so the danger lives
-entirely in installing a directory tree some other way and anyone who only ever
-clones is out of reach. The thread also escalates the payload, with agwa's
-core.fsmonitor variant firing on a bare git status that IDEs, go build and shell
-prompts run implicitly, making a shipped .git/config nastier than any hook. A
-heavily upvoted tip to disable hooks with core.hooksPath /dev/null draws fire
-when oger points out a repo's own config can set it back.
+La mayoría de los comentarios coinciden en que Git necesita una barrera estilo direnv antes de ejecutar hooks,
+porque .git se trata como estado local confiable aun cuando un repo llegó como una
+descarga de Dropbox o un tarball en vez de un clon; el propio autor del artículo
+respalda la idea. La objeción más dura viene de agwa, quien señala que un
+git clone simple es seguro por diseño: Git se niega a extraer rutas bajo .git/
+y trata un clon que lo compromete como una vulnerabilidad, así que el peligro vive
+por completo en instalar un árbol de directorios por otra vía y quien solo
+clona está fuera de alcance. El hilo también escala el payload, con la
+variante core.fsmonitor de agwa que se dispara con un simple git status que los IDE, go build y los
+prompts del shell ejecutan de forma implícita, haciendo un .git/config incluido más peligroso que cualquier hook. Un
+consejo muy votado de desactivar los hooks con core.hooksPath /dev/null recibe críticas
+cuando oger señala que la propia configuración de un repo puede revertirlo.

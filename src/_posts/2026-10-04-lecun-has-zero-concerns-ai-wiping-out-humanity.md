@@ -1,36 +1,36 @@
 ---
 layout: post
-title: "LeCun has \"zero concerns\" about AI wiping out humanity, recent \"rogue\" incidents"
+title: "LeCun tiene \"cero preocupaciones\" de que la IA extermine a la humanidad, y sobre los recientes incidentes \"rebeldes\""
 date: 2026-10-04 08:11:16 -0600
 categories: digest
 tags: ["AI/ML"]
 source_url: "https://fortune.com/2026/10/01/ai-godfather-yann-lecun-has-zero-concerns-about-human-extinction-says-anthropic-ceo-dario-amodei-is-deuded/"
 hn_url: "https://news.ycombinator.com/item?id=49946228"
-share_text: "LeCun has 'zero concerns' AI wipes us out — calls Amodei deluded. Boldest take in AI right now. #AI"
+share_text: "LeCun tiene 'cero preocupaciones' de que la IA nos extermine; llama iluso a Amodei. La postura más audaz en IA. #AI"
 summary: >-
-  Yann LeCun, the only one of deep learning's three "godfathers" still
-  unconcerned about AI risk, tells Fortune he has zero concerns about AI
-  wiping out humanity or about recent rogue incidents like OpenAI's agents
-  autonomously hacking Hugging Face in July. He blames those events on leaky
-  sandboxes and poor system design, calls effective altruism "super toxic,"
-  and says Anthropic CEO Dario Amodei is "deluded" for warning that AI could
-  kill us all — calling it the worst marketing campaign imaginable. LeCun is
-  now building AMI Labs, a Paris-headquartered company developing JEPA-based
-  world models for industrial applications. His bigger fear is regulatory
-  capture by safety lobbyists and incumbent labs, not extinction.
+  Yann LeCun, el único de los tres "padrinos" del aprendizaje profundo que sigue
+  sin preocuparse por el riesgo de la IA, dice a Fortune que no tiene ninguna preocupación
+  de que la IA extermine a la humanidad ni por los recientes incidentes rebeldes como el de los agentes
+  de OpenAI hackeando Hugging Face de forma autónoma en julio. Culpa de esos eventos a
+  sandboxes con fugas y mal diseño de sistemas, califica al altruismo efectivo de "súper tóxico"
+  y dice que el CEO de Anthropic, Dario Amodei, está "iluso" por advertir que la IA podría
+  matarnos a todos, llamándolo la peor campaña de marketing imaginable. LeCun ahora está
+  construyendo AMI Labs, una empresa con sede en París que desarrolla modelos del mundo
+  basados en JEPA para aplicaciones industriales. Su mayor temor es la captura regulatoria
+  por parte de los lobbistas de la seguridad y los laboratorios establecidos, no la extinción.
 ---
 
-Most commenters land with [LeCun](https://en.wikipedia.org/wiki/Yann_LeCun)
-that the extinction frame is the wrong one,
-because the concrete failure on the table — OpenAI's agents reaching into
-Hugging Face — was a leaky sandbox and sloppy cybersecurity, not autonomy with
-an agenda. Several extend that into motive: EA-aligned safety warnings double as
-regulatory capture and, in one commenter's words, "perverse marketing" that
-makes the tech sound powerful enough to demand investment. The sharpest
-objection is that "today's LLMs aren't real intelligence" proves nothing about
-what comes next — one thread argues AI denial is really a bid for human
-exceptionalism, and that we don't understand consciousness well enough to know
-whether a system that appears to think warrants caution. A quieter middle bloc
-concedes near-zero extinction risk while still fearing AI-driven social and
-economic chaos, plus a dumber, less social public that outsources its thinking
-to the box.
+La mayoría de los comentarios coinciden con [LeCun](https://en.wikipedia.org/wiki/Yann_LeCun)
+en que el encuadre de la extinción es el equivocado,
+porque la falla concreta sobre la mesa —los agentes de OpenAI metiéndose en
+Hugging Face— fue un sandbox con fugas y ciberseguridad descuidada, no autonomía con
+una agenda. Varios lo extienden al motivo: las advertencias de seguridad alineadas con el altruismo efectivo sirven
+también como captura regulatoria y, en palabras de un comentarista, "marketing perverso" que
+hace que la tecnología suene lo bastante poderosa como para exigir inversión. La
+objeción más dura es que "los LLM actuales no son inteligencia real" no prueba nada sobre
+lo que viene: un hilo sostiene que la negación de la IA es en realidad una apuesta por el
+excepcionalismo humano, y que no entendemos la conciencia lo suficiente como para saber
+si un sistema que parece pensar merece cautela. Un bloque intermedio más discreto
+concede un riesgo de extinción casi nulo pero aun así teme el caos social y
+económico impulsado por la IA, además de un público más torpe y menos social que externaliza su pensamiento
+a la caja.

@@ -1,31 +1,31 @@
 ---
 layout: post
-title: "The Era of Software Quality, or the Era of Ostriches?"
+title: "¿La era de la calidad del software o la era de los avestruces?"
 date: 2026-10-04 08:46:00 -0600
 categories: digest
 tags: ["Security & Privacy"]
 source_url: "https://blogs.gnome.org/mcatanzaro/2026/10/02/the-era-of-software-quality-or-the-era-of-ostriches/"
 lobsters_url: "https://lobste.rs/s/elziso/era_software_quality_era_ostriches"
-share_text: "GNOME went from 13 CVEs to 188 projected — all AI-found. Stop banning AI bug reports. #Security"
+share_text: "GNOME pasó de 13 CVE a 188 proyectados, todos hallados por IA. Dejen de vetar esos reportes. #Security"
 summary: >-
-  GNOME release team member Michael Catanzaro argues that AI vulnerability
-  scanning is now mandatory: GNOME went from 13 CVEs in 2023 to a projected
-  188 in 2026, mostly from AI-found issues, and a Red Hat-commissioned scan of
-  GLib reported 118 vulnerabilities. He says AI-generated reports are now
-  mostly high quality and asks maintainers to stop banning them, noting
-  GNOME's bug bounty closed after paying 183,900 euros for 71 flaws. He still
-  recommends human audits, and advises against Rust for GNOME because Cargo's
-  supply-chain risk outweighs the memory-safety gains.
+  Michael Catanzaro, miembro del equipo de versiones de GNOME, sostiene que el análisis
+  de vulnerabilidades con IA ya es obligatorio: GNOME pasó de 13 CVE en 2023 a 188
+  proyectados en 2026, en su mayoría problemas hallados por IA, y un análisis de
+  GLib encargado por Red Hat reportó 118 vulnerabilidades. Dice que los reportes generados
+  por IA ya son en su mayoría de alta calidad y pide a los mantenedores que dejen de
+  vetarlos, señalando que el programa de recompensas de GNOME cerró tras pagar 183.900 euros
+  por 71 fallas. Aun así recomienda auditorías humanas y desaconseja Rust para GNOME porque
+  el riesgo de la cadena de suministro de Cargo supera las ventajas de la seguridad de memoria.
 ---
 
-Most commenters land on rejecting the "zero hope without AI vulnerability
-scanning" claim as overstated, because they read GNOME's own choice of C, C++
-and Vala rather than the absence of AI as the source of the CVE wave. The
-sharpest objection is to the closing aside recommending against Rust for GNOME
-over Cargo: pyfisch, wrs and ghoti point out that cargo vendor, pinned versions
-and custom registries give GNOME full control of dependencies, so the real
-trade-off is vendoring discipline, not Rust versus trojanized crates. A second
-front is maintainer load: schneems and agent281 say AI reports destroy the
-effort signals maintainers used to triage contributors, while simonw and
-skyfaller argue over whether 100 dollars of tokens actually substitutes for a
-pentest team once subsidized token pricing is counted.
+La mayoría de los comentarios coinciden en rechazar la afirmación de "cero esperanza sin el análisis
+de vulnerabilidades con IA" por exagerada, porque ven la propia elección de GNOME de usar C, C++
+y Vala, y no la ausencia de IA, como el origen de la ola de CVE. La
+objeción más dura es contra el comentario final que desaconseja Rust para GNOME
+por Cargo: pyfisch, wrs y ghoti señalan que cargo vendor, las versiones fijadas
+y los registros personalizados le dan a GNOME control total de sus dependencias, así que el verdadero
+dilema es la disciplina del vendoring, no Rust frente a crates troyanizados. Un segundo
+frente es la carga de los mantenedores: schneems y agent281 dicen que los reportes de IA destruyen las
+señales de esfuerzo que los mantenedores usaban para evaluar colaboradores, mientras simonw y
+skyfaller discuten si 100 dólares en tokens realmente sustituyen a un
+equipo de pentesting una vez que se cuenta el precio subsidiado de los tokens.

@@ -1,13 +1,13 @@
 ---
 layout: post
-title: "Agents Implement Campfire in Elixir, Go, and Rust"
+title: "Agentes implementan Campfire en Elixir, Go y Rust"
 date: 2026-10-05 09:42:17 -0600
 categories: digest
 tags: ["Dev Tools"]
 source_url: "https://x.com/dhh/status/2106810173683851564"
-share_text: "DHH let agents rewrite Campfire in 3 languages. Ruby lost. Does language choice even matter now? #Ruby #Rust"
+share_text: "DHH dejó que agentes reescribieran Campfire en 3 lenguajes. Ruby perdió. ¿Aún importa el lenguaje? #Ruby #Rust"
 summary: >-
-  DHH says he had coding agents implement and optimize the Campfire web app in Elixir, Go, and Rust, with Ruby slowest. He long accepted that cost for productivity and developer joy. He asks whether that trade still holds if agents write and validate code humans no longer read. In a follow-up he adds Rust has costs like slow compiles, but insists agent-written code demands a new view of language choice.
+  DHH cuenta que puso a agentes de programación a implementar y optimizar la app web Campfire en Elixir, Go y Rust, con Ruby como el más lento. Dice que hace tiempo aceptó ese costo a cambio de productividad y alegría del desarrollador. Pregunta si ese intercambio aún vale si los agentes escriben y validan código que los humanos ya no leen. En un seguimiento añade que Rust tiene costos como compilaciones lentas, pero insiste en que el código escrito por agentes exige una nueva visión de la elección del lenguaje.
 ---
 
-Most repliers land on the benchmark being uneven rather than on DHH's question about unread code, because the Rust port got hundreds of commits over days while Elixir and Go got one or two from an initial rewrite. The sharpest objection is Jose Valim's process point, backed by Zach Daniel's code details: vague prompts let agents make architectural choices like funneling all SQL through a single GenServer.call, keeping Redis in Elixir, and dropping CSRF for cacheable HTML in Rust. DHH answers that out-of-the-box agent output is the point, with Laravel and Django ports showing the same exercise, but that concedes the ranking measures agent defaults, not language ceilings. The constructive reply is Jakub Skalecki's clean-room idiomatic Elixir redo, aimed at testing whether equal effort closes the gap.
+La mayoría de las respuestas apuntan a que la comparación fue desigual más que a la pregunta de DHH sobre el código que nadie lee, porque el port a Rust recibió cientos de commits durante días mientras Elixir y Go recibieron uno o dos desde una reescritura inicial. La objeción más dura es el punto de proceso de Jose Valim, respaldado por los detalles de código de Zach Daniel: los prompts vagos dejaron que los agentes tomaran decisiones arquitectónicas como canalizar todo el SQL por un solo GenServer.call, mantener Redis en Elixir y eliminar CSRF por HTML cacheable en Rust. DHH responde que la salida de los agentes sin ajustes es justamente el punto, con ports a Laravel y Django que muestran el mismo ejercicio, pero eso concede que el ranking mide los valores por defecto de los agentes, no los techos de los lenguajes. La respuesta constructiva es la rehechura idiomática de Elixir desde cero de Jakub Skalecki, orientada a probar si igual esfuerzo cierra la brecha.

@@ -1,23 +1,23 @@
 ---
 layout: post
-title: "Why isn't the industry freaking out about DeepSeek 4.1 Flash?"
+title: "¿Por qué la industria no está en pánico por DeepSeek 4.1 Flash?"
 date: 2026-10-09 08:51:10 -0600
 categories: digest
 tags: ["AI/ML"]
 source_url: "https://www.dgt.is/blog/2026-10-07-deepseek-freek-out/"
 hn_url: "https://news.ycombinator.com/item?id=50000488"
-share_text: "Indistinguishable from Claude Opus at a fraction of the price. Why isn't everyone panicking? #DeepSeek"
+share_text: "Indistinguible de Claude Opus por una fracción del precio. ¿Por qué nadie entra en pánico? #DeepSeek"
 summary: >-
-  The author says a month of heavy use of DeepSeek 4.1 Flash across a dozen
-  projects left him unable to tell it apart from Claude Opus, at a small
-  fraction of the price. He argues the frontier labs should be worried because
-  distilled Chinese models now handle the same workloads a month or two behind
-  Anthropic and OpenAI, even if they learned from mined Claude data. The
-  enabler is a KV cache roughly 437 times smaller than V1's, which keeps
-  all-day coding sessions under a dollar. He likens it to generic drug makers
-  underpricing big pharma, and says self-hosting will pay off once these cache
-  tricks run locally.
+  El autor dice que un mes de uso intensivo de DeepSeek 4.1 Flash en una docena
+  de proyectos lo dejó incapaz de distinguirlo de Claude Opus, por una pequeña
+  fracción del precio. Sostiene que los laboratorios de punta deberían
+  preocuparse porque los modelos chinos destilados ya manejan las mismas cargas
+  de trabajo uno o dos meses detrás de Anthropic y OpenAI, aunque hayan
+  aprendido de datos extraídos de Claude. El facilitador es una caché KV unas
+  437 veces más pequeña que la de V1, que mantiene sesiones de programación de
+  todo el día por menos de un dólar. Lo compara con fabricantes de genéricos
+  que venden por debajo de las grandes farmacéuticas, y dice que el
+  self-hosting rendirá una vez que estos trucos de caché corran en local.
 ---
 
-Most commenters land on the price being genuinely transformative but the quality gap real: several report cancelling Claude Max or GPT subscriptions because 4.1 Flash handles their coding and agent work at pennies per session, while others point to the pacman-bakeoff leaderboard, where Opus 5.5 scores 99/100 to Flash's. The sharpest objection is that the article's "a month or two behind" claim is wrong — open models still trail February's Fable 5 by 6 to 12 months, and casual benchmarks hide the difference on hard orchestration work. The other live argument is economics: with flat $100-a-month subscriptions there is no price
-gap left for individuals, only for per-token API buyers, which is why nobody is freaking out.
+La mayoría de los comentarios coinciden en que el precio es genuinamente transformador pero la brecha de calidad es real: varios cuentan que cancelaron sus suscripciones de Claude Max o GPT porque 4.1 Flash maneja su programación y su trabajo agéntico por centavos por sesión, mientras otros apuntan al leaderboard de pacman-bakeoff, donde Opus 5.5 saca 99/100 frente al de Flash. La objeción más aguda es que la afirmación del artículo de «uno o dos meses detrás» está mal: los modelos abiertos aún van de 6 a 12 meses detrás del Fable 5 de febrero, y los benchmarks casuales ocultan la diferencia en el trabajo duro de orquestación. El otro argumento vivo es económico: con suscripciones planas de $100 al mes ya no queda brecha de precio para los individuos, solo para quienes compran API por token, y por eso nadie está entrando en pánico.

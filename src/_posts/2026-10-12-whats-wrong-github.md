@@ -1,35 +1,24 @@
 ---
 layout: post
-title: "What's Wrong with GitHub"
+title: "Qué tiene de malo GitHub"
 date: 2026-10-12 10:54:29 -0600
 categories: digest
 tags: ["Dev Tools"]
 source_url: "https://www.gnu.org/philosophy/whats-wrong-with-github.html"
 lobsters_url: "https://lobste.rs/s/u9ue6c/what_s_wrong_with_github"
-share_text: "GNU says quit GitHub: nonfree JS, Copilot lock-in, fake-distributed git. Self-host or submit. #GitHub #FOSS"
+share_text: "GNU pide abandonar GitHub: JS no libre, amarre de Copilot, git que finge ser distribuido. #GitHub #FOSS"
 summary: >-
-  The GNU Project urges developers to stop hosting repositories on GitHub,
-  faulting its vague licensing guidance (Choose a License treats a copied
-  license file as sufficient), its demand that visitors run nonfree
-  JavaScript, and Copilot as SaaSS subject to forced upgrades and the 2026
-  move to token-based billing. It also argues that GitHub re-centralizes a
-  distributed system: pull requests can only reference GitHub-hosted forks,
-  Actions runners auto-update behind a dispatch service, email addresses are
-  hidden behind account links, and achievements badges gamify dependency on
-  the site. As an interim measure, the essay suggests publishing a contact
-  email in your README and hosting documentation on a site readable without
-  nonfree software.
+  El Proyecto GNU insta a los desarrolladores a dejar de hospedar repositorios
+  en GitHub, y le reprocha su vaga guía de licencias (Choose a License trata un
+  archivo de licencia copiado como suficiente), exigir a los visitantes ejecutar
+  JavaScript no libre, y Copilot como SaaSS sujeto a actualizaciones forzadas y
+  al paso en 2026 a la facturación por tokens. También argumenta que GitHub
+  recentraliza un sistema distribuido: los pull requests solo pueden referenciar
+  forks hospedados en GitHub, los runners de Actions se actualizan solos tras un
+  servicio de despacho, las direcciones de correo quedan ocultas tras enlaces de
+  cuenta y las insignias de logros gamifican la dependencia del sitio. Como medida
+  provisional, el ensayo sugiere publicar un correo de contacto en el README y
+  hospedar la documentación en un sitio legible sin software no libre.
 ---
 
-Most commenters land on the article discrediting itself, because the
-nonfree-JavaScript objection and the snide asides overshadow its better material
-on Copilot's token-based billing and GitHub's capture of the fork/pull-request
-workflow. The sharpest objection is pyfisch's: GNU's own ethical repository
-criteria rate Codeberg an F, identical to GitHub's, recommending only Sourcehut
-beside Savannah, so the critique rings hollow from a project whose own Savannah
-is dated and bypassed by Guix and GIMP. Alongside that, thombles argues the
-JavaScript complaint is moot since even unminified GPL-licensed GitHub
-JavaScript would improve nobody's life, while cadey reports being called malware
-after labeling correctly. A minority concedes the substance: toastal wants to
-delete his account but network effect and free Actions CI keep him, and
-eliasebner has quietly moved personal projects to Codeberg.
+La mayoría de los comentarios coincide en que el artículo se desprestigia solo, porque la objeción del JavaScript no libre y los comentarios sarcásticos opacan su mejor material sobre la facturación por tokens de Copilot y la captura por GitHub del flujo de forks y pull requests. La objeción más aguda es la de pyfisch: los propios criterios éticos de repositorios de GNU califican a Codeberg con F, igual que a GitHub, y solo recomiendan Sourcehut junto a Savannah, así que la crítica suena hueca viniendo de un proyecto cuyo propio Savannah está anticuado y es evitado por Guix y GIMP. A la par, thombles argumenta que la queja del JavaScript es irrelevante, pues ni siquiera el JavaScript de GitHub sin minificar y con licencia GPL mejoraría la vida de nadie, mientras cadey cuenta que lo llamaron malware después de etiquetar correctamente. Una minoría concede el fondo: toastal quiere borrar su cuenta pero el efecto red y el CI gratuito de Actions lo retienen, y eliasebner ya mudó en silencio sus proyectos personales a Codeberg.

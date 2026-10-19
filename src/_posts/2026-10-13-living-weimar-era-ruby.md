@@ -1,32 +1,23 @@
 ---
 layout: post
-title: "Living in the Weimar era of Ruby"
+title: "Viviendo en la era Weimar de Ruby"
 date: 2026-10-13 09:16:08 -0600
 categories: digest
 tags: ["Dev Tools"]
 source_url: "https://blog.julik.nl/2026/10/the-weimar-of-ruby"
 lobsters_url: "https://lobste.rs/s/lfen2h/living_weimar_era_ruby"
-share_text: "DHH left, Ruby bloomed: 8,900 new gems in a year, PDFs and Qt revived by LLMs. Weimar era? #Ruby"
+share_text: "DHH se fue, Ruby floreció: 8.900 gems nuevas en un año, PDF y Qt revividos por LLM. ¿Era Weimar? #Ruby"
 summary: >-
-  Julik Tarkhanov argues Ruby is in a creative renaissance even as David
-  Heinemeier Hanson's RailsWorld keynote — announcing he vibe-rewrote HEY and
-  no longer needs Rails — marks the founder's exit. With LLMs absorbing the
-  typing, long-standing gaps are closing: two capable PDF libraries
-  (sghtmltopdf and stationery), revived Qt and Shoes bindings, an
-  async-friendly gRPC rewrite, and a Parquet library he built himself in days.
-  Counting newly claimed gem names on rubygems.org, he measures about 8,900
-  over the past year against 4,600 the year before — a step change beginning
-  March 2026 — evidence that people are building the missing thing instead of
-  invoking "nobody does this with Ruby anyway."
+  Julik Tarkhanov argumenta que Ruby vive un renacimiento creativo aun cuando la
+  keynote de David Heinemeier Hansson en RailsWorld —donde anunció que reescribió
+  HEY con vibe y que ya no necesita Rails— marca la salida del fundador. Con los
+  LLM absorbiendo el tecleo, brechas de años se están cerrando: dos librerías de
+  PDF capaces (sghtmltopdf y stationery), bindings revividos de Qt y Shoes, una
+  reescritura de gRPC amable con async y una librería Parquet que él mismo
+  construyó en días. Contando nombres de gems recién reclamados en rubygems.org,
+  mide unas 8.900 en el último año contra 4.600 el año anterior —un salto que
+  empieza en marzo de 2026—, evidencia de que la gente construye lo que falta en
+  vez de invocar "nadie hace esto con Ruby de todos modos".
 ---
 
-Most commenters land on skepticism toward the article's claim that typing is the
-bottleneck, because generating lines was never the scarce part of programming.
-The sharpest pushback asks who these fast-brained developers are, arguing that
-LOC worship contradicts everything learned about boilerplate, autocomplete, and
-expressive languages reducing keystrokes for years. The counterpoint that gains
-ground is narrower: LLMs earn their keep on rote chores like converting a Rust
-struct from Copy to non-Copy or chewing through repetitive scaffolding, not on
-design. Meanwhile the PDF-gap anecdote draws sympathy, with even Go developers
-surprised Rails lacked layout tooling and others noting hexapdf and ReportLab
-show the pain was never Ruby-only.
+La mayoría de los comentarios se ubica en el escepticismo frente a la afirmación del artículo de que el tecleo es el cuello de botella, porque generar líneas nunca fue la parte escasa de programar. La réplica más aguda pregunta quiénes son esos desarrolladores de cerebro rápido, y argumenta que adorar las LOC contradice todo lo aprendido sobre boilerplate, autocompletado y lenguajes expresivos que reducen pulsaciones desde hace años. El contrapunto que gana terreno es más estrecho: los LLM se ganan el puesto en tareas rutinarias como convertir un struct de Rust de Copy a no Copy o masticar scaffolding repetitivo, no en diseño. Mientras tanto, la anécdota de la brecha en PDF genera simpatía, con incluso desarrolladores de Go sorprendidos de que Rails careciera de herramientas de maquetación y otros que señalan que hexapdf y ReportLab muestran que el dolor nunca fue solo de Ruby.

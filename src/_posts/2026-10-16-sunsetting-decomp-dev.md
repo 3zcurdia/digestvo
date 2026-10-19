@@ -1,31 +1,35 @@
 ---
 layout: post
-title: "Sunsetting decomp.dev"
+title: "El cierre de decomp.dev"
 date: 2026-10-16 09:38:43 -0600
 categories: digest
 tags: ["Dev Tools"]
 source_url: "https://decomp.dev/"
 lobsters_url: "https://lobste.rs/s/kaerns/sunsetting_decomp_dev"
-share_text: "Years of reverse engineering, undone by token-burning forks chasing the progress bar"
+share_text: "Años de ingeniería inversa, deshechos por forks que queman tokens tras la barra de progreso"
 summary: >-
-  The maintainer of decomp.dev, a tracker for matching decompilations of
-  classic games, is shutting down its public index. He writes that matching
-  decompilation once took years of painstaking human work, but recent models
-  like GPT-6-Astra can generate matching C, permute variants, and sustain long
-  tasks cheaply with the right guidance. That capability unleashed hostile
-  AI-finished forks, rushed half-working PC ports built on others' work, and a
-  hollow leaderboard race. The site will keep serving existing project pages
-  and history but accept no new projects.
+  El mantenedor de decomp.dev, un índice de decompilaciones equivalentes de
+  juegos clásicos, está cerrando su índice público. Escribe que la
+  decompilación equivalente antes tomaba años de minucioso trabajo humano,
+  pero modelos recientes como GPT-6-Astra pueden generar C equivalente,
+  permutar variantes y sostener tareas largas a bajo costo con la guía
+  adecuada. Esa capacidad desató forks hostiles terminados con IA, ports a PC
+  apresurados y a medio funcionar construidos sobre trabajo ajeno, y una
+  hueca carrera por el leaderboard. El sitio seguirá sirviendo las páginas e
+  historiales de proyectos existentes, pero no aceptará proyectos nuevos.
 ---
 
-Most commenters land in sympathy with the maintainer, because the specific
-failure they recognize is drive-by AI forks that chase the progress percentage
-without hand-reviewing for code the original developers could plausibly have
-written. The Melee example becomes the dividing line: LLM output is acceptable
-when maintainers meticulously clean up cheating matches and inlined helpers,
-worthless when it just burns tokens to make the number go up. The sharpest
-objection is over the closed repository and refusal to allow forks, because
-critics say an all-rights-reserved tracker hurts the same open community AI
-already damaged and does nothing to stop training. Defenders answer that after
-watching open decompilations get scraped into models that then raced to port the
-games, keeping the site code human-written and closed is self-preservation.
+La mayoría de los comentarios coincide en la simpatía con el mantenedor,
+porque la falla concreta que reconocen son los forks de IA oportunistas que
+persiguen el porcentaje de progreso sin revisar a mano si hay código que los
+desarrolladores originales plausiblemente habrían escrito. El ejemplo de
+Melee se vuelve la línea divisoria: la salida de un LLM es aceptable cuando
+los mantenedores limpian con rigor los matches con trampa y los helpers
+inlined, y no vale nada cuando solo quema tokens para subir el número. La
+objeción más fuerte es por el repositorio cerrado y la negativa a permitir
+forks, porque los críticos dicen que un índice con todos los derechos
+reservados daña a la misma comunidad abierta que la IA ya dañó y nada hace
+para frenar el entrenamiento. Los defensores responden que, tras ver cómo
+decompilaciones abiertas se scrapeaban hacia modelos que luego corrían a
+portear los juegos, mantener el código del sitio escrito por humanos y
+cerrado es autopreservación.

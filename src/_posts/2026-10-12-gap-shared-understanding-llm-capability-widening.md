@@ -1,35 +1,23 @@
 ---
 layout: post
-title: "The gap in shared understanding of LLM capability is widening"
+title: "Se amplía la brecha en la comprensión compartida de lo que pueden hacer los LLM"
 date: 2026-10-12 10:54:29 -0600
 categories: digest
 tags: ["AI/ML"]
 source_url: "https://twitter.com/karpathy/status/2109361546505966046"
 hn_url: "https://news.ycombinator.com/item?id=50047422"
-share_text: "6B haven't touched AI. 5,000 run agent swarms. Karpathy says the gap is now a canyon. #AI"
+share_text: "6.000M no han tocado la IA. 5.000 usan enjambres de agentes. Karpathy dice que la brecha ya es un cañón. #IA"
 summary: >-
-  Andrej Karpathy argues that shared understanding of LLM capability is
-  splitting into a four-tier funnel: about 6 billion people who have barely
-  touched LLMs, 1-2 billion casual free-tier users who see a derpy chatbot,
-  some 20 million math-and-code professionals watching agents finish
-  weeks-long projects from a prompt, and 5,000 insiders watching agent swarms
-  run week-long software projects. He attributes the gap to ambition scaling,
-  jagged capability that peaks in digitally verifiable domains, and access
-  tiers (free, paid, internal). He also warns human review is falling behind
-  the output.
+  Andrej Karpathy sostiene que la comprensión compartida de la capacidad de los
+  LLM se divide en un embudo de cuatro niveles: unos 6.000 millones de personas
+  que apenas han tocado los LLM, 1.000-2.000 millones de usuarios casuales del
+  nivel gratuito que ven un chatbot torpe, unos 20 millones de profesionales de
+  matemáticas y código que ven a los agentes terminar desde un prompt proyectos
+  de semanas, y 5.000 personas con acceso interno que ven enjambres de agentes
+  ejecutar proyectos de software de una semana. Atribuye la brecha a la ambición
+  escalable, a una capacidad irregular que rinde mejor en dominios digitalmente
+  verificables y a los niveles de acceso (gratuito, de pago, interno). También
+  advierte que la revisión humana se está quedando atrás frente al volumen generado.
 ---
 
-Most commenters land on the skeptical side of Karpathy's middle tiers, because
-the agent software they touch daily still looks rough: the thread piles up
-complaints about Claude Code's broken renderer and scrollback, bugs in the Codex
-VS Code extension, and Google's AI search summaries giving plainly wrong
-answers. The sharpest objection comes from tripleee, who says the claim that
-agents complete weeks-long projects holds only in ports and translations, where
-the rules are documented and the LLM can verify itself against code; elsewhere
-it doesn't reach comparable quality. The counter is concrete: jfrbfbreudh says
-he shipped a top-50 App Store productivity app having written and read exactly
-one line of it, and insists calling that hype is denial in late 2026. A second
-argument runs underneath: the strongest worry is that human verification is the
-real wall, and JBits reframes it as a missing incentive rather than missing
-capacity, since checking 722 machine-written math manuscripts amounts to unpaid
-labor for OpenAI.
+La mayoría de los comentarios se ubica del lado escéptico de los niveles intermedios de Karpathy, porque el software de agentes que tocan a diario todavía se ve tosco: el hilo acumula quejas sobre el renderizador roto y el scrollback de Claude Code, errores en la extensión de Codex para VS Code y resúmenes de la búsqueda de Google con IA que dan respuestas claramente equivocadas. La objeción más aguda viene de tripleee, quien dice que la afirmación de que los agentes completan proyectos de semanas solo se sostiene en ports y traducciones, donde las reglas están documentadas y el LLM puede verificarse contra el código; en otros ámbitos no alcanza una calidad comparable. El contrapunto es concreto: jfrbfbreudh dice que publicó una app de productividad del top 50 de la App Store habiendo escrito y leído exactamente una línea de ella, e insiste en que llamar a eso hype es negación a finales de 2026. Un segundo argumento corre por debajo: la preocupación más fuerte es que la verificación humana es el verdadero muro, y JBits la replantea como un incentivo ausente más que una capacidad ausente, ya que revisar 722 manuscritos de matemáticas escritos por máquinas equivale a trabajo no pagado para OpenAI.

@@ -1,35 +1,38 @@
 ---
 layout: post
-title: "Example.com just launched the biggest redesign in decades"
+title: "Example.com acaba de lanzar el mayor rediseño en décadas"
 date: 2026-10-06 09:23:08 -0600
 categories: digest
 tags: ["Web & Platforms"]
 source_url: "https://www.debugbear.com/blog/example-dot-com-redesign-history"
 hn_url: "https://news.ycombinator.com/item?id=49971921"
-share_text: "example.com got its biggest redesign in decades. Six languages, one SVG book. The internet's museum moved. #Web"
+share_text: "example.com tuvo su mayor rediseño en décadas. Seis idiomas, un libro en SVG. #Web"
 summary: >-
-  IANA's reserved documentation domain example.com got its biggest overhaul in
-  decades on 28 September 2026. The static English page gained six languages —
-  English, Arabic, Chinese, French, Russian and Spanish — originally rotating
-  every five seconds with a per-character opacity transition, plus a
-  JavaScript-inserted SVG book icon. IANA says it split the page into a bare
-  HTML core and a separate JavaScript file because most of its traffic is
-  automated and never fetches that file, cutting bandwidth. On 3 October the
-  animation was dropped and all languages render at once, with the browser's
-  preferred language bumped to the top.
+  El dominio reservado para documentación de IANA, example.com, recibió su
+  mayor renovación en décadas el 28 de septiembre de 2026. La página estática
+  en inglés sumó seis idiomas —inglés, árabe, chino, francés, ruso y
+  español— que al inicio rotaban cada cinco segundos con una transición de
+  opacidad por carácter, además de un ícono de libro en SVG insertado con
+  JavaScript. IANA dice que dividió la página en un núcleo de HTML puro y un
+  archivo JavaScript separado porque la mayor parte de su tráfico es
+  automatizado y nunca descarga ese archivo, lo que reduce el ancho de banda.
+  El 3 de octubre se eliminó la animación y todos los idiomas se muestran a la
+  vez, con el idioma preferido del navegador al inicio.
 ---
 
-Most commenters land on the bandwidth arithmetic as the real story, because
-IANA's statement points out that most hits on example.com come from copy-pasted
-config files and bots that never execute JavaScript, so shipping the
-translations in s.js costs those clients nothing. The sharpest objection is that
-the page should have stayed static and English-only, since a placeholder serving
-a courtesy HTTP endpoint gains little from six translated paragraphs plus an
-SVG, and account42 argues the zero-overhead simplicity was the entire point of
-the domain. A second flank is accessibility: readers found the five-second
-language rotation impossible to finish before it flipped to the next script,
-which IANA conceded by removing the animation on 3 October, though a few
-defenders call the SVG the only color on an otherwise bare page. A smaller side
-argument broke out over whether the DebugBear article itself was AI-written,
-after one commenter claimed the SVG still appeared with JavaScript disabled and
-another pasted the s.js source proving it injects the markup.
+La mayoría de los comentarios coincide en que la aritmética del ancho de banda
+es la verdadera historia, porque la declaración de IANA señala que la mayoría
+de las visitas a example.com viene de archivos de configuración copiados y
+pegados y bots que nunca ejecutan JavaScript, así que servir las traducciones
+en s.js no les cuesta nada a esos clientes. La objeción más aguda es que la
+página debió seguir estática y solo en inglés, pues un marcador que sirve un
+endpoint HTTP de cortesía gana poco con seis párrafos traducidos más un SVG, y
+account42 argumenta que la simplicidad sin costo era todo el sentido del
+dominio. Un segundo flanco es la accesibilidad: los lectores encontraron
+imposible terminar la rotación de idiomas de cinco segundos antes de que
+saltara al siguiente alfabeto, lo que IANA concedió al eliminar la animación
+el 3 de octubre, aunque algunos defensores llaman al SVG el único color en una
+página por lo demás desnuda. Un debate lateral menor estalló sobre si el
+artículo de DebugBear fue escrito con IA, después de que un comentarista
+afirmara que el SVG seguía apareciendo con JavaScript desactivado y otro
+pegara el código de s.js que prueba que inyecta el marcado.

@@ -1,34 +1,23 @@
 ---
 layout: post
-title: "Amazon pushes up prices across the Internet"
+title: "Amazon encarece los precios en todo internet"
 date: 2026-10-14 10:23:35 -0600
 categories: digest
 tags: ["Startups & Business"]
 source_url: "https://www.not-ship.com/how-amazon-pushes-up-prices-all-across-the-internet/"
 hn_url: "https://news.ycombinator.com/item?id=50084757"
-share_text: "Amazon takes ~50% of seller revenue and bans lower prices elsewhere, though defenders point to its 6.8% retail margin."
+share_text: "Amazon se queda con ~50 % de lo que venden y prohíbe precios menores fuera, aunque su margen minorista es 6,8 %."
 summary: >-
-  Amazon now takes close to half of many third-party sellers' revenue through
-  a combination of referral commissions, fulfillment fees, and effectively
-  mandatory advertising for search placement. To cover those costs, merchants
-  must raise their prices on the platform, which in turn increases Amazon's
-  percentage-based referral cut. Because Amazon's Fair Pricing Policy strips
-  the Buy Box from or suspends sellers who offer lower prices on competing
-  storefronts or their own websites, merchants are forced to inflate their
-  prices across the entire internet. This mechanism is a central target of the
-  Federal Trade Commission's ongoing antitrust lawsuit against the retail
-  giant.
+  Amazon ahora se queda con cerca de la mitad de los ingresos de muchos vendedores
+  externos mediante una combinación de comisiones por referencia, tarifas de
+  fulfillment y publicidad efectivamente obligatoria para aparecer en las
+  búsquedas. Para cubrir esos costos, los comercios deben subir sus precios en la
+  plataforma, lo que a su vez eleva el recorte porcentual por referencia de
+  Amazon. Como la Fair Pricing Policy de Amazon quita la Buy Box o suspende a los
+  vendedores que ofrecen precios más bajos en tiendas competidoras o en sus
+  propios sitios, los comercios se ven forzados a inflar sus precios en todo
+  internet. Este mecanismo es un blanco central de la demanda antimonopolio en
+  curso de la Federal Trade Commission contra el gigante minorista.
 ---
 
-Most commenters land on Amazon's fulfillment scale and roughly 50% fee cut
-acting as an insurmountable market lock-in, because no rival can replicate a
-nationwide 24-hour delivery network backed by AWS profits and over $11 billion
-in US taxpayer subsidies. Shoppers note that mundane items now routinely cost
-10% to 25% more on Amazon than at local supermarkets or on eBay and AliExpress,
-yet sellers remain trapped where buyer traffic concentrates. The sharpest
-objection is that a 50% cut mirrors standard wholesale-to-retail markups and
-reflects the steep real-world cost of logistics rather than monopoly
-rent-seeking. Defenders point out that Amazon's non-AWS operating margin was
-just 6.8% in Q2—and 4.1% internationally—while anti-undercutting clauses are
-routine distribution terms that stop brands from using Amazon as a free product
-billboard.
+La mayoría de los comentarios coincide en que la escala de fulfillment de Amazon y su recorte de cerca del 50 % actúan como un amarre de mercado insuperable, porque ningún rival puede replicar una red nacional de entrega en 24 horas respaldada por las ganancias de AWS y más de 11.000 millones de dólares en subsidios de contribuyentes en EE. UU. Los compradores señalan que artículos mundanos ahora cuestan de rutina entre 10 % y 25 % más en Amazon que en supermercados locales o en eBay y AliExpress, pero los vendedores siguen atrapados donde se concentra el tráfico de compradores. La objeción más aguda es que un recorte del 50 % replica los márgenes estándar de mayorista a minorista y refleja el alto costo real de la logística más que una búsqueda de rentas monopólicas. Los defensores señalan que el margen operativo de Amazon sin AWS fue de apenas 6,8 % en el Q2 —y 4,1 % a nivel internacional—, mientras las cláusulas contra precios menores son términos de distribución rutinarios que impiden que las marcas usen Amazon como vitrina gratuita.

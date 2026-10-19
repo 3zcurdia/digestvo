@@ -6,23 +6,16 @@ categories: digest
 tags: ["Hardware"]
 source_url: "https://www.apple.com/apple-homeview/"
 hn_url: "https://news.ycombinator.com/item?id=50071017"
-share_text: "Apple's kitchen display skips the EU over Siri AI — and readers ask why it needs AI at all"
+share_text: "La pantalla de cocina de Apple no llega a la UE por la Siri con IA, y los lectores preguntan para qué necesita IA"
 summary: >-
-  Apple has announced HomeView, a smart home display arriving November 13 with
-  a 7-inch Liquid Retina screen, an A18 chip, and Siri AI built in. It acts as
-  a shared household hub for calendars, timers, recipes, FaceTime calls,
-  music, and the Home app, recognizing up to six people for personalized
-  responses. Apple pitches on-device processing and Secure Exclaves for camera
-  and microphone data as the privacy story. A companion Home Collection of
-  cameras, thermostats, and locks is promised later.
+  Apple anunció HomeView, una pantalla para el hogar inteligente que llega el 13
+  de noviembre con pantalla Liquid Retina de 7 pulgadas, chip A18 y Siri con IA
+  integrada. Funciona como centro compartido del hogar para calendarios,
+  temporizadores, recetas, llamadas de FaceTime, música y la app Home, y reconoce
+  hasta seis personas para respuestas personalizadas. Apple presenta el
+  procesamiento en el dispositivo y las Secure Exclaves para los datos de cámara
+  y micrófono como su argumento de privacidad. Una Home Collection complementaria
+  de cámaras, termostatos y cerraduras se promete para después.
 ---
 
-Most readers land on the device being unnecessary, because phones, laptops, and
-wall-mounted old iPads already cover recipes, timers, and light controls without
-another microphone in the kitchen. The sharpest objection is that a shared
-fixture beats a personal device, because guests and family can control
-automations, check the door camera, or glance at the calendar without borrowing
-someone's phone or fiddling with stands and screen locks. A second fault line is
-the EU exclusion tied to Siri AI availability, with some reading it as Apple
-casting Brussels as the villain under DMA Article 6(7) interoperability pressure
-while others argue a Nest-style hub never needed AI at all.
+La mayoría de los lectores coincide en que el dispositivo es innecesario, porque teléfonos, laptops e iPads viejos montados en la pared ya cubren recetas, temporizadores y controles de luces sin otro micrófono en la cocina. La objeción más aguda es que un aparato compartido le gana a un dispositivo personal, porque visitas y familia pueden controlar automatizaciones, revisar la cámara de la puerta o mirar el calendario sin pedir prestado el teléfono de alguien ni pelear con soportes y bloqueos de pantalla. Una segunda línea de fractura es la exclusión de la UE ligada a la disponibilidad de la Siri con IA: algunos lo leen como Apple pintando a Bruselas como villana bajo la presión de interoperabilidad del artículo 6(7) de la DMA, mientras otros argumentan que un centro estilo Nest nunca necesitó IA.

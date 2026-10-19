@@ -1,39 +1,42 @@
 ---
 layout: post
-title: "Sharing AI progress in mathematics"
+title: "Compartiendo el progreso de la IA en matemáticas"
 date: 2026-10-07 09:11:08 -0600
 categories: digest
 tags: ["AI/ML"]
 source_url: "https://openai.com/index/sharing-ai-progress-in-mathematics/"
 hn_url: "https://news.ycombinator.com/item?id=49984923"
-share_text: "OpenAI dropped machine-made math proofs, Lean-checked. 3 hours of thinking per theorem. #Math #AI"
+share_text: "OpenAI publicó pruebas matemáticas hechas por máquinas, verificadas en Lean. 3 horas por teorema. #Math #AI"
 summary: >-
-  OpenAI is releasing a batch of new mathematical results produced by an
-  internal frontier model, published in a GitHub repository. The company says
-  it consulted the independent Advisory Group on Mathematics and Artificial
-  Intelligence at the Institute for Advanced Study and drew on the group's
-  public recommendations, while continuing to explore community-hosted
-  alternatives that meet the committee's guidelines. The repository includes
-  Lean formalizations of many of the proofs, ten summaries of the model's
-  reasoning, compute estimates (about three hours of ChatGPT Pro thinking per
-  result), and statistics on attempted problems. OpenAI says it will fund
-  workshops around major AI-produced results and is working to release the
-  model itself.
+  OpenAI está publicando un lote de nuevos resultados matemáticos producidos
+  por un modelo frontera interno, en un repositorio de GitHub. La empresa dice
+  que consultó al Grupo Asesor independiente sobre Matemáticas e Inteligencia
+  Artificial del Institute for Advanced Study y que se basó en las
+  recomendaciones públicas del grupo, mientras sigue explorando alternativas
+  alojadas por la comunidad que cumplan los lineamientos del comité. El
+  repositorio incluye formalizaciones en Lean de muchas de las pruebas, diez
+  resúmenes del razonamiento del modelo, estimaciones de cómputo (unas tres
+  horas de razonamiento de ChatGPT Pro por resultado) y estadísticas de los
+  problemas intentados. OpenAI dice que financiará talleres sobre los grandes
+  resultados producidos por IA y que trabaja en publicar el modelo mismo.
 ---
 
-Most commenters land on the release itself being welcome, because publishing the
-papers, Lean proofs and reasoning summaries on GitHub puts everything in front
-of everyone without a paywall, and several treat the Riemann, Hodge and
-unique-games results as genuinely major progress. The sharpest objection is that
-OpenAI still did not follow the IAS advisory group's actual recommendations: the
-committee asked for community-hosted venues and stronger revision protocols, and
-commenters note only a few of its suggestions made it in, leaving what one
-called a dump of LLM-written papers parked on GitHub, which several argue is a
-worse long-term archive for important results than arXiv. A second argument runs
-back over the Navier-Stokes episode: some say the theft allegation was settled
-when OpenAI's investigation found the researchers' prompts could not have
-reached the model, while others call that a corporate half-truth since the work
-spanned more than two months. Beneath both is a real dispute about whether
-proofs humans cannot follow count as progress, with one side calling the haul
-equivalent to 50-100 years of human work and another replying that a theorem
-nobody comprehends changes little until someone learns from it.
+La mayoría de los comentarios coincide en que la publicación en sí es
+bienvenida, porque publicar los artículos, las pruebas en Lean y los resúmenes
+del razonamiento en GitHub pone todo frente a todos sin muro de pago, y
+varios tratan los resultados de Riemann, Hodge y unique games como un progreso
+genuinamente importante. La objeción más aguda es que OpenAI aun así no siguió
+las recomendaciones reales del grupo asesor de IAS: el comité pidió espacios
+alojados por la comunidad y protocolos de revisión más fuertes, y los
+comentaristas señalan que solo unas pocas de sus sugerencias se aplicaron, lo
+que deja lo que uno llamó un volcado de artículos escritos por LLM
+estacionados en GitHub, que varios consideran un archivo de largo plazo peor
+para resultados importantes que arXiv. Un segundo debate vuelve sobre el
+episodio de Navier-Stokes: algunos dicen que la acusación de robo quedó
+resuelta cuando la investigación de OpenAI encontró que los prompts de los
+investigadores no pudieron haber llegado al modelo, mientras otros lo llaman
+una verdad corporativa a medias pues el trabajo abarcó más de dos meses. Bajo
+ambos hay una disputa real sobre si las pruebas que los humanos no pueden
+seguir cuentan como progreso, con un lado llamando al botín equivalente a 50
+o 100 años de trabajo humano y otro respondiendo que un teorema que nadie
+comprende cambia poco hasta que alguien aprende de él.

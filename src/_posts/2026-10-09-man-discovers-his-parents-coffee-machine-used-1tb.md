@@ -1,35 +1,22 @@
 ---
 layout: post
-title: "Man discovers his parents' coffee machine used 1TB of data in 10 days"
+title: "Descubre que la cafetera de sus padres consumió 1TB de datos en 10 días"
 date: 2026-10-09 08:51:10 -0600
 categories: digest
 tags: ["Security & Privacy"]
 source_url: "https://www.dexerto.com/entertainment/man-discovers-his-parents-coffee-machine-used-1tb-of-data-in-10-days-3416399/"
 hn_url: "https://news.ycombinator.com/item?id=49995495"
-share_text: "His parents' coffee machine ate 1TB in 10 days. He just unplugged it and bought a dumb one. #IoT"
+share_text: "La cafetera de sus padres devoró 1TB en 10 días. La desconectó y compró una tonta. #IoT"
 summary: >-
-  A man auditing his parents' home network found their smart Keurig coffee
-  machine had generated a full terabyte of traffic in just ten days, and
-  shared the discovery in a viral X post. He says he has worked in IT for more
-  than ten years and helps his parents manage their internet setup remotely.
-  After the post gained attention, he clarified that most of the traffic
-  stayed inside the house rather than crossing his internet uplink, and called
-  it "likely a bug with this unit" that saturated his access point. Rather
-  than dig deeper, he unplugged the machine and is buying his parents a new
-  coffee maker.
+  Un hombre que auditaba la red doméstica de sus padres descubrió que su
+  cafetera inteligente Keurig había generado un terabyte completo de tráfico
+  en apenas diez días, y compartió el hallazgo en una publicación viral en X.
+  Dice que lleva más de diez años trabajando en TI y que ayuda a sus padres a
+  gestionar su conexión a internet en remoto. Después de que la publicación
+  ganó atención, aclaró que la mayor parte del tráfico se quedó dentro de la
+  casa en vez de cruzar su enlace de internet, y lo llamó «probablemente un
+  bug de esta unidad» que saturó su punto de acceso. En vez de investigar más,
+  desconectó la máquina y va a comprarles una cafetera nueva.
 ---
 
-Most commenters treat the episode as proof that consumer IoT does not belong on
-a normal home network, and several answer with practical exits: a separate IoT
-VLAN, an ESPhome dongle, or a fifteen-year-old dumb Moccamaster. The substantive
-fight is over what the terabyte actually was. Grombobulous argues it cannot be
-deliberate, because no manufacturer would pay to ingest a terabyte every two
-weeks from millions of machines, and mindslight does the arithmetic — 1.1MB/sec
-is roughly 17,000 sixty-four-byte probes per second, more than an ESP32-class
-chip can even push — before conceding it still smells like a bug. The sharpest
-objection comes from altairprime, relaying the original X thread: the volume
-mostly stayed local, so the scandal is not the bandwidth but that the machine
-scans your household to build data Keurig sells to advertisers. That reframing
-splits the thread on consent — handing a device your Wi-Fi password is implied
-consent, several say, against the view that ordinary buyers cannot be expected
-to know their coffee maker is mapping the house.
+La mayoría de los comentarios toman el episodio como prueba de que el IoT de consumo no pertenece a una red doméstica normal, y varios responden con salidas prácticas: una VLAN separada para IoT, un dongle con ESPhome o una Moccamaster tonta de hace quince años. La pelea sustantiva es sobre qué fue realmente ese terabyte. Grombobulous sostiene que no puede ser deliberado, porque ningún fabricante pagaría por ingerir un terabyte cada dos semanas de millones de máquinas, y mindslight hace las cuentas —1.1MB/seg son unas 17.000 sondas de sesenta y cuatro bytes por segundo, más de lo que un chip clase ESP32 siquiera puede enviar— antes de conceder que igual huele a bug. La objeción más aguda viene de altairprime, remitiendo al hilo original en X: el volumen se quedó mayormente en local, así que el escándalo no es el ancho de banda sino que la máquina escanea tu hogar para construir datos que Keurig vende a anunciantes. Ese reencuadre divide al hilo sobre el consentimiento: darle a un aparato tu contraseña de Wi-Fi es consentimiento implícito, dicen varios, frente a la postura de que no se puede esperar que un comprador común sepa que su cafetera está mapeando la casa.

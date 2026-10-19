@@ -1,32 +1,34 @@
 ---
 layout: post
-title: "What I Self-Host"
+title: "Lo que autoalojo"
 date: 2026-10-15 09:41:50 -0600
 categories: digest
 tags: ["Systems & Infra"]
 source_url: "https://viceconsole.fyi/blog/2026/10/10/what-i-self-host/"
 lobsters_url: "https://lobste.rs/s/j4tlzg/what_i_self_host"
-share_text: "One EUR 180 mini PC runs 28 self-hosted services — but who watches the self-hosted watcher?"
+share_text: "Una mini PC de 180 € corre 28 servicios autoalojados, pero ¿quién vigila al vigilante autoalojado?"
 summary: >-
-  Fed up with streaming services and their engagement tricks, the author moved
-  nearly everything onto one Beelink mini PC — an Intel N100 with 16 GB RAM
-  bought for EUR 180 — and now runs 28 self-hosted services: 17 native
-  binaries and 11 Podman containers, all managed by systemd. The inventory
-  spans Jellyfin, Immich, Frigate with 8 IP cameras, Home Assistant, Caddy,
-  Vaultwarden, and Restic backups, with htop showing only 7.5 GB of memory in
-  use. His ground rules: expose nothing to the public internet (his ISP sits
-  behind CGNAT), prefer single-binary native services over compose stacks, and
-  no Docker at all.
+  Harto de los servicios de streaming y sus trucos de engagement, el autor
+  mudó casi todo a una sola mini PC Beelink —un Intel N100 con 16 GB de RAM
+  comprado por 180 €— y ahora corre 28 servicios autoalojados: 17 binarios
+  nativos y 11 contenedores Podman, todos gestionados por systemd. El
+  inventario incluye Jellyfin, Immich, Frigate con 8 cámaras IP, Home
+  Assistant, Caddy, Vaultwarden y respaldos con Restic, con htop mostrando
+  solo 7.5 GB de memoria en uso. Sus reglas básicas: no exponer nada a la
+  internet pública (su ISP está detrás de CGNAT), preferir servicios nativos
+  de un solo binario sobre pilas de compose, y nada de Docker.
 ---
 
-Most commenters land on the article's one blind spot: self-hosting Uptime Kuma,
-because the monitor dies with the machine it watches. The sharpest objection is
-markerz's — a full disk or a power cut takes the self-hosted prober down with
-everything else, which is why he keeps monitoring in the cloud. The replies
-answer with specifics: a tiny Oracle always-free VPS used exclusively for
-probing, a healthchecks.io dead-man's switch that alerts when the prober stops
-checking in, and technomancy's most-upvoted idea — self-hosters trading
-monitoring and backups with each other as mutual aid instead of buying B2
-storage. A second argument runs over Tailscale: readers fear dependence on it,
-one switched to plain WireGuard for a two-server setup, and Headscale users
-report every release forces a config-file edit.
+La mayoría de los comentarios coincide en el único punto ciego del
+artículo: autoalojar Uptime Kuma, porque el monitor muere con la máquina que
+vigila. La objeción más fuerte es la de markerz —un disco lleno o un corte
+de luz tumba al monitor junto con todo lo demás, por eso él mantiene el
+monitoreo en la nube. Las respuestas contestan con detalles: una diminuta
+VPS always-free de Oracle usada solo para sondear, un dead-man's switch de
+healthchecks.io que alerta cuando el monitor deja de reportarse, y la idea
+más votada, de technomancy —que quienes autoalojan intercambien monitoreo y
+respaldos entre sí como ayuda mutua en vez de comprar almacenamiento B2. Un
+segundo debate gira sobre Tailscale: los lectores temen depender de él, uno
+migró a WireGuard plano para un montaje de dos servidores, y los usuarios de
+Headscale reportan que cada versión obliga a editar el archivo de
+configuración.

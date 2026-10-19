@@ -1,32 +1,35 @@
 ---
 layout: post
-title: "JPEG XL vs AVIF for web use-cases"
+title: "JPEG XL frente a AVIF para casos de uso web"
 date: 2026-10-16 09:38:43 -0600
 categories: digest
 tags: ["Web & Platforms"]
 source_url: "https://jakearchibald.com/2026/jpeg-xl-vs-avif/"
 lobsters_url: "https://lobste.rs/s/uejdwj/jpeg_xl_vs_avif_for_web_use_cases"
-share_text: "AVIF beats JPEG XL by 15–25% on photos — unless the metric is lying to you"
+share_text: "AVIF supera a JPEG XL 15–25% en fotos, salvo que la métrica le mienta"
 summary: >-
-  Jake Archibald benchmarked AVIF against JPEG XL (libjxl and jixel encoders)
-  across photos, screenshots, illustrations, transparency, HDR, and lossless
-  after JPEG XL landed in all major browsers. AVIF produced smaller lossy
-  files in almost every web case, typically 15–25% smaller than JPEG XL for
-  photos and far smaller for screenshots and transparency. JPEG XL won for
-  lossless compression and for losslessly shrinking existing JPEGs by 9–20%.
-  The verdict: default to AVIF 4:4:4 for web images, and try jixel JPEG XL
-  only when AVIF yields an unusually large file.
+  Jake Archibald comparó AVIF contra JPEG XL (encoders libjxl y jixel) en
+  fotos, capturas, ilustraciones, transparencia, HDR y lossless, después de
+  que JPEG XL llegara a todos los navegadores principales. AVIF produjo
+  archivos con pérdida más livianos en casi todos los casos web, típicamente
+  15–25% más chicos que JPEG XL en fotos y muy por debajo en capturas y
+  transparencia. JPEG XL ganó en compresión sin pérdida y en achicar JPEG
+  existentes sin pérdida entre 9 y 20%. El veredicto: usar AVIF 4:4:4 por
+  defecto para imágenes web, y probar JPEG XL con jixel solo cuando AVIF dé
+  un archivo inusualmente grande.
 ---
 
-Most commenters land on a tidy split — AVIF for images you ship, JPEG XL for
-masters and lossless archives — because Archibald's numbers show AVIF 15–25%
-smaller on photos and far ahead on screenshots and alpha, while JPEG XL
-dominates lossless. The sharpest objection concerns the SSIMULACRA2 metric
-biasing results toward AVIF, because a commenter re-ran the comparison under
-Butteraugli and found JPEG XL winning at high quality and narrowing the
-mid-quality gap, with the author conceding the newer jixel encoder shows visible
-artifacts the metric misses. A second argument over methodology questions
-serving 1598px-wide images scaled down by CSS, since downscaling hides artifacts
-that fullscreen viewing reveals. The most useful correction is that a picture
-element does not let the browser pick the best format, so shipping every format
-is wasted effort compared with tuning one.
+La mayoría de los comentarios coincide en un reparto claro —AVIF para las
+imágenes que se publican, JPEG XL para masters y archivos sin pérdida—,
+porque los números de Archibald muestran AVIF 15–25% más chico en fotos y
+muy adelante en capturas y alfa, mientras JPEG XL domina el lossless. La
+objeción más fuerte apunta a que la métrica SSIMULACRA2 sesga los resultados
+hacia AVIF, porque un comentarista repitió la comparación con Butteraugli y
+encontró a JPEG XL ganando en alta calidad y recortando la brecha en calidad
+media, con el autor admitiendo que el encoder jixel más nuevo muestra
+artefactos visibles que la métrica no capta. Un segundo debate metodológico
+cuestiona servir imágenes de 1598px escaladas por CSS, ya que el escalado
+oculta artefactos que la vista en pantalla completa revela. La corrección más
+útil es que un elemento picture no deja al navegador elegir el mejor
+formato, así que publicar todos los formatos es esfuerzo desperdiciado
+frente a afinar uno solo.

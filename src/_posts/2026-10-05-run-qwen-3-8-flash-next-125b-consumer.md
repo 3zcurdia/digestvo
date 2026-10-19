@@ -1,31 +1,35 @@
 ---
 layout: post
-title: "Run Qwen 3.8 Flash Next (125B) on consumer hardware (RTX 4090) at 100T/s"
+title: "Qwen 3.8 Flash Next (125B) en hardware doméstico (RTX 4090) a 100 tokens/s"
 date: 2026-10-05 09:09:57 -0600
 categories: digest
 tags: ["AI/ML"]
 source_url: "https://github.com/Niko1221/Strata"
 hn_url: "https://news.ycombinator.com/item?id=49953495"
-share_text: "125B model on a gaming PC at 100+ tok/s. Your RTX 4090 is now a datacenter. #LLM #OpenSource"
+share_text: "Modelo de 125B en una PC gamer a más de 100 tokens/s. Su RTX 4090 ahora es un datacenter. #LLM #OpenSource"
 summary: >-
-  Strata is an open-source inference engine and one-click installer that runs
-  Qwen3.8-Flash-Next, a 125-billion-parameter mixture-of-experts model, on
-  ordinary gaming PCs. The project spreads the model's 24,576 experts across
-  GPU, RAM and SSD, and uses speculative decoding to report 53-94 tokens per
-  second on an RTX 5070, with an RTX 3090 estimated at 100-140. It ships
-  quantizations from 2-bit up to near-4-bit, plus a Coder variant with half
-  the experts removed that keeps 91% of the full model's SWE-bench Verified
-  score while fitting 32GB of RAM. Setup exposes OpenAI- and
-  Anthropic-compatible APIs on localhost, so nothing leaves the machine.
+  Strata es un motor de inferencia de código abierto con instalador en un clic
+  que ejecuta Qwen3.8-Flash-Next, un modelo de mezcla de expertos de 125 mil
+  millones de parámetros, en PC gamer comunes. El proyecto reparte sus 24.576
+  expertos entre GPU, RAM y SSD, y usa decodificación especulativa para
+  reportar entre 53 y 94 tokens por segundo en una RTX 5070, con una estimación
+  de 100 a 140 en la RTX 3090. Incluye cuantizaciones desde 2 bits hasta casi
+  4 bits, además de una variante Coder con la mitad de los expertos eliminada
+  que conserva el 91% del puntaje SWE-bench Verified del modelo completo y cabe
+  en 32 GB de RAM. La instalación expone API compatibles con OpenAI y Anthropic
+  en localhost, así que nada sale de la máquina.
 ---
 
-Most commenters land on the model being good enough to replace API models for
-coding, because several report real speeds above the claimed 100 tokens/s on a
-4090 and one says they stopped using Claude. The sharpest objection is the 2-bit
-quantization: one commenter cites a paper showing 4-bit usually preserves
-performance while 2-bit often causes broad degradation, and another notes that
-published numbers show a 4-bit 27B beating Flash Next at 3 bits. Against that,
-defenders argue the IQ3 imatrix quants cut unimportant weights surgically and
-that the Coder variant's 91% of full-model SWE-bench Verified is the number that
-matters. A secondary argument is over what surprisingly well means: speed is one
-thing, benchmarked accuracy another, and almost nobody in the thread posts both.
+La mayoría de los comentarios coincide en que el modelo basta para reemplazar
+los modelos por API para programar, porque varios reportan velocidades reales
+por encima de los 100 tokens/s anunciados en una 4090 y uno dice que dejó de
+usar Claude. La objeción más aguda es la cuantización a 2 bits: un
+comentarista cita un artículo que muestra que 4 bits suele preservar el
+rendimiento mientras que 2 bits a menudo causa una degradación general, y otro
+señala que las cifras publicadas muestran un 27B a 4 bits superando a Flash
+Next a 3 bits. En contra, los defensores argumentan que las cuantizaciones IQ3
+con matriz de importancia podan los pesos poco importantes con precisión
+quirúrgica y que el 91% del SWE-bench Verified del modelo completo en la
+variante Coder es la cifra que importa. Un debate secundario es qué significa
+sorprendentemente bien: la velocidad es una cosa, la precisión medida en
+benchmarks otra, y casi nadie en el hilo publica ambas.

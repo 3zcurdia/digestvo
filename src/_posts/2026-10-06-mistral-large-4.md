@@ -6,30 +6,34 @@ categories: digest
 tags: ["AI Release"]
 source_url: "https://docs.mistral.ai/models/mistral-large-4-0"
 hn_url: "https://news.ycombinator.com/item?id=49977979"
-share_text: "1.05T parameters, open weights, $0.68/M tokens. Mistral just undercut everyone. #Mistral #AI"
+share_text: "1,05B de parámetros, pesos abiertos, $0,68/M de tokens. Mistral abarató todo. #Mistral #AI"
 summary: >-
-  Mistral has released Mistral Large 4, an open-weight general-purpose
-  multimodal model built on a granular mixture-of-experts architecture with 49
-  billion active parameters out of 1.05 trillion total, plus a 1.6B vision
-  encoder. It ships in public preview with a 1M-token context window and API
-  pricing of $0.68 per million input tokens and $2.09 per million output
-  tokens, roughly half list price during the preview. Mistral positions it as
-  state of the art across reasoning, vision and cybersecurity benchmarks, and
-  it can be deployed from the company's own API or self-hosted from the
-  released weights.
+  Mistral lanzó Mistral Large 4, un modelo multimodal de propósito general de
+  pesos abiertos construido sobre una arquitectura granular de mezcla de
+  expertos con 49 mil millones de parámetros activos de un total de 1,05
+  billones, más un codificador de visión de 1,6B. Llega en vista previa pública
+  con una ventana de contexto de un millón de tokens y precios de API de $0,68
+  por millón de tokens de entrada y $2,09 por millón de salida, cerca de la
+  mitad del precio de lista durante la vista previa. Mistral lo posiciona como
+  estado del arte en benchmarks de razonamiento, visión y ciberseguridad, y
+  puede usarse desde la API de la propia empresa o autohospedado a partir de
+  los pesos publicados.
 ---
 
-Most commenters land on the benchmarks being genuinely better than expected,
-because the numbers put an open-weight European model within reach of GLM 5.3
-and DeepSeek's flash tier on coding agentic tasks while the vision and
-cyber-security scores look best-in-class for the price. The sharpest objection
-comes from erichocean, who argues Mistral never advances the state of the art
-and is spending GPU hours retraining last-generation backbones, when
-post-training an existing open model the way Cursor does would be far cheaper
-and more useful than sovereign-AI pretraining. The counter is that Europe needs
-a high-quality model not owned by American trillion-dollar companies or Chinese
-labs, and that the open weights are what actually deliver that independence. A
-third camp treats the 50%-off preview pricing as the real story, since it lands
-directly against DeepSeek Flash V4.1 and turns the release into a price move
-rather than a capability move. A long side argument about European economic
-stagnation swamped part of the thread but did not change the split.
+La mayoría de los comentarios coincide en que los benchmarks son genuinamente
+mejores de lo esperado, porque las cifras ponen un modelo europeo de pesos
+abiertos al alcance de GLM 5.3 y del nivel flash de DeepSeek en tareas
+agénticas de programación, mientras los puntajes de visión y ciberseguridad
+lucen los mejores de su clase por el precio. La objeción más aguda viene de
+erichocean, quien argumenta que Mistral nunca hace avanzar el estado del arte
+y está gastando horas de GPU en reentrenar backbones de la generación pasada,
+cuando postentrenar un modelo abierto existente como hace Cursor sería mucho
+más barato y útil que el preentrenamiento de IA soberana. La réplica es que
+Europa necesita un modelo de alta calidad que no pertenezca a empresas
+estadounidenses de billones de dólares ni a laboratorios chinos, y que los
+pesos abiertos son lo que realmente entrega esa independencia. Un tercer grupo
+trata el precio de vista previa con 50% de descuento como la verdadera
+historia, pues compite directo con DeepSeek Flash V4.1 y convierte el
+lanzamiento en un movimiento de precio más que de capacidad. Un largo debate
+lateral sobre el estancamiento económico europeo inundó parte del hilo pero no
+cambió la división.

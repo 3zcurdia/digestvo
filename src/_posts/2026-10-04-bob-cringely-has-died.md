@@ -1,31 +1,31 @@
 ---
 layout: post
-title: "Bob Cringely has died"
+title: "Bob Cringely ha muerto"
 date: 2026-10-04 08:11:16 -0600
 categories: digest
 tags: ["Culture"]
 hn_url: "https://news.ycombinator.com/item?id=49949438"
-share_text: "The man who taught a generation how Silicon Valley happened has died. RIP Bob Cringely. #TechHistory"
+share_text: "El hombre que enseñó a una generación cómo nació Silicon Valley ha muerto. DEP Bob Cringely. #TechHistory"
 summary: >-
-  It has been reported that Bob Cringely, the tech journalist and PBS
-  documentarian whose real name was Mark Stevens, died in his sleep early
-  Saturday, according to a friend of the family. Stevens was an early Apple
-  employee and is best known for the documentary "Triumph of the Nerds" and
-  the book Accidental Empires. The thread is largely a memorial, with many
-  commenters crediting his work as their introduction to the personal computer
-  industry and Silicon Valley culture. A smaller branch debates whether the
-  news is even confirmed, noting prior posts joking about his death and an
-  argument that the claim may be circulating without verification.
+  Se ha informado que Bob Cringely, el periodista tecnológico y documentalista de PBS
+  cuyo verdadero nombre era Mark Stevens, murió mientras dormía la madrugada del
+  sábado, según un amigo de la familia. Stevens fue uno de los primeros empleados de Apple
+  y es más conocido por el documental "Triumph of the Nerds" y el
+  libro Accidental Empires. El hilo es sobre todo un homenaje, con muchos
+  comentaristas que acreditan su obra como su introducción a la industria de la computadora
+  personal y a la cultura de Silicon Valley. Una rama menor debate si la
+  noticia está siquiera confirmada, señalando publicaciones previas que bromeaban sobre su muerte y
+  el argumento de que la afirmación podría estar circulando sin verificación.
 ---
 
-Most commenters land on gratitude for [Triumph of the Nerds](https://www.youtube.com/watch?v=c1yzXkH5Pfo)
-and Accidental Empires, because those two works were many people's first real account of how
-the PC industry worked, and several credit them with pushing them into
-programming or out to California. The sharpest objection is aimed at the news
-itself: one reply links a write-up arguing that Cringely's famous first-person
-stories were largely invented, and a nested comment notes that twelve hours
-after posting nobody had actually confirmed he died. That credibility question
-poisons the memorial for a few, who describe him as a Forrest Gump of technology
-who just happened to witness every important moment. A smaller side argument
-runs over Plane Crazy, where one commenter calls the build a failure and another
-points out the plane did fly.
+La mayoría de los comentarios coinciden en la gratitud por [Triumph of the Nerds](https://www.youtube.com/watch?v=c1yzXkH5Pfo)
+y Accidental Empires, porque esas dos obras fueron para mucha gente el primer relato real de cómo
+funcionaba la industria de la PC, y varios les atribuyen haberlos empujado a la
+programación o hasta California. La objeción más dura apunta a la propia
+noticia: una respuesta enlaza un texto que sostiene que las famosas historias en primera
+persona de Cringely fueron en gran parte inventadas, y un comentario anidado señala que doce horas
+después de la publicación nadie había confirmado su muerte. Esa duda sobre su credibilidad
+amarga el homenaje para algunos, que lo describen como un Forrest Gump de la tecnología
+que simplemente presenció cada momento importante. Un debate menor gira
+en torno a Plane Crazy, donde un comentarista califica la construcción de fracaso y otro
+señala que el avión sí voló.

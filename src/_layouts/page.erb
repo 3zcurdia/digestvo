@@ -5,8 +5,10 @@ layout: default
 <%# Plain pages (About, Stories, errors) use the same header block as an
     article so every page opens the same way. Set `prose: false` in front
     matter when the body brings its own components instead of running text.
-    Running text gets the `prose` utility (code highlighting included). %>
-<article>
+    Running text gets the `prose` utility (code highlighting included).
+    Error pages opt out of the search index via `search_exclude: true`. %>
+<% if data.search_exclude %>
+<article data-pagefind-ignore="all">
   <header class="mb-8 border-b border-border-color pb-6">
     <h1 class="m-0 font-serif text-[clamp(2rem,1.35rem_+_2.6vw,3rem)] leading-[1.08] font-bold tracking-[-0.02em] text-balance text-heading-color"><%= data.title %></h1>
     <% if data.summary %>
@@ -18,3 +20,20 @@ layout: default
     <%= yield %>
   </div>
 </article>
+<% else %>
+<article data-pagefind-body>
+  <header class="mb-8 border-b border-border-color pb-6">
+    <div class="flex items-center justify-between gap-4">
+      <h1 data-pagefind-meta="title" class="m-0 font-serif text-[clamp(2rem,1.35rem_+_2.6vw,3rem)] leading-[1.08] font-bold tracking-[-0.02em] text-balance text-heading-color"><%= data.title %></h1>
+      <%= render Shared::SearchToggle.new if data.search %>
+    </div>
+    <% if data.summary %>
+      <p class="mt-4 mb-0 text-[1.3rem] leading-[1.45] italic text-body-color"><%= data.summary %></p>
+    <% end %>
+  </header>
+
+  <div class="<%= 'prose' unless data.prose == false %>">
+    <%= yield %>
+  </div>
+</article>
+<% end %>

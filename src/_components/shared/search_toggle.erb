@@ -1,0 +1,19 @@
+<%# Magnifier toggle for the archive search. Rendered in the page header next
+    to the title when the page sets `search: true` in front matter; the panel
+    it toggles lives in the page body (Shared::Search). Revealed by the
+    bundled script like the edition toggle, so readers without JavaScript
+    never see a control that does nothing. %>
+<button
+  type="button"
+  class="link-icon focus-ring shrink-0 border-0 bg-transparent p-0 cursor-pointer [&[hidden]:hidden]"
+  data-search-toggle
+  aria-expanded="false"
+  aria-controls="site-search-panel"
+  aria-label="<%= t('search.toggle') %>"
+  hidden
+>
+  <svg class="size-[1.5em]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+    <circle cx="11" cy="11" r="8" />
+    <path d="m21 21-4.3-4.3" />
+  </svg>
+</button>

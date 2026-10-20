@@ -11,6 +11,7 @@ task default: :deploy
 desc "Build the Bridgetown site for deployment"
 task :deploy => [:clean, "frontend:build"] do
   Bridgetown::Commands::Build.start
+  sh "npx pagefind --site output"
 end
 
 desc "Build the site in a test environment"

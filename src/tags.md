@@ -11,7 +11,7 @@ summary: >-
 %>
 
 <% if tags.any? %>
-  <ul class="m-0 list-none divide-y divide-border-color p-0" role="list">
+  <ul data-pagefind-ignore class="m-0 list-none divide-y divide-border-color p-0" role="list">
     <% tags.each do |tag| %>
       <li class="group relative flex items-baseline justify-between gap-4 py-4 card-focus">
         <h2 class="m-0 font-serif text-[1.375rem] leading-[1.2] font-[650] tracking-[-0.005em] text-balance text-heading-color">

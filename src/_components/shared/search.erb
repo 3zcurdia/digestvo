@@ -1,0 +1,51 @@
+<%# Search panel for the archive search. Rendered in the page body on /posts
+    (see src/posts.md); its magnifier toggle lives in the page header as
+    Shared::SearchToggle when the page sets `search: true`. data-pagefind-ignore
+    keeps the input, hints and injected results out of the index. The JS in
+    frontend/javascript/index.js reveals the toggle, lazy-loads
+    /pagefind/pagefind.js on first open and renders results with the same flat
+    list treatment as PostList (hairlines, no card chrome). %>
+<div id="site-search-panel"
+     data-search-root
+     data-pagefind-ignore
+     hidden
+     data-pagefind-js="<%= relative_url '/pagefind/pagefind.js' %>"
+     data-site-base="<%= relative_url '/' %>"
+     data-msg-hint="<%= t('search.hint') %>"
+     data-msg-too-short="<%= t('search.too_short') %>"
+     data-msg-loading="<%= t('search.loading') %>"
+     data-msg-error="<%= t('search.error') %>"
+     data-msg-one="<%= t('search.results.one') %>"
+     data-msg-other="<%= t('search.results.other') %>"
+     data-msg-no-results="<%= t('search.no_results') %>"
+     data-msg-close="<%= t('search.close') %>"
+     data-msg-open="<%= t('search.toggle') %>"
+     class="mb-8 text-start">
+  <form role="search" data-search-form class="m-0" action="#" accept-charset="UTF-8">
+    <label for="site-search" class="section-label text-muted-color"><%= t("search.label") %></label>
+    <div class="mt-2 flex items-center gap-3">
+      <input id="site-search"
+             name="q"
+             type="search"
+             autocomplete="off"
+             spellcheck="false"
+             data-search-input
+             placeholder="<%= t('search.placeholder') %>"
+             aria-describedby="site-search-status"
+             class="w-full border border-border-color bg-transparent px-3 py-2 font-meta text-sm leading-[1.6] text-body-color placeholder:text-muted-color focus-ring" />
+      <button type="button"
+              data-search-clear
+              hidden
+              class="link-accent focus-ring shrink-0 border-0 bg-transparent p-0 font-meta text-sm leading-[1.6] font-semibold cursor-pointer"><%= t("search.clear") %></button>
+    </div>
+  </form>
+  <p id="site-search-status"
+     data-search-status
+     hidden
+     aria-live="polite"
+     class="mt-3 font-meta text-sm leading-[1.6] text-muted-color"></p>
+  <ol data-search-results
+      hidden
+      class="m-0 mt-2 list-none divide-y divide-border-color border-t border-border-color p-0"
+      role="list"></ol>
+</div>

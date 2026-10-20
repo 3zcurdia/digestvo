@@ -43,3 +43,21 @@ es:
       one: "hace 1 día"
       other: "hace %{count} días"
     average: "%{avg} promedio en días entre releases"
+
+  # Layout-integrated search (Pagefind, no dedicated page). All visible words
+  # come from here: the erb renders them into data attributes and the JS in
+  # frontend/javascript/index.js only reads those attributes, never prose.
+  search:
+    toggle: "Buscar"
+    label: "Buscar en el archivo"
+    placeholder: "Buscar historias…"
+    clear: "Limpiar"
+    close: "Cerrar búsqueda"
+    hint: "Escribe para buscar en todas las historias."
+    too_short: "Escribe al menos 2 letras."
+    loading: "Buscando…"
+    error: "La búsqueda no está disponible ahora mismo."
+    results:
+      one: "1 historia"
+      other: "%{count} historias"
+    no_results: "Sin resultados para “%{query}”."

@@ -16,7 +16,7 @@ layout: default
   related = TagTaxonomy.related_posts(posts, resource, limit: 4)
 %>
 
-<article>
+<article data-pagefind-body data-pagefind-meta="date:<%= resource.date.strftime('%Y-%m-%d') %>">
   <header class="mb-8 border-b border-border-color pb-6">
     <% if tags.any? %>
       <p class="section-label mb-3 text-muted-color">
@@ -26,7 +26,7 @@ layout: default
       </p>
     <% end %>
 
-    <h1 class="m-0 font-serif text-[clamp(2rem,1.35rem_+_2.6vw,3rem)] leading-[1.08] font-bold tracking-[-0.02em] text-balance text-heading-color"><%= data.title %></h1>
+    <h1 data-pagefind-meta="title" class="m-0 font-serif text-[clamp(2rem,1.35rem_+_2.6vw,3rem)] leading-[1.08] font-bold tracking-[-0.02em] text-balance text-heading-color"><%= data.title %></h1>
 
     <% if data.summary %>
       <p class="mt-4 mb-0 text-[1.3rem] leading-[1.45] italic text-body-color"><%= data.summary %></p>
@@ -56,7 +56,7 @@ layout: default
       the front page, next_post the one below. Each row only when it exists;
       the whole block drops out on a day with a single story. %>
   <% if prev_post || next_post %>
-    <nav class="mt-12 flex items-center justify-center gap-10 border-t border-border-color pt-4" aria-label="Más historias">
+    <nav data-pagefind-ignore class="mt-12 flex items-center justify-center gap-10 border-t border-border-color pt-4" aria-label="Más historias">
       <% if prev_post %>
         <a class="group link-pager focus-ring" href="<%= prev_post.relative_url %>">
           <span class="inline-block text-[1.25em] leading-none font-normal group-hover:-translate-x-[0.2em] group-focus-visible:-translate-x-[0.2em]" aria-hidden="true">&larr;</span>Anterior
@@ -73,7 +73,7 @@ layout: default
   <%# Same-topic stories, newest first, excluding this one. Drops out entirely
       when the tag is unique to this post — a lone story is not a thread. %>
   <% if related.any? && tags.any? %>
-    <section class="mt-12" aria-labelledby="related-heading">
+    <section data-pagefind-ignore class="mt-12" aria-labelledby="related-heading">
       <h2 class="section-label mb-4 text-muted-color" id="related-heading">Más en <%= tags.first %></h2>
       <ol class="m-0 list-none divide-y divide-border-color p-0" role="list">
         <% related.each do |post| %>

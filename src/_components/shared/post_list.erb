@@ -1,5 +1,5 @@
 <% if any? %>
-  <div class="[&>section+section]:mt-12">
+  <div data-pagefind-ignore class="[&>section+section]:mt-12">
     <% editions.each do |day, posts| %>
       <section aria-labelledby="edition-<%= day.iso8601 %>">
         <h2 class="section-label mb-1 border-b-2 border-heading-color pb-[0.4rem] text-heading-color" id="edition-<%= day.iso8601 %>">

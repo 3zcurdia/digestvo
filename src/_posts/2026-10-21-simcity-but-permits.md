@@ -4,6 +4,7 @@ title: "SimCity, pero con trámites"
 date: 2026-10-21 10:12:23 -0600
 categories: digest
 tags: ["Show HN"]
+source_ur: "https://permit.petercai.com"
 hn_url: "https://news.ycombinator.com/item?id=50170593"
 share_text: "Rezones un lote para 12 pisos, sales de la audiencia con 6, te demandan y aun así pierdes las elecciones. SimCity con permisos."
 summary: >-

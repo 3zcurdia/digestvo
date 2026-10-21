@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Show HN: SimCity, pero con trámites"
+title: "SimCity, pero con trámites"
 date: 2026-10-21 10:12:23 -0600
 categories: digest
 tags: ["Show HN"]

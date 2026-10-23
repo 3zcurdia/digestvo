@@ -23,7 +23,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # `.ruby-version` uses the mise/ruby-build prefix ("ruby-4.0.7") while
+      # `.ruby-version` uses the mise/ruby-build prefix ("ruby-4.0.9") while
       # ruby/setup-ruby wants the bare version number.
       - name: Read Ruby version
         id: ruby

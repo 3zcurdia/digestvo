@@ -1,6 +1,6 @@
 # AGENTS.md
 
-digesTvo is a Bridgetown (Ruby) static site — a digested newsletter. Pinned versions: Bridgetown `~> 2.2.2`, Ruby per `.ruby-version` (4.0.7), Node >= 22.
+digesTvo is a Bridgetown (Ruby) static site — a digested newsletter. Pinned versions: Bridgetown `~> 2.2.2`, Ruby per `.ruby-version` (4.0.9), Node >= 22.
 
 ## Commands
 

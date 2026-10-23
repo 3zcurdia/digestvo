@@ -22,8 +22,17 @@ El sitio lo sirve GitHub Pages, que guarda los registros estándar del servidor
 —normalmente tu dirección IP, la página solicitada y la hora— para operar y
 proteger el servicio. Esos registros son de GitHub, y se rigen por
 [la Declaración de privacidad de GitHub](https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement).
-Las tipografías se alojan en el propio sitio, así que cargar una página no llama
-a ningún servicio de recursos de terceros.
+Las tipografías se alojan en el propio sitio. La única llamada a un servicio
+externo al cargar una página es la del observatorio de IA, explicada abajo.
+
+## El observatorio de IA
+
+La barra «AI Watchdog» bajo el cabezal no se genera al publicar el sitio: tu
+navegador pide los datos de lanzamientos a
+[watchdog.9exp.net](https://watchdog.9exp.net), alojado en Vercel, que ve tu
+dirección IP y la hora de la petición como cualquier servidor. La petición no
+lleva cookies ni identificadores, y los enlaces a models.dev solo se abren si
+los pulsas.
 
 ## Cuando te vas
 

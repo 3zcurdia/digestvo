@@ -8,7 +8,7 @@
         footer share the same edges and the same measure. %>
     <div class="mx-auto flex min-h-screen w-full max-w-[calc(var(--container-column)_+_2*clamp(1rem,4vw,3rem))] flex-col px-[clamp(1rem,4vw,3rem)]">
       <%= render Shared::Navbar.new(metadata: site.metadata, resource: resource) %>
-      <%= render Shared::ReleaseBanner.new(posts: collections.posts.resources) %>
+      <%= render Shared::AiWatchdog.new %>
 
       <main class="w-full flex-1 pt-10 pb-16">
         <%= yield %>

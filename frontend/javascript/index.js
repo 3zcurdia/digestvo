@@ -52,37 +52,223 @@ deviceScheme.addEventListener("change", () => {
 
 renderToggle()
 
-// Days-since recount for the release ticker below the masthead. The banner is
-// server-rendered with the build day's count as the no-JS fallback; here the
-// count is recomputed from the <p data-last-release="YYYY-MM-DD"> date so it
-// stays right when the page is read days after the last build. Both phrasings
-// come from the locale (data-since-one / data-since-other), so no language is
-// hardcoded here — the plural template carries a %{count} placeholder.
-const banner = document.querySelector("[data-release-banner]")
-if (banner?.dataset.lastRelease) {
-  const [year, month, day] = banner.dataset.lastRelease.split("-").map(Number)
-  const utcLast = Date.UTC(year, month - 1, day)
-  const now = new Date()
-  const utcToday = Date.UTC(
-    now.getFullYear(),
-    now.getMonth(),
-    now.getDate()
-  )
-  const days = Math.max(
-    0,
-    Math.round((utcToday - utcLast) / 86_400_000)
-  )
-  const count = banner.querySelector("[data-days-since]")
-  if (count) {
-    if (days === 1 && banner.dataset.sinceOne) {
-      count.textContent = banner.dataset.sinceOne
-    } else if (banner.dataset.sinceOther) {
-      count.textContent = banner.dataset.sinceOther.replace(
-        "%{count}",
-        String(days)
-      )
-    }
+// AI Watchdog: the live AI-release tracker under the masthead. The shell is
+// server-rendered, but the figures and the latest model link come from
+// watchdog.9exp.net at read time, so the bar stops depending on deployments.
+// /api/latest drives the ticker line; /api/releases fills the radar list.
+const watchdog = document.querySelector("[data-watchdog]")
+
+if (watchdog) {
+  const copy = watchdog.dataset
+  const fallback = watchdog.querySelector("[data-watchdog-fallback]")
+  const readout = watchdog.querySelector("[data-watchdog-readout]")
+  const latestLink = watchdog.querySelector("[data-watchdog-latest]")
+  const latestName = watchdog.querySelector("[data-watchdog-latest-name]")
+  const since = watchdog.querySelector("[data-watchdog-since]")
+  const average = watchdog.querySelector("[data-watchdog-average]")
+  const averageRow = watchdog.querySelector("[data-watchdog-average-row]")
+  const live = watchdog.querySelector("[data-watchdog-live]")
+  const radarToggle = watchdog.querySelector("[data-watchdog-radar-toggle]")
+  const radarPanel = watchdog.querySelector("[data-watchdog-radar]")
+  const radarList = watchdog.querySelector("[data-watchdog-radar-list]")
+  const radarUpdated = watchdog.querySelector("[data-watchdog-radar-updated]")
+
+  const lang = document.documentElement.lang || "es"
+  const numberFormat = new Intl.NumberFormat(lang, { maximumFractionDigits: 1 })
+  const dayFormat = new Intl.DateTimeFormat(lang, {
+    day: "numeric",
+    month: "short",
+    timeZone: "UTC",
+  })
+  const updatedFormat = new Intl.DateTimeFormat(lang, {
+    dateStyle: "medium",
+    timeStyle: "short",
+  })
+
+  const fill = (template, values) =>
+    Object.entries(values).reduce(
+      (text, [key, value]) => text.replaceAll(`%{${key}}`, String(value)),
+      template || ""
+    )
+
+  // Date-only strings are UTC by definition; comparing them against the
+  // reader's local calendar day keeps "hace N días" right across timezones.
+  const daysSince = (isoDate) => {
+    const [year, month, day] = isoDate.split("-").map(Number)
+    if (!year || !month || !day) return null
+    const last = Date.UTC(year, month - 1, day)
+    const now = new Date()
+    const today = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate())
+    return Math.max(0, Math.round((today - last) / 86_400_000))
   }
+
+  const sinceLabel = (days) => {
+    if (days === 0) return copy.sinceToday || ""
+    if (days === 1) return copy.sinceOne || ""
+    return fill(copy.sinceOther, { count: days })
+  }
+
+  const releaseDateLabel = (value, approximate) => {
+    const date = new Date(`${value}T00:00:00Z`)
+    if (Number.isNaN(date.getTime())) return ""
+    const label = dayFormat.format(date)
+    return approximate ? `≈ ${label}` : label
+  }
+
+  // Only models.dev URLs from the API become links; anything else falls back
+  // to the site root rather than turning the ticker into an open redirect.
+  const modelHref = (value) => {
+    try {
+      const url = new URL(value)
+      if (
+        url.protocol === "https:" &&
+        (url.hostname === "models.dev" || url.hostname.endsWith(".models.dev"))
+      ) {
+        return url.href
+      }
+    } catch (error) {}
+    return "https://models.dev"
+  }
+
+  const fetchJson = async (url) => {
+    const response = await fetch(url, {
+      headers: { Accept: "application/json" },
+      cache: "no-cache",
+      credentials: "omit",
+      referrerPolicy: "no-referrer",
+    })
+    if (!response.ok) {
+      throw new Error(`${response.status} ${response.statusText}`)
+    }
+    return response.json()
+  }
+
+  const renderLatest = (data) => {
+    const latest = data?.latest
+    if (!latest?.name || !latestLink || !latestName) return
+
+    latestName.textContent = latest.name
+    latestLink.href = modelHref(latest.url)
+    latestLink.title = fill(copy.linkTitle, { name: latest.name })
+
+    const datedDays = latest.releaseDate
+      ? daysSince(latest.releaseDate)
+      : null
+    const days =
+      datedDays ??
+      Math.max(0, Math.round(Number(data.daysSinceLastRelease) || 0))
+    if (since) since.textContent = sinceLabel(days)
+
+    if (average && Number.isFinite(data.averageDaysBetweenReleases)) {
+      const value = numberFormat.format(data.averageDaysBetweenReleases)
+      average.textContent = fill(
+        data.averageDaysBetweenReleases === 1
+          ? copy.averageOne
+          : copy.averageOther,
+        { avg: value }
+      )
+      if (averageRow) averageRow.hidden = false
+    } else if (averageRow) {
+      averageRow.hidden = true
+    }
+
+    if (fallback) fallback.hidden = true
+    if (readout) readout.hidden = false
+    if (live) live.hidden = false
+  }
+
+  const renderReleases = (data) => {
+    if (!radarList || !radarToggle) return
+    const releases = Array.isArray(data?.releases)
+      ? data.releases.filter((release) => release?.name)
+      : []
+    if (!releases.length) return
+
+    radarList.replaceChildren(
+      ...releases.map((release) => {
+        const item = document.createElement("li")
+        item.className = "flex items-baseline justify-between gap-3"
+
+        const link = document.createElement("a")
+        link.className = "link-plain text-body-color hover:underline focus-ring"
+        link.href = modelHref(release.url)
+        link.target = "_blank"
+        link.rel = "noopener"
+        link.textContent = release.name
+        link.title = fill(copy.linkTitle, { name: release.name })
+
+        const date = document.createElement("time")
+        date.className = "flex-none text-[0.6875rem] text-muted-color"
+        if (release.releaseDate) {
+          date.dateTime = release.releaseDate
+          date.textContent = releaseDateLabel(
+            release.releaseDate,
+            release.isApproximate
+          )
+        }
+
+        item.append(link, date)
+        return item
+      })
+    )
+
+    if (radarUpdated && data.updatedAt) {
+      const updated = new Date(data.updatedAt)
+      if (!Number.isNaN(updated.getTime())) {
+        radarUpdated.textContent = fill(copy.radarUpdated, {
+          date: updatedFormat.format(updated),
+        })
+      }
+    }
+
+    radarToggle.hidden = false
+  }
+
+  const setRadar = (open) => {
+    if (!radarPanel || !radarToggle) return
+    radarPanel.hidden = !open
+    radarToggle.setAttribute("aria-expanded", String(open))
+    radarToggle.setAttribute(
+      "aria-label",
+      open ? copy.radarClose : copy.radarLabel
+    )
+    radarToggle.querySelector("svg")?.classList.toggle("rotate-180", open)
+  }
+
+  radarToggle?.addEventListener("click", () => {
+    setRadar(radarPanel?.hidden ?? false)
+  })
+
+  watchdog.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && radarPanel && !radarPanel.hidden) {
+      setRadar(false)
+      radarToggle?.focus()
+    }
+  })
+
+  let loadedAt = 0
+  const load = async () => {
+    const [latest, releases] = await Promise.allSettled([
+      fetchJson(copy.apiLatest),
+      fetchJson(copy.apiReleases),
+    ])
+    if (latest.status === "fulfilled") renderLatest(latest.value)
+    if (releases.status === "fulfilled") renderReleases(releases.value)
+    loadedAt = Date.now()
+  }
+
+  void load()
+
+  // A tab left open all day should not keep yesterday's release count. The
+  // API revalidates on every request, so returning to the page is enough.
+  document.addEventListener("visibilitychange", () => {
+    if (
+      document.visibilityState === "visible" &&
+      Date.now() - loadedAt > 300_000
+    ) {
+      void load()
+    }
+  })
 }
 
 // Layout-integrated search (Pagefind, no dedicated page). The panel lives in

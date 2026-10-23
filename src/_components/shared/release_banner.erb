@@ -1,9 +1,0 @@
-<div class="mt-2 font-meta text-xs text-muted-color uppercase"
-     data-pagefind-ignore
-     data-release-banner
-     data-last-release="<%= last_release.iso8601 %>"
-     data-since-one="<%= t("release_banner.since.one") %>"
-     data-since-other="<%= t("release_banner.since.other") %>">
-  <a class="link-plain text-muted-color focus-visible:text-action-color focus-ring" href="<%= relative_url TagTaxonomy.path("AI Release") %>"><%= t("release_banner.label") %></a>: <a class="link-plain text-body-color focus-visible:text-action-color focus-ring" href="<%= latest_post.relative_url %>" title="<%= latest_post.data.title %>"><span data-days-since><%= t("release_banner.since", count: days_since) %></span></a><% if formatted_avg_number %>, <strong class="font-bold text-body-color"><%= t("release_banner.average", avg: formatted_avg_number) %></strong><% end %>
-  <time class="sr-only" datetime="<%= last_release.iso8601 %>"><%= l(last_release, format: :short) %></time>
-</div>

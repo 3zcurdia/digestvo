@@ -9,6 +9,14 @@ places where a model working from prose makes small, silent mistakes. The
 skill is written so that the model only runs commands, spawns researchers,
 curates each story with the user, and reports. A smaller or faster model can run it safely.
 
+**The share image is the original article, captured once.** A generic site
+card tells a social timeline nothing about the story, while an image the
+model chooses by hand drifts away from what was actually linked. So the
+writer captures the article's own first viewport after curation, stores it
+under a name derived from the post, and never replaces it on refresh. The
+screenshot happens before the post is written, so a browser failure cannot
+leave a post that claims an image it does not have.
+
 **Briefs are files, not replies.** A subagent's text reply gets wrapped in
 prose, fenced, truncated or paraphrased. A file written to a known path and
 checked by `validate_brief.py` does not. The researcher writes only the five

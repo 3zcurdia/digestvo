@@ -15,6 +15,14 @@ or edit a file under `src/_posts/` yourself.**
 - Working directory: the repo root.
 - Scripts: `.opencode/skills/digest/scripts/`.
 - Run files: `.opencode/tmp/digest/` (Step 1 creates and clears it).
+- One-time screenshot setup on a fresh checkout, after `npm install`:
+
+  ```sh
+  PLAYWRIGHT_BROWSERS_PATH=0 npx playwright install chromium
+  ```
+
+  Playwright and its Chromium live under `node_modules/`; no browser is
+  needed by CI or by `rake deploy`.
 - Input (`$ARGUMENTS`): empty, a count such as "top 5", or a filter such as
   "no AI stories". Step 4 says what to do with it.
 
@@ -27,6 +35,7 @@ or edit a file under `src/_posts/` yourself.**
 | A researcher replies `FAILED` or never writes its brief | Spawn it once more with the same prompt. If it fails again, drop it and continue. |
 | Step 3 prints `SKIPPED` | Those briefs were invalid. Continue without them. Mention it. |
 | The user keeps nothing | Say so and stop. Write nothing. |
+| Step 5 reports a failed or timed-out screenshot | If the error says `Executable doesn't exist`, run the one-time setup above and run Step 5 again with the same `--keep`. Otherwise paste the error and stop; rows that failed were not written. |
 | Step 6 build fails | Paste the error. Do not edit posts to work around it. |
 
 ## Step 1 — Fetch
@@ -89,9 +98,17 @@ Keep exactly what the user chose. Never add a row they did not pick.
 python3 .opencode/skills/digest/scripts/write_post.py --keep 1,3,5
 ```
 
-Use the row numbers from Step 3's table, or `all`. The script creates new
-posts, refreshes existing ones in place, verifies every file it touched, and
-prints a `REPORT` block.
+Use the row numbers from Step 3's table, or `all`. The script captures one
+1200x630 screenshot per kept story from the original article first — the
+HN/Lobsters discussion for a self post — stores it under
+`src/images/digest/`, and writes `image: "/images/digest/<post>.jpg"` into
+the post. An existing screenshot file is never overwritten. A story whose
+screenshot cannot be captured is reported as `FAILED` and is not written; the script
+then exits non-zero, so stop and paste its error.
+
+The script creates new posts, refreshes existing ones in place (adding the
+missing image key when needed), verifies every file it touched — including
+the screenshot's existence and dimensions — and prints a `REPORT` block.
 
 ## Step 6 — Build
 
@@ -102,8 +119,9 @@ bundle exec rake deploy
 ## Step 7 — Report
 
 Paste the `REPORT` block from Step 5. Then add: whether the build passed, which
-rows the user kept, and any `SOURCE DOWN`, `SKIPPED` or `FAILED` lines from
-Steps 1 to 3. Finish with: `/` lists the latest 10 posts, `/posts` all of them.
+rows the user kept, and any `SOURCE DOWN`, `SKIPPED`, `FAILED` or screenshot
+capture lines from Steps 1 to 5. Finish with: `/` lists the latest 10 posts,
+`/posts` all of them.
 
 ## Reference
 

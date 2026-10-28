@@ -6,11 +6,14 @@
 
 <%# Share text prefers the story standfirst (summary), then the page
     description, then the site description — the same fallback chain a
-    reader sees on the page. %>
+    reader sees on the page. Share images prefer the post's captured
+    original-article screenshot, then the site-wide card. %>
 <% page_description = strip_html(strip_newlines((data.summary || data.description || metadata.description).to_s)) %>
 <% is_post = resource.respond_to?(:collection) && resource.collection&.label == "posts" %>
 <% page_url = resource.respond_to?(:absolute_url) ? resource.absolute_url : absolute_url(resource.relative_url) %>
-<% og_image = absolute_url("/og-image.png") %>
+<% page_image = data.image %>
+<% og_image = absolute_url(page_image || "/og-image.png") %>
+<% og_image_alt = page_image ? resource_title : "#{metadata.title} — #{metadata.tagline}" %>
 
 <meta name="description" content="<%= page_description %>" />
 <link rel="canonical" href="<%= page_url %>" />
@@ -23,7 +26,7 @@
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0c0b0a" />
 
 <%# Open Graph + X/Twitter cards, so every share carries the story summary
-    and the digestvo mark. %>
+    and the digestvo mark — or, for a story, the captured original article. %>
 <meta property="og:type" content="<%= is_post ? "article" : "website" %>" />
 <meta property="og:site_name" content="<%= metadata.title %>" />
 <meta property="og:title" content="<%= full_title %>" />
@@ -32,7 +35,7 @@
 <meta property="og:image" content="<%= og_image %>" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="<%= metadata.title %> — <%= metadata.tagline %>" />
+<meta property="og:image:alt" content="<%= og_image_alt %>" />
 <meta property="og:locale" content="es_ES" />
 <% if is_post %>
 <meta property="article:published_time" content="<%= resource.date.iso8601 %>" />
@@ -41,6 +44,7 @@
 <meta name="twitter:title" content="<%= full_title %>" />
 <meta name="twitter:description" content="<%= page_description %>" />
 <meta name="twitter:image" content="<%= og_image %>" />
+<meta name="twitter:image:alt" content="<%= og_image_alt %>" />
 
 <%# Runs before the stylesheet so an edition chosen on an earlier visit is
     painted with the page — no flash of the device's theme first. Without a

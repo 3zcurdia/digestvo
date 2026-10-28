@@ -13,6 +13,11 @@ data, never markup:
   the keys below.
 - **A key is present or absent, never empty.** `hn_url` and `lobsters_url`
   are the flags that draw the Hacker News and Lobsters links.
+- `image` is required on every post. It is the site-relative path to a
+  1200x630 screenshot of the original article — the discussion page for a
+  self post — captured by `write_post.py` under `src/images/digest/`. It
+  feeds `og:image` and `twitter:image`; it is not rendered in the article
+  body. Never hand-write or replace one: the capture script owns the file.
 - `categories: digest` on every post. It is the only key that shapes the
   permalink (`/digest/YYYY/MM/DD/slug/`). The reader-facing bucket goes in
   `tags`, which never reaches the URL.
@@ -34,6 +39,7 @@ date: <local time, YYYY-MM-DD HH:MM:SS +zzzz>
 categories: digest
 tags: ["<one bucket from categories.md>"]
 source_url: "<article URL>"
+image: "/images/digest/<post basename>.jpg"
 hn_url: "https://news.ycombinator.com/item?id=<id>"
 share_text: "<one hook line, 128 chars or fewer>"
 summary: >-
@@ -43,7 +49,8 @@ summary: >-
 <The take: what the thread agreed on, where it split, the sharpest objection.>
 ```
 
-A self post (Ask HN, Tell HN) has no `source_url`; the thread is the story.
+A self post (Ask HN, Tell HN) has no `source_url`; the thread is the story,
+and `image` is a screenshot of that thread.
 
 ## Both sites
 
@@ -53,6 +60,8 @@ off the drop cap for these so it does not split the label.
 ```markdown
 ---
 ...
+source_url: "<article URL>"
+image: "/images/digest/<post basename>.jpg"
 hn_url: "https://news.ycombinator.com/item?id=<id>"
 lobsters_url: "https://lobste.rs/s/<short id>/<slug>"
 share_text: "<one hook line, 128 chars or fewer>"
@@ -69,6 +78,8 @@ summary: >-
 
 When a story is already published, `write_post.py` edits that file in place:
 it replaces the take for each source researched today, appends a missing
-source with its URL key, and leaves `title`, `date`, `summary`, `share_text`,
-`tags` and every existing key untouched. It never removes a section or a key, and never
-writes a second file for the same article.
+source with its URL key, captures and appends `image` when the post predates
+screenshots, and leaves `title`, `date`, `summary`, `share_text`, `tags` and
+every existing key untouched. It never replaces an existing screenshot,
+removes a section or a key, and never writes a second file for the same
+article.

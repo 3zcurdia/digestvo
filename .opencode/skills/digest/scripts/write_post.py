@@ -10,8 +10,13 @@ For a `new` candidate it writes src/_posts/YYYY-MM-DD-<slug>.md from the
 template shape. For a `refresh` candidate it edits the existing file: it
 replaces only the take(s) for the source(s) researched today, appends a
 missing source and its URL key, and never touches title, date, summary, tags
-or existing keys. It then re-parses every file it touched and prints the
-report block for the user.
+or existing keys.
+
+Every kept story first gets a 1200x630 screenshot of its original article
+(the discussion page for a self post), stored under src/images/digest/ and
+referenced by the `image` front-matter key. A story whose screenshot cannot
+be captured is not written. It then re-parses every file it touched and
+prints the report block for the user.
 """
 
 import argparse
@@ -23,7 +28,12 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import _common as C  # noqa: E402
 
-REQUIRED_KEYS = ("layout", "title", "date", "categories", "source_url", "summary", "share_text")
+REQUIRED_KEYS = ("layout", "title", "date", "categories", "source_url", "image", "summary", "share_text")
+
+CAPTURE_SCRIPT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "capture_screenshot.mjs")
+IMAGE_DIR = os.path.join("src", "images", "digest")
+IMAGE_URL_DIR = "/images/digest"
+IMAGE_WIDTH, IMAGE_HEIGHT = 1200, 630
 
 
 # ---------------------------------------------------------------- render ---
@@ -39,7 +49,7 @@ def render_body(sections):
     return "\n\n".join(parts) + "\n"
 
 
-def render_new(cand, stamp):
+def render_new(cand, stamp, image):
     lines = [
         "---",
         "layout: post",
@@ -52,6 +62,7 @@ def render_new(cand, stamp):
     # so only the discussion link is drawn, not a duplicate "Read the original".
     if not cand.get("self_post"):
         lines.append("source_url: " + C.yaml_quote(cand["url"]))
+    lines.append("image: " + C.yaml_quote(image))
     for s in C.SOURCE_ORDER:
         if s in cand["discussion_urls"]:
             lines.append("{0}: {1}".format(C.SOURCES[s]["key"], C.yaml_quote(cand["discussion_urls"][s])))
@@ -69,6 +80,106 @@ def unique_path(posts_dir, day, slug):
         path = os.path.join(posts_dir, "{0}-{1}-{2}.md".format(day, slug, n))
         n += 1
     return path
+
+
+# --------------------------------------------------------------- image ---
+
+def planned_image(post_path):
+    """The site-relative screenshot path for one post's own basename."""
+    basename = os.path.splitext(os.path.basename(post_path))[0]
+    return IMAGE_URL_DIR + "/" + basename + ".jpg"
+
+
+def local_image_path(image):
+    """Root-relative site image -> repo file path, or None for a URL."""
+    if not image.startswith("/") or image.startswith("//"):
+        return None
+    if image == IMAGE_URL_DIR or image.startswith(IMAGE_URL_DIR + "/"):
+        return os.path.normpath(os.path.join(IMAGE_DIR, image[len(IMAGE_URL_DIR):].lstrip("/")))
+    return os.path.normpath(os.path.join("src", image.lstrip("/")))
+
+
+def jpeg_dimensions(path):
+    """(width, height) from a JPEG's SOF marker, or None when not a JPEG."""
+    try:
+        with open(path, "rb") as fh:
+            data = fh.read()
+    except OSError:
+        return None
+    if len(data) < 4 or data[:2] != b"\xff\xd8":
+        return None
+    pos = 2
+    while pos + 4 <= len(data):
+        if data[pos] != 0xFF:
+            return None
+        marker = data[pos + 1]
+        if marker in (0xD8, 0xD9, 0x01) or 0xD0 <= marker <= 0xD7:
+            pos += 2
+            continue
+        if marker == 0xFF:  # fill byte
+            pos += 1
+            continue
+        length = int.from_bytes(data[pos + 2:pos + 4], "big")
+        if length < 2 or pos + 2 + length > len(data):
+            return None
+        is_sof = 0xC0 <= marker <= 0xCF and marker not in (0xC4, 0xC8, 0xCC)
+        if is_sof and length >= 8:
+            height = int.from_bytes(data[pos + 5:pos + 7], "big")
+            width = int.from_bytes(data[pos + 7:pos + 9], "big")
+            return width, height
+        pos += 2 + length
+    return None
+
+
+def capture_image(url, dest):
+    """Run the Playwright wrapper and require a non-empty screenshot."""
+    if not shutil.which("node"):
+        raise C.DigestError("node is not installed; cannot capture {0}".format(url))
+    if not os.path.isfile(CAPTURE_SCRIPT):
+        raise C.DigestError("screenshot script is missing: " + CAPTURE_SCRIPT)
+    os.makedirs(os.path.dirname(dest), exist_ok=True)
+    try:
+        res = subprocess.run(
+            ["node", CAPTURE_SCRIPT, url, dest],
+            capture_output=True, text=True, timeout=60,
+        )
+    except subprocess.TimeoutExpired:
+        raise C.DigestError("screenshot capture timed out for " + url)
+    if res.returncode != 0:
+        detail = (res.stderr or res.stdout).strip() or "no error output"
+        raise C.DigestError("screenshot capture failed for {0}: {1}".format(url, detail))
+    if not os.path.isfile(dest) or os.path.getsize(dest) < 1024:
+        raise C.DigestError("screenshot capture produced no usable image for " + url)
+    dimensions = jpeg_dimensions(dest)
+    if dimensions != (IMAGE_WIDTH, IMAGE_HEIGHT):
+        raise C.DigestError(
+            "screenshot capture produced {0}, expected {1}x{2}: {3}".format(
+                dimensions, IMAGE_WIDTH, IMAGE_HEIGHT, url))
+
+
+def prepare_image(cand, post_path, dry_run):
+    """(site-relative image, whether front matter still needs the key).
+
+    An existing image is never overwritten. A missing key or missing file is
+    captured from the original article now, before the post is written, so a
+    failed browser run leaves that post untouched.
+    """
+    existing = ""
+    if cand["state"] == "refresh" and os.path.isfile(cand["post_path"]):
+        parts = C.split_post(C.read_text(cand["post_path"]))
+        if parts:
+            existing = C.front_matter_keys(parts[0]).get("image", "")
+
+    image = existing or planned_image(post_path)
+    dest = local_image_path(image)
+    if dest is None:
+        return image, not bool(existing)  # an existing external image stays as-is
+    if os.path.isfile(dest) and os.path.getsize(dest) >= 1024:
+        return image, not bool(existing)
+    if dry_run:
+        return image, not bool(existing)
+    capture_image(cand["url"], dest)
+    return image, not bool(existing)
 
 
 # --------------------------------------------------------------- enrich ---
@@ -91,13 +202,29 @@ def add_key_line(fm_text, source, url):
     return fm_text + "\n" + new_line
 
 
-def enrich(path, cand):
+def add_image_line(fm_text, image):
+    """Insert `image` before the first front-matter key it should precede."""
+    new_line = "image: " + C.yaml_quote(image)
+    lines = fm_text.split("\n")
+    for anchor in ("source_url:", "hn_url:", "lobsters_url:", "share_text:", "summary:"):
+        for i, line in enumerate(lines):
+            if line.startswith(anchor):
+                lines.insert(i, new_line)
+                return "\n".join(lines), True
+    return fm_text + "\n" + new_line, True
+
+
+def enrich(path, cand, image):
     original = C.read_text(path)
     parts = C.split_post(original)
     if not parts:
         raise C.DigestError("{0} has no front matter; refusing to edit".format(path))
     fm_text, body = parts
     keys = C.front_matter_keys(fm_text)
+    image_added = False
+    if image and not keys.get("image"):
+        fm_text, image_added = add_image_line(fm_text, image)
+        keys["image"] = image
     existing_sources = [s for s in C.SOURCE_ORDER if keys.get(C.SOURCES[s]["key"])]
 
     sections = C.split_body_sections(body)
@@ -121,9 +248,9 @@ def enrich(path, cand):
 
     new_text = "---\n" + fm_text + "\n---\n\n" + render_body(sections)
     if new_text == original:
-        return original, None, [], [], []
+        return original, None, [], [], [], image_added
     untouched = [s for s in sections if s not in cand["takes"]]
-    return original, new_text, replaced, added, untouched
+    return original, new_text, replaced, added, untouched, image_added
 
 
 # -------------------------------------------------------------- verify ---
@@ -139,6 +266,17 @@ def verify(path):
             problems.append("missing " + k)
     if "summary:" not in parts[0]:
         problems.append("missing summary")
+    image = keys.get("image")
+    if image:
+        image_file = local_image_path(image)
+        if image_file is None:
+            problems.append("image must be a site-relative path, got {0}".format(image))
+        elif not os.path.isfile(image_file):
+            problems.append("image file does not exist: " + image_file)
+        elif jpeg_dimensions(image_file) != (IMAGE_WIDTH, IMAGE_HEIGHT):
+            problems.append(
+                "image is {0}, expected {1}x{2}: {3}".format(
+                    jpeg_dimensions(image_file), IMAGE_WIDTH, IMAGE_HEIGHT, image_file))
     if keys.get("share_text") and len(keys["share_text"]) > C.SHARE_TEXT_MAX_CHARS:
         problems.append("share_text is {0} chars, keep it to {1} or fewer".format(
             len(keys["share_text"]), C.SHARE_TEXT_MAX_CHARS))
@@ -195,22 +333,28 @@ def main():
         try:
             if cand["state"] == "new":
                 path = unique_path(args.posts_dir, day, C.slugify(cand["headline"]))
-                text = render_new(cand, stamp)
+                image, _ = prepare_image(cand, path, args.dry_run)
+                text = render_new(cand, stamp, image)
                 if not args.dry_run:
                     C.write_text(path, text)
                 report["created"].append({"row": row, "path": path, "headline": cand["headline"],
-                                          "sources": cand["sources"]})
+                                          "sources": cand["sources"], "image": image})
             else:
                 path = cand["post_path"]
-                result = enrich(path, cand)
+                if not os.path.isfile(path):
+                    raise C.DigestError("refresh post does not exist: " + path)
+                image, _ = prepare_image(cand, path, args.dry_run)
+                result = enrich(path, cand, image)
                 if result[1] is None:
-                    report["unchanged"].append({"row": row, "path": path, "headline": cand["headline"]})
+                    report["unchanged"].append({"row": row, "path": path, "headline": cand["headline"],
+                                                "image": image})
                 else:
-                    _, text, replaced, added, untouched = result
+                    _, text, replaced, added, untouched, image_added = result
                     if not args.dry_run:
                         C.write_text(path, text)
                     report["updated"].append({"row": row, "path": path, "headline": cand["headline"],
-                                              "replaced": replaced, "added": added, "untouched": untouched})
+                                              "replaced": replaced, "added": added, "untouched": untouched,
+                                              "image": image, "image_added": image_added})
         except (C.DigestError, OSError) as exc:
             report["failed"].append({"row": row, "headline": cand["headline"], "error": str(exc)})
 
@@ -235,13 +379,16 @@ def main():
     print("Of the posts written: {0} Hacker News only, {1} Lobsters only, {2} on both sites.".format(
         hn_only, lb_only, both))
     for e in report["created"]:
-        print("- created {0}  ({1})".format(e["path"], "+".join(C.SOURCES[s]["short"] for s in e["sources"])))
+        print("- created {0}  ({1}; image {2})".format(
+            e["path"], "+".join(C.SOURCES[s]["short"] for s in e["sources"]), e["image"]))
     for e in report["updated"]:
         bits = []
         if e["replaced"]:
             bits.append("replaced take: " + ", ".join(C.SOURCES[s]["label"] for s in e["replaced"]))
         if e["added"]:
             bits.append("added source: " + ", ".join(C.SOURCES[s]["label"] for s in e["added"]))
+        if e.get("image_added"):
+            bits.append("added image " + e["image"])
         if e["untouched"]:
             bits.append("left alone: " + ", ".join(C.SOURCES[s]["label"] for s in e["untouched"]))
         print("- updated {0}  ({1})".format(e["path"], "; ".join(bits) or "no change"))

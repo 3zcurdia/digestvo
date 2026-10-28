@@ -18,14 +18,10 @@ summary: >-
   el argumento de que la afirmación podría estar circulando sin verificación.
 ---
 
-La mayoría de los comentarios coinciden en la gratitud por [Triumph of the Nerds](https://www.youtube.com/watch?v=c1yzXkH5Pfo)
-y Accidental Empires, porque esas dos obras fueron para mucha gente el primer relato real de cómo
-funcionaba la industria de la PC, y varios les atribuyen haberlos empujado a la
-programación o hasta California. La objeción más dura apunta a la propia
-noticia: una respuesta enlaza un texto que sostiene que las famosas historias en primera
-persona de Cringely fueron en gran parte inventadas, y un comentario anidado señala que doce horas
-después de la publicación nadie había confirmado su muerte. Esa duda sobre su credibilidad
-amarga el homenaje para algunos, que lo describen como un Forrest Gump de la tecnología
-que simplemente presenció cada momento importante. Un debate menor gira
-en torno a Plane Crazy, donde un comentarista califica la construcción de fracaso y otro
-señala que el avión sí voló.
+El anuncio de la muerte de Bob Cringely (Mark Stevens) generó un hilo mayoritariamente de homenajes, aunque también surgió una fuerte duda sobre si la noticia estaba confirmada.
+
+La mayoría de los comentarios agradecieron [Triumph of the Nerds](https://www.youtube.com/watch?v=c1yzXkH5Pfo) y *Accidental Empires*. Para muchos, esas obras fueron su primera introducción a la industria de la PC y, en algunos casos, lo que los llevó a programar o a mudarse a California.
+
+Sin embargo, el mayor punto de controversia fue la credibilidad de la noticia. Varios comentaristas señalaron que nadie la había confirmado doce horas después de publicarse. Otros apuntaron a acusaciones previas de que muchas de las anécdotas de Cringely eran inventadas, lo que, para algunos, convertía su figura en la de un Forrest Gump de la tecnología que simplemente presenció los momentos importantes y que, a causa de esas dudas, amargaba el homenaje.
+
+Como nota menor, algunos comentarios debatieron sobre *Plane Crazy*: uno lo calificó como una construcción fallida, mientras otro señaló que el avión sí llegó a volar.

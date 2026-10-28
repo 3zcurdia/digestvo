@@ -126,7 +126,11 @@ capture lines from Steps 1 to 5. Finish with: `/` lists the latest 10 posts,
 ## Reference
 
 - `references/researcher.md` — what each researcher subagent does. The prompt
-  from Step 1 tells them to read it; you do not need to.
+  from Step 1 tells them to read it; you do not need to. Research takes must
+  follow an arc-based structure (see `references/style-guide.md`): context →
+  consensus → main controversy → minor notes (or omit). One idea per
+  paragraph, use transitions to show hierarchy, and frame tangents
+  explicitly.
 - `references/post-template.md` — the post shape `write_post.py` produces.
 - `references/categories.md` — the taxonomy and its tie-break rules.
 - `references/rationale.md` — why the pipeline is shaped this way.

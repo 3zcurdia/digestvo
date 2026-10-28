@@ -80,11 +80,16 @@ says, standing on its own: a reader sees this on the index without opening the
 post. If `readable` is `false`, the first sentence says the article could not
 be opened and the rest describes what the thread says it is about.
 
-**take** — 3 to 6 sentences, 60 to 200 words, plain prose. The shape is: "Most
-commenters land on X, because A. The sharpest objection is Y, because B." Name
-the specific thing being argued about (a benchmark, a config flag, a price, a
-number). Develop one or two real positions. Do not list every commenter, do
-not write "commenters were divided", and do not open with "The thread".
+**take** — 3 to 6 sentences, 60 to 200 words, plain prose. Structure it as a
+clear arc: start with the context that sparked the discussion, state what most
+commenters agreed on, then cover the main controversy or tension with
+explicit framing, and relegate tangents to a clearly labeled minor note or
+omit them. Use transitions like "Sin embargo" / "Aun así" to show hierarchy
+between points. Name the specific thing being argued about (a benchmark, a
+config flag, a price, a number). Give the main debate the most space; minor
+side debates must be framed as "nota menor" or similar and kept short. Do not
+list every commenter, do not write "commenters were divided", and do not open
+with "The thread". One idea per paragraph when the arc has distinct phases.
 
 **sentiment** — the thread's mood, not the news: `enthusiasm` or `skeptical`
 when one side clearly wins, `mixed` when it splits on something substantive,

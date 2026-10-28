@@ -22,20 +22,10 @@ summary: >-
   de Rust a Zig y mantendrá Zig como su lenguaje predeterminado.
 ---
 
-La mayoría de los comentarios coincide en el argumento de la cultura de
-dependencias, porque encaja con su propia experiencia: wofo, un usuario
-intensivo de Rust, llama a los árboles de dependencias transitivas de Cargo
-su mayor molestia con el ecosistema, y la lista de baterías de la stdlib de
-Zig de kprotty (JSON, base64, PRNG, TLS, compresión) se ganó las gracias de
-un fan sorprendido de Rust. La objeción más fuerte apunta a la afirmación
-del artículo de que Rust lleva a los programadores a insertar panics:
-zmitchell, el comentario con más votos del hilo, responde que usar unwrap por
-defecto no es la norma y que el operador ? es más rápido que unwrap en
-cualquier caso, y ghoti señala los lints de Clippy que prohíben unwrap y
-expect en CI. Liberty responde que los panics de prototipo sobreviven
-rutinariamente a producción, algo que Clippy no puede corregir en todo un
-ecosistema, y ghoti contraataca diciendo que acertar a la primera no es un
-consejo accionable; subir el rigor gradualmente en CI sí lo es. Una objeción
-más discreta, de intelfx, es que la stdlib de Zig son solo cosas extraídas
-del compilador, de modo que sus baterías reflejan lo que el compilador
-necesitaba más que una biblioteca estándar bien redondeada.
+La autora relataba cuatro meses usando Zig tras volver desde Rust para escribir *snurl* (un cliente de smallnet) y su asistencia a Zig Day Seattle. Destacaba los parámetros explícitos de asignador y E/S, *comptime*, el sistema de compilación, los árboles de dependencias casi nulos, el manejo de errores con *try* y un compilador rápido. También pedía estabilidad en la *stdlib* antes de la 1.0, mejor ayuda con *lifetimes*, documentación y una ruta de arranque independiente de un blob WASM incluido en el repo.
+
+La mayoría de los comentarios coincidió en que la cultura de dependencias era el punto fuerte de Zig. Varios señalaron las quejas habituales con los árboles transitivos de Cargo y elogiaron la *stdlib* de Zig por cubrir utilidades como JSON, base64, PRNG, TLS o compresión sin depender de paquetes externos.
+
+Sin embargo, el mayor debate fue sobre si Rust lleva inevitablemente a usar *panics*. Algunos argumentaron que *unwrap* por defecto no es la norma, que el operador `?` es eficiente y que *Clippy* prohíbe *unwrap/expect* en CI. Otros replicaron que los *panics* de prototipo sobreviven a producción y que los linters no corrigen ese hábito en todo el ecosistema, lo que llevó a un intercambio sobre cómo subir el rigor gradualmente.
+
+Como nota menor, se señaló que la *stdlib* de Zig son esencialmente utilidades extraídas del compilador, por lo que su cobertura refleja lo que este necesitaba, no necesariamente una biblioteca estándar bien redondeada.

@@ -18,15 +18,8 @@ summary: >-
   empresa de desarrollo real.
 ---
 
-La mayoría de los comentarios coinciden en que Git necesita una barrera estilo direnv antes de ejecutar hooks,
-porque .git se trata como estado local confiable aun cuando un repo llegó como una
-descarga de Dropbox o un tarball en vez de un clon; el propio autor del artículo
-respalda la idea. La objeción más dura viene de agwa, quien señala que un
-git clone simple es seguro por diseño: Git se niega a extraer rutas bajo .git/
-y trata un clon que lo compromete como una vulnerabilidad, así que el peligro vive
-por completo en instalar un árbol de directorios por otra vía y quien solo
-clona está fuera de alcance. El hilo también escala el payload, con la
-variante core.fsmonitor de agwa que se dispara con un simple git status que los IDE, go build y los
-prompts del shell ejecutan de forma implícita, haciendo un .git/config incluido más peligroso que cualquier hook. Un
-consejo muy votado de desactivar los hooks con core.hooksPath /dev/null recibe críticas
-cuando oger señala que la propia configuración de un repo puede revertirlo.
+Frank Wiles relataba cómo un "cliente" le envió un repositorio malicioso mediante una carpeta de Dropbox. El ataque aprovechaba un hook *post-checkout* en `.git/hooks` para descargar, ejecutar y borrarse a sí mismo un binario desde un servidor de comando y control alojado en Vercel.
+
+La mayoría de los comentarios coincidió en que Git necesita una barrera al estilo *direnv* antes de ejecutar hooks, ya que `.git` se trata como estado local confiable incluso cuando el repositorio llega como una descarga o un tarball en lugar de un clon. El propio autor apoyaba esta idea.
+
+Sin embargo, el mayor punto de controversia fue el alcance del riesgo. Un comentario señalaba que un `git clone` simple es seguro por diseño (Git no extrae rutas bajo `.git/` y trataría un clon comprometido como una vulnerabilidad), por lo que el peligro se limita a instalar un árbol de directorios por otras vías. Además, se advirtió que variantes como `core.fsmonitor` pueden dispararse con acciones implícitas (`git status`, builds, prompts del shell), lo que hace que un `.git/config` incluido sea potencialmente más peligroso que un hook. Como nota menor, un consejo muy votado de desactivar hooks con `core.hooksPath /dev/null` recibió críticas al señalarse que la propia configuración del repositorio puede revertirlo.

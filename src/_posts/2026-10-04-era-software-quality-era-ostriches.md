@@ -18,14 +18,10 @@ summary: >-
   el riesgo de la cadena de suministro de Cargo supera las ventajas de la seguridad de memoria.
 ---
 
-La mayoría de los comentarios coinciden en rechazar la afirmación de "cero esperanza sin el análisis
-de vulnerabilidades con IA" por exagerada, porque ven la propia elección de GNOME de usar C, C++
-y Vala, y no la ausencia de IA, como el origen de la ola de CVE. La
-objeción más dura es contra el comentario final que desaconseja Rust para GNOME
-por Cargo: pyfisch, wrs y ghoti señalan que cargo vendor, las versiones fijadas
-y los registros personalizados le dan a GNOME control total de sus dependencias, así que el verdadero
-dilema es la disciplina del vendoring, no Rust frente a crates troyanizados. Un segundo
-frente es la carga de los mantenedores: schneems y agent281 dicen que los reportes de IA destruyen las
-señales de esfuerzo que los mantenedores usaban para evaluar colaboradores, mientras simonw y
-skyfaller discuten si 100 dólares en tokens realmente sustituyen a un
-equipo de pentesting una vez que se cuenta el precio subsidiado de los tokens.
+Michael Catanzaro argumentaba que el análisis de vulnerabilidades con IA ya era obligatorio para GNOME, dado el salto de 13 CVE en 2023 a 188 proyectados en 2026. Esto generó un debate sobre si la respuesta debía centrarse en la IA o en las prácticas del proyecto.
+
+La mayoría de los comentarios rechazó la afirmación de "cero esperanza sin el análisis de vulnerabilidades con IA" por exagerada. Para ellos, la propia elección de GNOME de usar C, C++ y Vala —y no la ausencia de IA— era el origen de la ola de CVE.
+
+Sin embargo, el mayor punto de controversia fue la recomendación de desaconsejar Rust para GNOME por el riesgo de la cadena de suministro de Cargo. Varios comentaristas señalaron que herramientas como *cargo vendor*, las versiones fijadas y los registros personalizados le dan a GNOME control total de sus dependencias, por lo que el verdadero dilema es la disciplina del *vendoring*, no Rust frente a crates troyanizados.
+
+Como nota menor, algunos comentaristas debatieron la carga para los mantenedores: los reportes generados por IA pueden destruir las señales de esfuerzo que solían usar para evaluar colaboradores, y surgió la duda de si 100 dólares en tokens realmente sustituyen a un equipo de pentesting una vez que se tiene en cuenta el precio subsidiado de los mismos.

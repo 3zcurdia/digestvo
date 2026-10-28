@@ -20,18 +20,10 @@ summary: >-
   lugar de un cliente propietario.
 ---
 
-La mayoría de los comentarios coinciden en que WHIP es la solución
-equivocada, porque los incumbentes ya manejan esto: calvin señala que Zoom
-usa por defecto un codificador orientado a texto y Discord envía perfiles
-separados para juegos frente a fidelidad de texto, de modo que poco le queda
-por resolver a un nuevo estándar de ingesta. La objeción más fuerte es la de
-k0nserv: un proveedor debe dictar la configuración del codificador y las
-escalas de ancho de banda para cada espectador, de modo que un ingreso WHIP
-arbitrario es estructuralmente incompatible con el funcionamiento de esos
-servicios —y valpackett añade que ninguno de los puntos WHIP listados es una
-aplicación de llamadas para el usuario final, mientras que Jitsi lo
-rechazó. Muchos lectores tampoco llegaron a ver la evidencia, ya que los
-videos de comparación no cargaban en móvil. Chisnall redirige la queja al
-reescalado del lado del cliente, que desdibuja el texto con antialiasing sea
-cual sea el bitrate, proponiendo el truco de Teams de ejecutar Office en
-cada cliente en su lugar —una solución que bityard responde que nadie pidió.
+El sitio *shittyscreenshare.com* compara dos formas de compartir pantalla: una nítida a través de OBS con control total, y otra borrosa desde el navegador. Propone WHIP (RFC 9725) como estándar abierto para permitir a herramientas como OBS o FFmpeg enviar video en vivo directamente a las videollamadas.
+
+La mayoría de los comentarios coincidió en que los proveedores ya resuelven este problema. Se señaló que Zoom usa por defecto un codificador orientado a texto y que Discord envía perfiles separados para juegos frente a fidelidad de texto, por lo que hay poco que un nuevo estándar de ingesta pueda aportar.
+
+Sin embargo, la principal objeción fue estructural. Para que funcione bien con múltiples espectadores, el proveedor debe dictar la configuración del codificador y las escalas de ancho de banda, lo que hace que un ingreso WHIP arbitrario sea estructuralmente incompatible con esos servicios. Además, se apuntó que los ejemplos de adopción de WHIP no eran aplicaciones de videollamadas para el usuario final y que Jitsi lo había rechazado.
+
+Como nota menor, algunos lectores no pudieron ver la evidencia porque los videos de comparación no cargaban en móvil. También surgió un debate lateral sobre el reescalado del lado del cliente: se propuso que Teams ejecutara Office en cada cliente para evitar el antialiasing, una idea que otros consideraron poco práctica.

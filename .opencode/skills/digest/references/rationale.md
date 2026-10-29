@@ -3,6 +3,18 @@
 Nobody needs this file to run the digest. It records the reasoning so the
 design is not undone by accident.
 
+**Two phases, plus an orchestrator.** Ingesting is mechanical and slow
+(fetch, spawn researchers, merge); curation is the only step that needs the
+user. So the pipeline splits: `/ingest` (fetch and parse) ends with
+`candidates.json`, `/digest` (ask the user) picks stories and writes posts,
+`/translate` turns the new posts into Spanish, and `/publish` ships them —
+commit, push, deploy watch, Telegram. `autonomos-digest` chains all four.
+Publishing watches the GitHub deploy before Telegram so an announcement never
+points at a site that is not live yet, which is why the Telegram step needs
+no separate trigger. The scripts and references stay under
+`skills/digest/` even though both phases use them; moving them would break
+every hardcoded path for nothing.
+
 **Scripts own every mechanical step.** Merging by URL, detecting posts that
 already exist, slugging, timestamps, YAML quoting and in-place edits are all
 places where a model working from prose makes small, silent mistakes. The

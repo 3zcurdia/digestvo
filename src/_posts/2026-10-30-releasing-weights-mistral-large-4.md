@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Publicamos los pesos de Mistral Large 4"
+title: "Mistral Large 4 Open weights"
 date: 2026-10-30 08:06:12 -0600
 categories: digest
 tags: ["AI/ML"]

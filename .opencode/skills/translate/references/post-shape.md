@@ -15,7 +15,10 @@ tags: ["..."]           # NEVER translate — English taxonomy, drives
 source_url: "..."       # NEVER touch
 hn_url: "..."           # NEVER touch (presence draws the HN link)
 lobsters_url: "..."     # NEVER touch (presence draws the Lobsters link)
-share_text: "..."       # TRANSLATE, ≤128 chars after translation
+share_text: "..."       # TRANSLATE, ≤128 chars after translation; keep
+                        # the English hashtags verbatim (never translate
+                        # #Rust, #AI, …); no em/en dashes — use commas,
+                        # colons or conjunctions; ranges use a plain hyphen
 summary: >-             # TRANSLATE (3-5 sentences, stands alone)
   ...
 ---

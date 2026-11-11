@@ -19,3 +19,5 @@ Order points as follows:
 - **Don't open with "The thread"** - Start with context.
 - **Preserve hedges** - Keep uncertainty as written.
 - **Language** - Write in Spanish as the site does.
+- **Punctuation** - No em or en dashes (`—`, `–`); use commas, colons or
+  conjunctions instead. Numeric ranges use a plain hyphen (`15-25%`).

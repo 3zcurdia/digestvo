@@ -37,8 +37,20 @@ URLs, Hacker News IDs, dates, numbers, and quoted error strings. If a
 sentence quotes UI text (`"Night edition"`), translate the sentence around
 it and leave the quoted string verbatim.
 
+## Punctuation (all text)
+
+No em or en dashes (`—`, `–`) anywhere in the Spanish output — not in
+the title, the summary, the body or `share_text`. Rewrite the sentence
+with commas, colons or conjunctions; numeric ranges use a plain hyphen
+(`15-25%`). Do not introduce a dash while compressing.
+
 ## share_text
 
 One hook line, ≤128 characters, plain text, must stand alone next to the
 post URL. Translate last and compress: drop articles and subordinate
 clauses before dropping information. Count characters, not words.
+
+Hashtags are language-neutral: keep the English hashtags verbatim
+(`#Rust`, `#AI`, `#Security` — never translate, never drop, never
+reorder). Mentions (`@user`) stay verbatim too. The hashtags count toward
+the 128-character budget.

@@ -38,6 +38,8 @@ def check_text(name, text, sentences, words, problems):
         problems.append("{0}: plain prose only — no markdown, HTML, backticks or line breaks.".format(name))
     if re.search(r"[\U0001F300-\U0001FAFF☀-➿]", text):
         problems.append("{0}: remove the emoji.".format(name))
+    if re.search(r"[—–]", text):
+        problems.append("{0}: no em/en dashes — use commas, colons or conjunctions instead; ranges use a plain hyphen.".format(name))
     if re.match(r"\s*(the (thread|discussion|article)|commenters were divided)", text, re.I) and name == "take":
         problems.append("take: do not open with 'The thread…'; start with the dominant view itself.")
 
@@ -57,6 +59,13 @@ def check_share_text(text, problems):
         problems.append("share_text: plain text only — no markdown, HTML or backticks. Hashtags (#tag) and mentions (@user) are allowed.")
     if re.search(r"[\U0001F300-\U0001FAFF☀-➿]", text):
         problems.append("share_text: remove the emoji.")
+    if re.search(r"[—–]", text):
+        problems.append("share_text: no em/en dashes — use commas, colons or conjunctions instead; ranges use a plain hyphen.")
+    tags = re.findall(r"#\w+", text)
+    if not tags:
+        problems.append("share_text: add 1–2 topical hashtags at the end (#Rust, #AI, #Security …) — they are what makes the share discoverable.")
+    elif len(tags) > 2:
+        problems.append("share_text: at most 2 hashtags — more reads as spam.")
 
 
 def validate(path):

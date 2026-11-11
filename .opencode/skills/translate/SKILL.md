@@ -48,7 +48,10 @@ path with the Spanish version:
   body still opens with a sentence, never a heading or list. No HTML, no
   emoji, no new links.
 - **`share_text` stays ≤128 characters** after translation — shorten the
-  wording, never pad. Hashtags and mentions allowed, same as English.
+  wording, never pad. Hashtags and mentions allowed, same as English: keep
+  the English hashtags verbatim (never translate, drop or reorder them) and
+  introduce no em/en dashes — use commas, colons or conjunctions; ranges
+  use a plain hyphen.
 - **Spanish voice:** neutral Latin-American Spanish, usted-neutral, no
   voseo, no peninsular colloquialisms. Digest register (see
   `references/translation-guide.md`): faithful, not literal — a fluent

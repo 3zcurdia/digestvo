@@ -62,14 +62,15 @@ user-pasted thread over everything fetched. Never invent reply contents.
 ## Step 3 — Brief
 
 Write `.opencode/tmp/digest/tweet-brief-<original id>.json`: exactly these
-four fields, bare JSON, no code fence, no comments, no other fields:
+five fields, bare JSON, no code fence, no comments, no other fields:
 
 ```json
 {
   "title": "The first tweet and its eighteen years of replies",
   "category": "Culture",
   "summary": "...",
-  "take": "..."
+  "take": "...",
+  "share_text": "..."
 }
 ```
 
@@ -87,6 +88,11 @@ four fields, bare JSON, no code fence, no comments, no other fields:
   specific thing being argued about; cover the related tweets where they
   change the picture. When only the top replies were captured, describe
   only those; if none could be read, say so in the first sentence.
+- **share_text** — one hook line, ≤128 characters, plain text, must stand
+  alone next to the post URL. Include 1–2 topical hashtags at the end
+  (`#Rust`, `#AI`, …); no em/en dashes (use commas, colons or
+  conjunctions; ranges use a plain hyphen). Follow the digest
+  `share_text` rules in `researcher.md`.
 
 ## Step 4 — Write
 

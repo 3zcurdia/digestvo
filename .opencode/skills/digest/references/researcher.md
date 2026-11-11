@@ -78,7 +78,9 @@ otherwise.
 **summary** — 3 to 5 sentences, 40 to 110 words, plain prose. What the article
 says, standing on its own: a reader sees this on the index without opening the
 post. If `readable` is `false`, the first sentence says the article could not
-be opened and the rest describes what the thread says it is about.
+be opened and the rest describes what the thread says it is about. Punctuation:
+no em or en dashes — use commas, colons or conjunctions instead; numeric
+ranges use a plain hyphen (`15-25%`).
 
 **take** — 3 to 6 sentences, 60 to 200 words, plain prose. Structure it as a
 clear arc: start with the context that sparked the discussion, state what most
@@ -90,6 +92,8 @@ config flag, a price, a number). Give the main debate the most space; minor
 side debates must be framed as "nota menor" or similar and kept short. Do not
 list every commenter, do not write "commenters were divided", and do not open
 with "The thread". One idea per paragraph when the arc has distinct phases.
+Punctuation: no em or en dashes — use commas, colons or conjunctions instead;
+numeric ranges use a plain hyphen (`15-25%`).
 
 **sentiment** — the thread's mood, not the news: `enthusiasm` or `skeptical`
 when one side clearly wins, `mixed` when it splits on something substantive,
@@ -98,8 +102,12 @@ when one side clearly wins, `mixed` when it splits on something substantive,
 **share_text** — one hook line, 128 characters or fewer, plain text on one
 line. A short summary or catchphrase that earns the click on X, not a copy
 of the headline: name the sharpest number, tension or objection from the
-take. Hashtags (`#tag`) and mentions (`@user`) are allowed; no other
-markdown, no HTML, no backticks, no line breaks, no emoji.
+take. Include **1–2 topical hashtags at the end of the line** (`#Rust`,
+`#AI`, `#Security`, `#OpenSource` …) — they are what makes the share
+discoverable. Hashtags and mentions (`@user`) are allowed; no other markdown,
+no HTML, no backticks, no line breaks, no emoji. Punctuation: no em or en
+dashes — use commas, colons or conjunctions instead; numeric ranges use a
+plain hyphen (`15-25%`). Count characters including the hashtags.
 
 ## Do not
 

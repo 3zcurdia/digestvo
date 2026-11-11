@@ -21,6 +21,7 @@ prints the report block for the user.
 
 import argparse
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -255,7 +256,7 @@ def enrich(path, cand, image):
 
 # -------------------------------------------------------------- verify ---
 
-def verify(path):
+def verify(path, new=False):
     problems = []
     parts = C.split_post(C.read_text(path))
     if not parts:
@@ -280,6 +281,14 @@ def verify(path):
     if keys.get("share_text") and len(keys["share_text"]) > C.SHARE_TEXT_MAX_CHARS:
         problems.append("share_text is {0} chars, keep it to {1} or fewer".format(
             len(keys["share_text"]), C.SHARE_TEXT_MAX_CHARS))
+    if new and keys.get("share_text"):
+        st = keys["share_text"]
+        if not re.search(r"#\w+", st):
+            problems.append("share_text has no hashtag — add 1–2 topical ones (#Rust, #AI, …)")
+        if re.search(r"[—–]", st):
+            problems.append("share_text has an em/en dash — use a comma, colon or conjunction instead")
+    if new and keys.get("summary") and re.search(r"[—–]", keys["summary"]):
+        problems.append("summary has an em/en dash — use a comma, colon or conjunction instead")
     if not any(keys.get(C.SOURCES[s]["key"]) for s in C.SOURCE_ORDER):
         problems.append("no hn_url or lobsters_url")
     if not parts[1].strip():
@@ -360,7 +369,7 @@ def main():
 
     if not args.dry_run:
         for entry in report["created"] + report["updated"]:
-            problems = verify(entry["path"])
+            problems = verify(entry["path"], new=entry in report["created"])
             if problems:
                 entry["verify"] = problems
                 report["failed"].append({"row": entry["row"], "headline": entry["headline"],

@@ -8,8 +8,8 @@ Usage:
 The first tweet is the original post; the rest are tweets related to it
 (same thread, quote-tweets, notable replies). Every ID must already have
 a tweet-<id>.json from fetch_tweet.py. The brief is written by the skill
-(not by this script) and holds exactly four fields — title, category,
-summary, take — validated here with the same rules as the digest
+(not by this script) and holds exactly five fields — title, category,
+summary, take, share_text — validated here with the same rules as the digest
 researcher briefs. Ids and URLs come from the tweet files, never from
 the brief.
 
@@ -35,11 +35,12 @@ sys.path.insert(0, os.path.join(
     "digest", "scripts"))
 import _common as C  # noqa: E402
 from fetch_tweet import parse_id  # noqa: E402
-from validate_brief import check_text  # noqa: E402
+from validate_brief import check_text, check_share_text  # noqa: E402
 
 REQUIRED_KEYS = ("layout", "title", "date", "categories", "tags",
                  "x_url", "summary")
-BRIEF_FIELDS = {"title": str, "category": str, "summary": str, "take": str}
+BRIEF_FIELDS = {"title": str, "category": str, "summary": str, "take": str,
+                "share_text": str}
 TITLE_WORDS = (2, 15)
 TITLE_CHARS = 100
 STATUS_RE = re.compile(r"/status/(\d{2,25})")
@@ -69,7 +70,7 @@ def validate_brief(path):
     extra = sorted(set(data) - set(BRIEF_FIELDS))
     if extra:
         problems.append("remove extra field(s): {0}. Only title, category, "
-                        "summary and take are allowed.".format(", ".join(extra)))
+                        "summary, take and share_text are allowed.".format(", ".join(extra)))
 
     title = data["title"]
     n_w = C.count_words(title)
@@ -85,6 +86,8 @@ def validate_brief(path):
         problems.append("title: plain prose only — no markdown or HTML.")
     if re.search(r"[\U0001F300-\U0001FAFF☀-➿]", title):
         problems.append("title: remove the emoji.")
+    if re.search(r"[—–]", title):
+        problems.append("title: no em/en dashes — use commas, colons or conjunctions instead.")
 
     if data["category"] not in C.CATEGORIES:
         problems.append("category: {0!r} is not in the taxonomy. Pick one "
@@ -98,6 +101,7 @@ def validate_brief(path):
                C.SUMMARY_WORDS, problems)
     check_text("take", data["take"], C.TAKE_SENTENCES, C.TAKE_WORDS,
                problems)
+    check_share_text(data["share_text"], problems)
     if problems:
         return None, problems
     return data, []
@@ -156,6 +160,7 @@ def render_new(brief, original_url, related_urls, stamp):
         lines.append("related_x_urls:")
         for url in related_urls:
             lines.append("  - " + C.yaml_quote(url))
+    lines.append("share_text: " + C.yaml_quote(brief["share_text"]))
     lines.append("summary: >-")
     lines.append(C.wrap(brief["summary"], width=78, indent="  "))
     lines.append("---")

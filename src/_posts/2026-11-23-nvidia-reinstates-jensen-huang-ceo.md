@@ -21,18 +21,20 @@ summary: >-
   noviembre.
 ---
 
-El reintegro llega diez días después de que Huang renunciara el 13 de noviembre
-tras los reportes de sus aventuras, incluida una con una mujer que, según el New
-York Times, mantenía contacto con un espía del Ministerio de Seguridad del
-Estado chino. La mayoría coincide en que la acción fue el motor: la junta habló
-con Huang el sábado, decidió el domingo y el anuncio rebotó las acciones 33%,
-así que el regreso responde al mercado, no a la investigación. Sin embargo, la
-discusión central es quién empujó la decisión. El comunicado admite información
-de niveles altos del gobierno de Estados Unidos y Trump dijo que el país
-necesita a Jensen, lo que lleva a un lado a concluir que la Casa Blanca ordenó
-el reintegro; el otro contesta que la pregunta es quién quería sacarlo, y señala
-a rivales de IA con asientos en la junta. Aun así, el problema de fondo queda
-abierto: la investigación de Wachtell Lipton continúa, Warren exige respuestas
-al Congreso y Huang declara el 1 de diciembre. Como nota menor, un hilo discute
-si Huang fue decisivo: la apuesta a CUDA de 2012 frente a quienes lo atribuyen a
-suerte.
+El revés fue rápido: la junta de Nvidia le dijo a los inversionistas durante dos
+semanas que Huang no regresaría, y luego cambió de posición en un solo fin de
+semana, tras un informe gubernamental y una caída de 33% en la acción. La
+mayoría de los comentarios coincide en un punto: el mercado, y no alguna
+contabilidad moral, resolvió la cuestión, con un repunte de 30% antes de la
+apertura leído como prueba de que los accionistas venían exigiendo su regreso.
+La discusión principal gira en torno a quién tomó realmente la decisión. Un
+bando interpreta la línea del comunicado de la junta sobre la recepción de
+información de niveles altos del gobierno de Estados Unidos, junto con la
+publicación de Trump en la que afirma haber convencido a la junta, como evidencia
+de que la Casa Blanca forzó el desenlace, una captura política de la empresa que
+ancla el despliegue de IA. Aun así, otros sostienen que una caída de 45% en un
+monopolio prácticamente total lo explica todo, y que el fundador que apostó por
+CUDA en 2012 sin plan de sucesión es simplemente irremplazable. Como nota menor,
+un debate lateral más pequeño acusa de operaciones con información privilegiada
+en torno al anuncio y se pregunta si la aventura con una presunta espía china
+ocultó una conducta peor en las ventas de chips.
